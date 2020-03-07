@@ -31,7 +31,14 @@ If you are a student of Saarland University and have fun with automated program 
 
 ## Latest News
 
-<a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<!-- <a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+All relevant events regarding the group and its work are posted on Twitter
+<br>
+<a class="twitter-follow-button"
+  href="https://twitter.com/AndreasZeller"
+  data-size="large">
+Follow @AndreasZeller</a>
 
 
 ## My Blog
