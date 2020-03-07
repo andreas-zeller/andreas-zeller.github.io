@@ -5,9 +5,9 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have had quite some impact in theory and practice.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
-## Latest News
+## Latest Tweet
 
-<a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent"
+<a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader noborders transparent"
 data-tweet-limit="1"
 href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
