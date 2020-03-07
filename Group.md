@@ -1,6 +1,3 @@
----
----
-
 ## My Group
 
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research.  The current set includes:

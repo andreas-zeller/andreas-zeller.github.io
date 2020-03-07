@@ -1,6 +1,3 @@
----
----
-
 # Doing a Thesis in the Software Engineering Group
 
 If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  Here are the details on how this works.
