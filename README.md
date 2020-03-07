@@ -1,6 +1,6 @@
 # About Me
 
-My students and I create tools and techniques that **help developers build better software** - by automatically testing, analyzing, and debugging its code and its development process.
+I do software research.  My students and I create tools and techniques that **help developers build better software** - by automatically testing, analyzing, and debugging its code and its development process.
 
 Our approaches have had quite some impact in theory and practice.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
@@ -10,6 +10,11 @@ Our approaches have had quite some impact in theory and practice.  My [Curriculu
 My most important project these days is [The Fuzzing Book](https://www.fuzzingbook.org/) - an interactive testbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
 
 Other projects involve automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more - see our [latest publications](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+
+
+## Current Courses
+
+In Summer 2020, we plan to offer a seminar on advanced testing and debugging.  Stay tuned!
 
 
 ## My Group
