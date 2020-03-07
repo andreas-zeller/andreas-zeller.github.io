@@ -5,6 +5,13 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have had quite some impact in theory and practice.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
+## Latest News
+
+<a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent"
+data-tweet-limit="1"
+href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+
 ## Current Projects
 
 My most important project these days is [The Fuzzing Book](https://www.fuzzingbook.org/) - an interactive testbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
@@ -14,16 +21,7 @@ Other projects involve automated debugging and repair, analyzing mobile systems,
 
 ## Current Courses
 
-In Summer 2020, we plan to offer a seminar on advanced testing and debugging.  Stay tuned!
-
-
-## Current Events
-
-<!-- <a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-All relevant events regarding our work are [posted on Twitter](https://twitter.com/AndreasZeller).
-<br>
-<a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+In Summer 2020, we will offer a seminar on advanced testing and debugging.  Details to follow soon!
 
 
 ## My Group
@@ -36,7 +34,6 @@ We are constantly looking out for great students and Postdocs.  Our positions ar
 ## Theses
 
 If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how this works.](Theses.md)
-
 
 
 ## My Blog
@@ -55,3 +52,10 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
 </ul>
 
 [All blog posts](Blog.md)
+
+
+## Stay Tuned
+
+All relevant events regarding our work are [posted on Twitter](https://twitter.com/AndreasZeller).
+<br>
+<a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
