@@ -31,7 +31,7 @@ If you are a student of Saarland University and have fun with automated program 
 
 ## My Blog
 
-My blog has a mixture of various topics from academia and software development, often with a humorous touch.  Here are some of the most popular:
+My [blog](Blog.md) has a mixture of various topics from academia and software development, often with a humorous touch.  Here is a selection of popular posts:
 
 <ul>
   {% for post in site.posts %}
