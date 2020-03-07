@@ -31,12 +31,17 @@ If you are a student of Saarland University and have fun with automated program 
 
 ## My Blog
 
-My blog has a mixture of various topics from academia and software development, often with a humorous touch.  New blog posts are announced on Twitter.
+My blog has a mixture of various topics from academia and software development, often with a humorous touch.  Here are some of the most popular:
 
 <ul>
   {% for post in site.posts %}
+  {% if post.tags contains "popular" %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
+      (<span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>)
     </li>
+  {% endif %}
   {% endfor %}
 </ul>
+
+[All blog posts](Blog.md)
