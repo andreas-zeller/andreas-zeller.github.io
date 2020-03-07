@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # About Me
 
 I do software research.  My students and I create tools and techniques that **help developers build better software** - by automatically testing, analyzing, and debugging its code and its development process.
@@ -5,18 +9,17 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have had quite some impact in theory and practice.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
-## Latest News
+## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
 
-<a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader noborders transparent"
-data-tweet-limit="1"
+<a class="twitter-timeline" data-lang="en" data-height="300" data-width="350" data-chrome="noheader nofooter noborders transparent"
 href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
 ## Current Projects
 
-My most important project these days is [The Fuzzing Book](https://www.fuzzingbook.org/) - an interactive testbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
+Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more - see our [latest publications](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
 
-Other projects involve automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more - see our [latest publications](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/) - an interactive testbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
 
 
 ## Current Courses
@@ -51,11 +54,11 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
   {% endfor %}
 </ul>
 
-[All blog posts](Blog.md)
+<!-- [All blog posts](Blog.md) -->
 
 
 ## Stay Tuned
 
 All relevant events regarding our work are [posted on Twitter](https://twitter.com/AndreasZeller).
-<br>
+
 <a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
