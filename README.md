@@ -1,3 +1,7 @@
+---
+layout: post
+---
+
 ## About Me
 
 **I research software.**  I analyze its code, its executions, and how it was made, creating tools that help developers build better software.
