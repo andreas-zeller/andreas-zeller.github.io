@@ -16,7 +16,7 @@ Other projects involve automated debugging and repair, analyzing mobile systems,
 
 At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.md) on cutting-edge research.
 
-CISPA and me are constantly looking out for great students.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please apply.
+We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.saarland/).
 
 
 ## Theses
