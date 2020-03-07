@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # About Me
 
 I do software research.  My students and I create tools and techniques that **help developers build better software** - by automatically testing, analyzing, and debugging its code and its development process.
