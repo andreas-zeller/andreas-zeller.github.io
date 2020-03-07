@@ -17,6 +17,15 @@ Other projects involve automated debugging and repair, analyzing mobile systems,
 In Summer 2020, we plan to offer a seminar on advanced testing and debugging.  Stay tuned!
 
 
+## Current Events
+
+<!-- <a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+All relevant events regarding our work are [posted on Twitter](https://twitter.com/AndreasZeller).
+<br>
+<a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+
 ## My Group
 
 At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.md) on cutting-edge research.
@@ -28,14 +37,6 @@ We are constantly looking out for great students and Postdocs.  Our positions ar
 
 If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how this works.](Theses.md)
 
-
-## Latest News
-
-<!-- <a class="twitter-timeline" data-lang="en" data-height="400" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-
-All relevant events regarding the group and its work are [posted on Twitter](https://twitter.com/AndreasZeller)
-<br>
-<a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 ## My Blog
