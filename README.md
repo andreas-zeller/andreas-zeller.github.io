@@ -25,19 +25,19 @@ In Summer 2020, we will offer a seminar on advanced testing and debugging.  Deta
 
 ## My Group
 
-At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.md) on cutting-edge research.
+At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.html) on cutting-edge research.
 
 We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.saarland/) and state your specific interests.
 
 
 ## Theses
 
-If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how to do a thesis with us.](Theses.md)
+If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how to do a thesis with us.](Theses.html)
 
 
 ## My Blog
 
-My [blog](Blog.md) has a mixture of various topics from academia and software development, often with a humorous touch.  Here is a selection of popular posts:
+My [blog](Blog.html) has a mixture of various topics from academia and software development, often with a humorous touch.  Here is a selection of popular posts:
 
 <ul>
   {% for post in site.posts %}
@@ -50,7 +50,7 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
   {% endfor %}
 </ul>
 
-[All blog posts](Blog.md)
+[All blog posts](Blog.html)
 
 
 ## Watch Me
