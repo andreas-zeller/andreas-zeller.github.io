@@ -32,7 +32,7 @@ We are constantly looking out for great students and Postdocs.  Our positions ar
 
 ## Theses
 
-If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how to do a thesis.](Theses.md)
+If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how to do a thesis with us.](Theses.md)
 
 
 ## My Blog
@@ -51,6 +51,12 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
 </ul>
 
 [All blog posts](Blog.md)
+
+
+## Watch Me
+
+In my widely lauded ICSE 2018 keynote ["Relevance, Simplicity, and Innovation: Stories and Takeaways from Software Engineering Research"](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
+unfold lessons on impact in software engineering research: Do relevant work – strive for simplicity – keep on innovating. [Slides and manuscript](https://www.icse2018.org/getImage/orig/ICSE+2018+Keynote+Zeller.pdf) are available, too.
 
 
 ## Stay Tuned
