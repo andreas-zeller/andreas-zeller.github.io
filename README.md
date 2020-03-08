@@ -1,6 +1,6 @@
 # About Me
 
-I do software research.  My students and I create tools and techniques that **help developers build better software** - by automatically testing, analyzing, and debugging its code and its development process.
+I do software research.  My students and I create tools and techniques that **help developers build better software**&mdash;by automatically testing, analyzing, and debugging its code and its development process.
 
 Our approaches have had quite some impact in theory and practice.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
@@ -13,9 +13,9 @@ href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script asy
 
 ## Current Projects
 
-Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more - see our [latest publications](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more&mdash;see our [papers](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
 
-My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/) - an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
+My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
 
 
 ## Current Courses
@@ -27,12 +27,12 @@ In Summer 2020, we will offer a seminar on advanced testing and debugging.  Deta
 
 At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.md) on cutting-edge research.
 
-We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.saarland/).
+We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.saarland/) and state your specific interests.
 
 
 ## Theses
 
-If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how this works.](Theses.md)
+If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  [Here are the details on how to do a thesis.](Theses.md)
 
 
 ## My Blog
