@@ -55,8 +55,8 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
 
 ## Watch Me
 
-In my widely lauded ICSE 2018 keynote ["Relevance, Simplicity, and Innovation: Stories and Takeaways from Software Engineering Research"](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
-unfold lessons on impact in software engineering research: Do relevant work – strive for simplicity – keep on innovating. [Slides and manuscript](https://www.icse2018.org/getImage/orig/ICSE+2018+Keynote+Zeller.pdf) are available, too.
+In my ICSE 2018 SIGSOFT Award keynote ["Relevance, Simplicity, and Innovation: Stories and Takeaways from Software Engineering Research"](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
+unfold lessons on impact in software engineering research: Do relevant work – strive for simplicity – keep on innovating. [Slides and manuscript](assets/ICSE-2018-Keynote-Zeller.pdf) are available, too.
 
 
 ## Stay Tuned
