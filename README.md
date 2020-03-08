@@ -13,7 +13,7 @@ href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script asy
 
 ## Current Projects
 
-Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more&mdash;see our [papers](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our techniques typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more&mdash;see our [papers](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our solutions typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
 
 My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
 
