@@ -50,7 +50,7 @@ My [blog](Blog.md) has a mixture of various topics from academia and software de
   {% endfor %}
 </ul>
 
-<!-- [All blog posts](Blog.md) -->
+[All blog posts](Blog.md)
 
 
 ## Stay Tuned
