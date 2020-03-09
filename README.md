@@ -55,8 +55,8 @@ My [blog](Blog.html) has a mixture of various topics from academia and software 
 
 ## Watch Me
 
-In my ICSE 2018 SIGSOFT Award keynote ["Relevance, Simplicity, and Innovation: Stories and Takeaways from Software Engineering Research"](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
-unfold lessons on impact in software engineering research:
+In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
+unfold lessons on _impact in software engineering research_:
 
 * Do relevant work
 * Strive for simplicity
