@@ -55,7 +55,7 @@ My [blog](Blog.html) has a mixture of various topics from academia and software 
 
 ## Watch Me
 
-In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
+These days, I spend quite some time giving career advice.  In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
 unfold lessons on _impact in software engineering research_:
 
 * Do relevant work
