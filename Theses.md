@@ -2,23 +2,29 @@
 
 If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  Here are the details on how this works.
 
-If you want to do a thesis at our group, please send me a letter of motivation and your most recent transcript of records.  I will then set up an appointment with you to discuss possible topics.
 
-Note that topics will always be related to our recent research interests (and thus also include a chance to publish and present your work in front of a larger audience).  Third-party topics are only acceptable as part of an established research cooperation.
+## Topic
+
+If you want to do a thesis at our group, please **send me a letter of motivation and your most recent transcript of records.**  I will then set up an appointment with you to discuss possible topics.
+
+Topics will typically be related to our recent research interests.  You will do real research, and some students even had a chance to publish and present your work in front of some international audience.  
+
+You can suggest topics and express interests of your own.  Third-party topics, however, are only acceptable as part of an established 
+research cooperation.
+
+
+## Advisor
+
+Once we have agreed on a topic, you will be assigned an _advisor_ from my group – a PhD student or PostDoc who you will closely work with.  She or he will help you defining the your _thesis proposal_ as part of the _seminar_.
 
 
 ## Seminar
 
-Before the thesis starts, you have to attend the bachelor/master seminar.
 In the seminar phase, you are supposed to prepare your thesis. The seminar phase comprises the following steps:
-
-### Topic
-
-The first step is to find a suitable topic and advisor. If you're unsure what's going on at the chair, you can listen to talks, approach PostDocs, PhD students, or myself.
 
 ### Attendance
 
-You have to attend the seminar on a regular basis. The current rule is that in order to pass the seminar you have to visit the seminar at least 10 times.
+You have to attend the seminar on a regular basis.  Details will be sent to you by the seminar organization.
 
 ### Preparation
 
@@ -26,7 +32,7 @@ Your advisor will give you literature to read and possibly make you write a prot
 
 ### Proposal
 
-You have to write a thesis proposal that describes the goals of your thesis and the steps required to achieve those goals. See below.
+You have to write a _thesis proposal_ that describes the goals of your thesis and the steps required to achieve those goals. See below.
 
 ### Talk
 
@@ -53,9 +59,9 @@ A thesis proposal is usually between 8 to 10 pages long and consists of the foll
 6. The _evaluation_ you want to use to assess how well your solution works. Provide details on how to verify the hypotheses started earlier (experiments, subjects, measures, ...)
 7. A _schedule_ with verifiable milestones to be reached on a specific date. State potential risks for the proposal and their impact, as well as how to mitigate them, including alternatives.
 8. Explicit _success criteria_ that will help to assess your thesis, as lists of items:
-	* **Must-have criteria:** Things your thesis must cover to be successful
-	* **May-have criteria:** Things your thesis can cover to improve its value
-	* **Must-not-have criteria:** Things your thesis will not cover (although one may think so)
+	* _Must-have criteria:_ Things your thesis must cover to be successful
+	* _May-have criteria:_ Things your thesis can cover to improve its value
+	* _Must-not-have criteria:_ Things your thesis will not cover (although one may think so)
 9. A _bibliography_ listing all references.
 
 A proposal typically undergoes a number of revisions between you and your supervisor; once it officially is handed in, it serves as a blueprint for the thesis. Your proposal will be graded as part of the Seminar.
