@@ -13,14 +13,18 @@ href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script asy
 
 ## Current Projects
 
-Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more&mdash;see our [papers](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao) for details.  Our solutions typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+Our research projects involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more; see our papers below for details.  Our solutions typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
 
 My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
+
+## Current Papers
+
+My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), nd in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works, check out the [CISPA publication database](https://cispa.saarland/research/publications/).
 
 
 ## Current Courses
 
-In Summer 2020, we will offer a seminar on advanced testing and debugging.  Details to follow soon!
+In Summer 2020, we offer a [seminar on advanced fuzzing techniques](https://cms.cispa.saarland/fuzzing20/) and a [proseminar on automated testing and debugging](https://cms.cispa.saarland/debug20/).  For Winter 2020/21, we plan to offer advanced courses on security testing and/or automated debugging.
 
 
 ## My Group
