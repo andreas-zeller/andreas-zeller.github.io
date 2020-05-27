@@ -19,7 +19,7 @@ My largest project these days is [The Fuzzing Book](https://www.fuzzingbook.org/
 
 ## Current Papers
 
-My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), nd in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works, check out the [CISPA publication database](https://cispa.saarland/research/publications/).
+My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works, check out the [CISPA publication database](https://cispa.saarland/research/publications/).
 
 
 ## Current Courses
