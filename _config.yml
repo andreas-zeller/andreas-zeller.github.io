@@ -16,14 +16,14 @@ tagline: Software research at CISPA and Saarland University
 twitter:
     - username: AndreasZeller
 social:
-  name: Andreas Zeller
   links:
     - https://twitter.com/AndreasZeller
-description: Andreas Zeller is faculty at the 
+description: Andreas Zeller does software research on on automated debugging, mining software archives, specification mining, and security testing at CISPA and Saarland University
+bio: Andreas Zeller is faculty at the 
     <a href="https://www.cispa.saarland" target=_blank>CISPA Helmholtz Center for Information Security</a> and professor for Software Engineering at 
     <a href="https://saarland-informatics-campus.de/en/" target=_blank>Saarland University</a>, both in Saarbrücken, Germany.  
     His <a href="https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao" target=_blank>research</a> 
-    on automated debugging, mining software archives, specification mining, and security testing has been highly influential.  
+    on automated debugging, mining software archives, specification mining, and security testing has been <a href="assets/ZellerCV.pdf">highly influential</a>.  
     Zeller is an <a href="https://awards.acm.org/fellows" target=_blank>ACM Fellow</a> and holds an <a href="https://www.sigsoft.org/awards/outstandingResearchAward.html" target=_blank>ACM SIGSOFT Outstanding Research Award</a>.<p>
     <i class="fa fa-envelope-o" aria-hidden="true"></i>
     <span class="sr-only">Mail:</span>&nbsp;&nbsp;<a href="mailto:zeller@cispa.saarland">zeller@cispa.saarland</a><br>
