@@ -18,7 +18,7 @@ twitter:
 social:
   links:
     - https://twitter.com/AndreasZeller
-description: Andreas Zeller does software research on on automated debugging, mining software archives, specification mining, and security testing at CISPA and Saarland University
+description: Andreas Zeller does software research on automated debugging, mining software archives, specification mining, and security testing at CISPA and Saarland University
 bio: Andreas Zeller is faculty at the 
     <a href="https://www.cispa.saarland" target=_blank>CISPA Helmholtz Center for Information Security</a> and professor for Software Engineering at 
     <a href="https://saarland-informatics-campus.de/en/" target=_blank>Saarland University</a>, both in Saarbrücken, Germany.  
@@ -32,3 +32,4 @@ bio: Andreas Zeller is faculty at the
     <i class="fa fa-twitter" aria-hidden="true"></i>
     <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller">@AndreasZeller</a>
 logo: assets/Zeller09-full.jpg
+logo_title: Andreas Zeller (high resolution photo)
