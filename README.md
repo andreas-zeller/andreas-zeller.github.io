@@ -59,7 +59,19 @@ My [blog](Blog.html) has a mixture of various topics from academia and software 
 
 ## Watch Me
 
-These days, I spend quite some time giving career advice.  In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
+### Research Highlights
+
+Some highlights of our current research are summarized in my recent CASA Distinguished Lecture ["Learning the Language of Failure"](https://www.youtube.com/watch?v=3ZW1DI2PxvI). Here, I show
+
+* how to automatically learn circumstances of a given failure, expressed over features of input elements 
+* how to automatically infer input languages as readable grammars, and how to use them for massive fuzzing, and
+* how to systematically and precisely characterize the set of inputs that causes a given failure – the "language of failure".
+
+[Slides and manuscript](assets/CASA-2020-Learning-the-Language-of-Failure.pdf) are available, too.
+
+### Lessons Learned
+
+These days, I also spend quite some time giving career advice. In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
 unfold lessons on _impact in software engineering research_:
 
 * Do relevant work
