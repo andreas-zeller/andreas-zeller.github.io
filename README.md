@@ -59,30 +59,32 @@ My [blog](Blog.html) has a mixture of various topics from academia and software 
 
 ## Watch Me
 
-### Research Highlights
+I am a frequent speaker at events. Here are two recorded talks I am particularly proud of.
 
-Some highlights of our current research are summarized in my recent CASA Distinguished Lecture ["Learning the Language of Failure"](https://www.youtube.com/watch?v=3ZW1DI2PxvI). Here, I show
+### 2020: Learning the Language of Failure
 
-* how to automatically learn circumstances of a given failure, expressed over features of input elements 
-* how to automatically infer input languages as readable grammars, and how to use them for massive fuzzing, and
+In my 2020 CASA Distinguished Lecture ["Learning the Language of Failure"](https://www.youtube.com/watch?v=3ZW1DI2PxvI), I show some highlights of our current work:
+
+* how to automatically learn circumstances of a given failure, expressed over features of input elements;
+* how to automatically infer input languages as readable grammars, and how to use them for massive fuzzing; and
 * how to systematically and precisely characterize the set of inputs that causes a given failure – the "language of failure".
 
-[Slides and manuscript](assets/CASA-2020-Learning-the-Language-of-Failure.pdf) are available, too.
+Enjoy the show! [Slides and manuscript](assets/CASA-2020-Learning-the-Language-of-Failure.pdf) are available, too.
 
-### Lessons Learned
+### 2018: Stories and Takeaways from Software Engineering Research
 
 These days, I also spend quite some time giving career advice. In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
-unfold lessons on _impact in software engineering research_:
+unfold three lessons on _impact in software engineering research_:
 
-* Do relevant work
-* Strive for simplicity
-* Keep on innovating
+1. Do relevant work
+2. Strive for simplicity
+3. Keep on innovating
 
-[Slides and manuscript](assets/ICSE-2018-Keynote-Zeller.pdf) are available, too.
+Again, detailed [slides and manuscript](assets/ICSE-2018-Keynote-Zeller.pdf) are available.
 
 
 ## Stay Tuned
 
-All relevant events regarding our work are [posted on Twitter](https://twitter.com/AndreasZeller).
+All relevant events regarding current work are [posted on Twitter](https://twitter.com/AndreasZeller).
 
 <a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
