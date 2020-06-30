@@ -69,9 +69,9 @@ In my 2020 CASA Distinguished Lecture ["Learning the Language of Failure"](https
 * how to automatically infer input languages as readable grammars, and how to use them for massive fuzzing; and
 * how to systematically and precisely characterize the set of inputs that causes a given failure – the "language of failure".
 
-Enjoy the show! [Slides and manuscript](assets/CASA-2020-Learning-the-Language-of-Failure.pdf) are available, too.
+Enjoy the show! [Annotated slides](assets/CASA-2020-Learning-the-Language-of-Failure.pdf) are available, too.
 
-### 2018: Stories and Takeaways from Software Engineering Research
+### 2018: Outstanding Research Award Keynote
 
 These days, I also spend quite some time giving career advice. In my [ICSE 2018 SIGSOFT Award keynote](https://www.youtube.com/watch?v=U5jLjcxnwfU), I
 unfold three lessons on _impact in software engineering research_:
@@ -80,7 +80,7 @@ unfold three lessons on _impact in software engineering research_:
 2. Strive for simplicity
 3. Keep on innovating
 
-Again, detailed [slides and manuscript](assets/ICSE-2018-Keynote-Zeller.pdf) are available.
+Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf) are available.
 
 
 ## Stay Tuned
