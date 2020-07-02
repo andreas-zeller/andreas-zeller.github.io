@@ -5,7 +5,7 @@ author: Andreas Zeller
 tags: popular
 ---
 
-_This text originally [appeared on Twitter](https://twitter.com/AndreasZeller/status/1278246191482974209?s=20) on July 1. The text is unchanged; I have added subtitles and links for your convenience._
+_This post originally [appeared on Twitter](https://twitter.com/AndreasZeller/status/1278246191482974209?s=20) on July 1. The text is unchanged; I have added subtitles and links for your convenience._
 
 What's it like to be a [PhD student in Germany](https://www.research-in-germany.org/en/jobs-and-careers/info-for-phd-students.html)? You can get paid, and well. You can afford a car, an apartment, and provide for a family. You may work with great advisors at great institutions. And the food... well, the food. Read on!
 
@@ -67,7 +67,7 @@ Things to discover: [The loony rites of German carnival.](https://en.wikipedia.o
 
 All these will be things to remember, and make your PhD worthwhile. Best of all, you'll be with others, [jointly studying Germany, and studying in Germany](https://www.research-in-germany.org/). And if Germany is the place where you find a friend, it'll be for life. Just like your PhD :-)
 
-
+_See the [Twitter thread](https://twitter.com/AndreasZeller/status/1278246191482974209?s=20) for comments and reactions._
 
 
 
