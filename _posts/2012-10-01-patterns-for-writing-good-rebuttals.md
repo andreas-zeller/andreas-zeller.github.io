@@ -3,7 +3,8 @@ layout: post
 title:  "Patterns for writing good rebuttals"
 author: Andreas Zeller
 tags: popular
-redirect_from: "/onresearch/rebuttal-patterns.php3"
+redirect_from: 
+  - "/onresearch/rebuttal-patterns.php3.html"
 ---
 
 I compiled the following patterns for rebuttals (also known as author clarifications) for major software engineering conferences (ICSE, ESEC, FSE, ASE, ISSTA), having seen a number of rebuttals as PC chair of ESEC/FSE 2011 and having written a number of rebuttals for top conferences.  These patterns may or may not be applicable in your context; use at your own risk.
