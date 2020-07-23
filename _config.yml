@@ -3,6 +3,7 @@ title: Andreas Zeller
 layout: default
 plugins:
     - jekyll-optional-front-matter
+    - jekyll-redirect-from
 include:
     - README.md
 optional_front_matter:
