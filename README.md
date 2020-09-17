@@ -88,3 +88,6 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 All relevant events regarding current work are [posted on Twitter](https://twitter.com/AndreasZeller).
 
 <a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<small>I do not collect any data from this site, but Twitter does. See the <a href="https://twitter.com/en/privacy">Twitter privacy policy</a>
+for details</small>.
