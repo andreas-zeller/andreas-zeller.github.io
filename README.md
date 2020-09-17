@@ -8,7 +8,7 @@ Our approaches have had quite some impact in academia and industry.  My [Curricu
 ## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
 
 <a class="twitter-timeline" data-lang="en" data-height="300" data-width="350" data-chrome="noheader nofooter noborders transparent"
-href="https://twitter.com/AndreasZeller">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
 ## Current Projects
