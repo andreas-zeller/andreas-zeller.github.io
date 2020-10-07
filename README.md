@@ -2,7 +2,7 @@
 
 I do software research.  My students and I create tools and techniques that **help developers build better software**&mdash;by automatically testing, analyzing, and debugging its code and its development process.
 
-Our approaches have had quite some impact in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
+Our approaches have proven quite influential in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
 ## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
