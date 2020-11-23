@@ -43,7 +43,7 @@ Differences between advisors, however, can be huge. Your PhD advisor also is you
 
 Some departments and institutions (mine :-) take responsibility *as a whole* to get you towards your PhD. You are PhD student of a school (say, the [Saarbrücken Graduate School of Computer Science](https://www.graduateschool-computerscience.de)), not of a single professor; and the school takes care of you.
 
-Also - [no tuition fees!](https://en.wikipedia.org/wiki/Education_in_Germany#Tuition_fees) Yes, studying in Germany is essentially free for most programs. Your job thus is safe independent of whether students enroll or not (hey, COVID-19!). Also, students do not feel entitled to some grade simply because they pay your salary.
+Also - [no tuition fees!](https://en.wikipedia.org/wiki/Education_in_Germany#Tuition_fees) Yes, [studying in Germany](https://www.study-in-germany.de/en/) is essentially free for most programs. Your job thus is safe independent of whether students enroll or not (hey, COVID-19!). Also, students do not feel entitled to some grade simply because they pay your salary.
 
 
 ## Research Funding
@@ -65,7 +65,7 @@ Food! [German beer, bread, and sausage](https://en.wikipedia.org/wiki/German_cui
 
 Things to discover: [The loony rites of German carnival.](https://en.wikipedia.org/wiki/Carnival_in_Germany,_Switzerland_and_Austria) High speed on the [Autobahn](https://en.wikipedia.org/wiki/Autobahn). Five colors for bins for five kinds of trash. [The words "Zug" and "Schlag", which can be prefixed with anything.](https://en.wikipedia.org/wiki/The_Awful_German_Language) Germans standing in front of a red pedestrian light, with no car in sight.
 
-All these will be things to remember, and make your PhD worthwhile. Best of all, you'll be with others, [jointly studying Germany, and studying in Germany](https://www.research-in-germany.org/). And if Germany is the place where you find a friend, it'll be for life. Just like your PhD :-)
+All these will be things to remember, and make your PhD worthwhile. Best of all, you'll be with others, [jointly studying Germany, and studying in Germany](https://www.study-in-germany.de/en/). And if Germany is the place where you find a friend, it'll be for life. Just like your PhD :-)
 
 _See the [Twitter thread](https://twitter.com/AndreasZeller/status/1278246191482974209?s=20) for comments and reactions._
 
