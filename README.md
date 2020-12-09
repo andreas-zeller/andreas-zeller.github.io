@@ -20,7 +20,7 @@ My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&
 
 ## Current Papers
 
-My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works and preprints, check out my [CISPA publication list](https://cispa.saarland/people/zeller/).
+My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works and preprints, check out my [CISPA publication list](https://cispa.de/people/zeller/).
 
 
 ## Current Courses
@@ -35,7 +35,7 @@ Check out our courses [here](https://cms.cispa.saarland/).
 
 At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.html) on cutting-edge research.
 
-We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.saarland/) and state your specific interests.
+We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
 
 
 ## Theses

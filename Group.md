@@ -16,13 +16,13 @@ We are constantly looking out for great students and Postdocs.  Our positions ar
 
 ## Former Group Members
 
-* [Ezekiel Soremekun](https://cispa.saarland/people/soremekun/)
-* [Sascha Just](https://cispa.saarland/people/just/)
-* [Nataniel Pereira Borges Junior](https://cispa.saarland/people/nataniel.borges/)
+* [Ezekiel Soremekun](https://cispa.de/people/soremekun/)
+* [Sascha Just](https://cispa.de/people/just/)
+* [Nataniel Pereira Borges Junior](https://cispa.de/people/nataniel.borges/)
 * Andreas Rau
 * Matthias Höschele
 * Dr.&nbsp;Konrad Jamrozik
-* [Dr.&nbsp;Kevin Streit](https://cispa.saarland/people/streit/)
+* [Dr.&nbsp;Kevin Streit](https://cispa.de/people/streit/)
 * Dr.&nbsp;Clemens Hammacher
 * [Dr.&nbsp;María Gómez Lacruz](https://sites.google.com/site/spiralsmariagomez/)
 * [Dr.&nbsp;Alessio Gambi](https://staff.fim.uni-passau.de/~gambi/)
