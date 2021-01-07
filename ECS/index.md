@@ -16,7 +16,7 @@ The key facts in brief:
 
 ## Latest Updates
 
-* 2021-01-07 Detailed the Very Initial Proposal
+* 2021-01-07 Detailed the Very Initial Proposal, added VCs
 * 2020-12-09 Initial version
 
 
@@ -287,6 +287,11 @@ All the questions as above, plus
 56. What expenses will be incurred when introducing the products and services?
 
 
+## Starting your Business
+
+At a later stage during the founder's project, you may actually be founding your company. This is again where the project teams at CISPA and Saarland University can help you. They will also be happy to get you in contact with investors, both nationally, and internationally; and also help with getting more team members into your company.
+
+
 ## Your Thesis
 
 In the last semester of the project, you will also write your _Master's Thesis_. Your thesis would typically be rooted in your joint project, and document and evaluate an individual technical aspect of your solution. Your thesis thus can also serve as reference for current and future co-workers in your company.
@@ -294,7 +299,7 @@ In the last semester of the project, you will also write your _Master's Thesis_.
 Each team member writes her/his thesis individually; this is thus an opportunity for each team member to highlight her/his individual contributions. As the thesis requirements are more lightweight than in other CS courses of study, you can still focus on your joint project.
 
 
-## Starting your Business
+## And Then...
 
 After your thesis is done and your founder's project is completed with the third semester, you will have 
 
