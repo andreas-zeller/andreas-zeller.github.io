@@ -4,29 +4,31 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 * [Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
 * [Rahul Gopinath](https://cispa.de/people/rahul.gopinath/) (Post-Doc)
+* [Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
 * [Nikolas Havrikov](https://cispa.de/people/havrikov/) (PhD student)
 * [Alexander Kampmann](https://cispa.de/people/kampmann/) (PhD student)
+* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
 * [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/) (PhD student)
 * [Björn Mathis](https://cispa.de/people/bjoern.mathis/) (PhD student)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
-* [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow; PhD student)
 
-We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/).
+We are constantly looking out for great students and Post-Docs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/).
 
 
 ## Former Group Members
 
+* [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow)
 * [Ezekiel Soremekun](https://cispa.de/people/soremekun/)
-* [Sascha Just](https://cispa.de/people/just/)
-* [Nataniel Pereira Borges Junior](https://cispa.de/people/nataniel.borges/)
+* [Sascha Just](https://www.sascha-just.com/)
 * Andreas Rau
+* Dr.&nbsp;Nataniel Pereira Borges Junior
 * Matthias Höschele
 * Dr.&nbsp;Konrad Jamrozik
 * [Dr.&nbsp;Kevin Streit](https://cispa.de/people/streit/)
 * Dr.&nbsp;Clemens Hammacher
 * [Dr.&nbsp;María Gómez Lacruz](https://sites.google.com/site/spiralsmariagomez/)
 * [Dr.&nbsp;Alessio Gambi](https://staff.fim.uni-passau.de/~gambi/)
-* Vitalii Avdiienko
+* Dr.&nbsp;Vitalii Avdiienko
 * Andrey Tarasevich
 * [Dr.&nbsp;Sudipta Chattopadhyay](https://sudiptac.bitbucket.io)
 * [Dr.&nbsp;Alessandra Gorla](https://software.imdea.org/~alessandra.gorla/)
