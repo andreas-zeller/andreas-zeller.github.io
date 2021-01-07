@@ -7,14 +7,17 @@ tags:
 
 This page collects information about the founder's project in the Entrepreneurial Cybersecurity Course of Study at Saarland University.
 
-**DRAFT –&nbsp;not official material (yet)**
-
 The key facts in brief:
 
 * In the Founder's Project, you follow and realize a business idea in the area of cybersecurity and computer science, with the intent of creating a business at the end of the project.
 * You work as a team of 2-4 students over a total of three semesters.
 * During this time, you create and evolve a _prototypical implementation_ and a _business proposal_.
 * At the end of each semester, a _Jury_ of scientists and business experts examines your progress and decides whether you can continue the project in the next semester.
+
+## Latest Updates
+
+* 2021-01-07 Detailed the Very Initial Proposal
+* 2020-12-09 Initial version
 
 
 ## Your Team
@@ -44,9 +47,29 @@ If you develop your idea all alone, you own the rights to it. If you adopt the i
 
 ## Starting the Founder's Project
 
-Starting the Founder's Project is similar to a thesis –&nbsp;you need to find a _topic_ (that is, your idea) and an _academic advisor_ (called a mentor). Your mentor, however, will only devote time on teams whose ideas have reached some initial level of maturity –&nbsp;that is, they are not dismissed with the first argument.
+Starting the Founder's Project is similar to a thesis –&nbsp;you need to find a _topic_ (that is, your idea), a _team_, and an _academic advisor_ (called a mentor).
 
-To refine your ideas, the course spokespersons (Andreas Zeller and Bernd Finkbeiner) offer appointments in which you can present initial ideas (however immature they may be) and get feedback. Mostly, this feedback will lead you to go back to the drawing board, likely in several rounds. Once your idea is sufficiently refined, you will be assigned a mentor, and the project will officially start.
+Your mentor, however, will only devote time on teams whose ideas have reached some initial level of maturity –&nbsp;that is, they are not dismissed with the first argument.
+
+### Your Idea
+
+To refine your ideas, the course spokespersons (Andreas Zeller and Bernd Finkbeiner) offer appointments in which you can present initial ideas (however immature they may be) and get feedback.
+
+### The Very Initial Proposal
+
+To express your idea, you have to draft a _Very Initial Proposal_. This is a two-page document consting of two parts:
+
+* One page that briefly describes
+	* your idea
+	* your team
+	* the market and competition
+* One page that shows your idea from a customer's perspective (= a mock-up web site, a mock-up leaflet)
+
+This Very Initial Proposal will be first be approved by one of the course spokespersons. Their feedback may lead you to go back to the drawing board, likely in several rounds. 
+
+### The Mentor
+
+Once the Very Initial Proposal is approved, the spokespersons will help you finding a mentor. (You can also use it to search for a mentor yourself). Once you are accepted by a mentor, the project will officially start.
 
 
 ## Your Prototype
