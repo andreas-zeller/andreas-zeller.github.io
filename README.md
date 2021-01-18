@@ -25,8 +25,9 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 
 ## Current Courses
 
-In Winter 2020/21, we offer an [advanced course on automated debugging](https://cms.cispa.saarland/debug/).  
-For Summer 2021, we plan to offer an _advanced course on security testing_ and a _seminar around automated testing and debugging_.
+* In Winter 2020/21, we offer an [advanced course on automated debugging](https://cms.cispa.saarland/debug/), based on a [The Debugging Book](https://www.debuggingbook.org/), a new book on automated debugging.
+* For Summer 2021, we plan to offer a _seminar around automated testing and debugging_.
+* In Winter 2021/22, we plan to re-offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 
 Check out our courses [here](https://cms.cispa.saarland/).
 
