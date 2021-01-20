@@ -16,6 +16,7 @@ The key facts in brief:
 
 ## Latest Updates
 
+* 2021-01-20 Added requirement for contact info
 * 2021-01-07 Detailed the Very Initial Proposal, added VCs
 * 2020-12-09 Initial version
 
@@ -57,11 +58,13 @@ To refine your ideas, the course spokespersons (Andreas Zeller and Bernd Finkbei
 
 ### The Very Initial Proposal
 
-To express your idea, you have to draft a _Very Initial Proposal_. This is a two-page document consting of two parts:
+To express your idea, you have to draft a _Very Initial Proposal_. This is a two-page document consisting of two parts:
 
 * One page that briefly describes
 	* your idea
-	* your team
+	* your team – including, for each team member:
+		* Name, First name • Student ID • Email address • Phone number
+		* 2-3 sentences on background and role in the project
 	* the market and competition
 * One page that shows your idea from a customer's perspective (= a mock-up web site, a mock-up leaflet)
 
