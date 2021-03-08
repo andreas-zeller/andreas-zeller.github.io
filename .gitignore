@@ -1,4 +1,5 @@
 .sass-cache/
+.bundle/
 .jekyll-cache/
 _site/
 *.lock
