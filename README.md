@@ -13,9 +13,15 @@ href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller
 
 ## Current Projects
 
-Our **research projects** involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more; see our papers below for details.  Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+Our **research projects** involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more. Essentially, our research focuses on the following questions:
 
-My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.  For 2021, I am working on a sibling project, called "The Debugging Book", and exploring automated debugging techniques. Stay tuned!
+* How can we systematically test complex software systems?
+* How can we accurately determine and characterize input formats?
+* How can we explain causes and circumstances of software failures?
+
+Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+
+My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser. In 2021, I published [The Debugging Book](https://www.debuggingbook.org/), which presents and implements a number of  techniques for automated debugging and repair.
 
 
 ## Current Papers
@@ -26,7 +32,7 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 ## Current Courses
 
 * In Winter 2020/21, we offer an [advanced course on automated debugging](https://cms.cispa.saarland/debug/), based on a [The Debugging Book](https://www.debuggingbook.org/), a new book on automated debugging.
-* For Summer 2021, we plan to offer a _seminar around automated testing and debugging_.
+* In Summer 2021, we offer [seminars around automated testing and debugging](https://cms.cispa.saarland/).
 * In Winter 2021/22, we plan to re-offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 
 Check out our courses [here](https://cms.cispa.saarland/).
