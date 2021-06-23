@@ -31,7 +31,7 @@ Our suggestion: Don't take such risks. Stay with the mainstream, and make it eas
 
 **THE PROOF AS VALIDATION.** Use some formal method that so far has not been applied in your field. Be the first to apply three-valued logic to debug programs; throw in some proofs to intimidate readers. While others "evaluate", your technique is correct in the first place!
 
-**THE FISHING EXPEDITION.** Empirical research also is a gift that keeps on giving. Use a hypothesis like "The more _X) in a file, the more _Y_ in it, too." Whether _X_ and _Y_ are comments, loops, bugs, or emojis&nbsp;- anything will work as a "novel insight". Predict and get published!
+**THE FISHING EXPEDITION.** Empirical research also is a gift that keeps on giving. Use a hypothesis like "The more _X_ in a file, the more _Y_ in it, too." Whether _X_ and _Y_ are comments, loops, bugs, or emojis&nbsp;- anything will work as a "novel insight". Predict and get published!
 
 **THE ACHILLES HEEL.** So you can fully verify the correctness of mobile apps – if only they come without loops, pointers or recursion? Good news: Such apps actually do exist, so use them for "evaluation"! Your achievements go into the title, limitations into a footnote.
 
