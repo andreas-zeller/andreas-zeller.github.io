@@ -51,7 +51,7 @@ Acknowledgments (and extra reads!):
 * [Marcel Böhme](https://mboehme.github.io) inspired this guide with a [tweet thread](https://twitter.com/mboehme_/status/1379590234808086529?s=21).
 * [Margatet-Anne Storey](https://www.margaretstorey.com) brought me to the idea of [research antipatterns](https://github.com/margaretstorey/mixed-methods/blob/main/mixed-methods.md#antipatterns).
 
-Also thanks to [https://andreas-zeller.info/Group.html](my group at CISPA) for reviews and inspiration!
+Also thanks to [my group at CISPA](https://andreas-zeller.info/Group.html) for reviews and inspiration!
 
 _See the [Twitter thread](https://twitter.com/andreaszeller/status/1382702351161655298?s=21) for comments and reactions._
 
