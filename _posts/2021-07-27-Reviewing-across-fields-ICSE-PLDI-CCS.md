@@ -52,22 +52,24 @@ Most SE papers I review present some novel approach to testing and analysis, fol
 
 ### PLDI: Semantics and more
 
-PL people love semantics, and therefore it is no surprise that PLDI submissions go deep and dense; their 12 pages typically come with long appendices further detailing type equations, semantics, or empirical results. To check the proofs, you have to understand in detail how the technique works, and so you read and dig through it. There typically is an implementation (the "I" in "PLDI"), so you can assess that, too. I can review two ICSE or CCS papers on a good day (three if they have obvious weaknesses), but never more than one PLDI paper.
+PL people love semantics, and therefore it is no surprise that PLDI submissions go deep and dense; their 12 pages typically come with long appendices further detailing type equations, semantics, or empirical results. To check the proofs, you have to understand in detail how the technique works, and so you read and dig through it. There typically is an implementation (the "I" in "PLDI"), so you can assess that, too. I can review two ICSE or CCS papers on a good day, but never more than one PLDI paper.
 
 
 ### CCS: My tool finds more bugs
 
 But now to CCS. Typical Computer Science papers do a fair job in relaying the authors' excitement about their own work; this helps motivating the reader (or reviewer) to actually read it. This excitement can go over the top, but is _nothing_ compared to the bragging culture in CCS submissions. 
 
-In security, bugs are important, in particular if they make exploitable vulnerabilities - and finding any such vulnerability sure gives you bragging rights. 
+In security, vulnerabilities are key. If you find a vulnerability, this gives you bragging rights, in particular if it is widespread and exploitable. But if your work is about a _system_ to find vulnerabilities, then you as a computing professional "should be transparent and provide full disclosure of all pertinent system capabilities, limitations, and potential problems to the appropriate parties.", as stated in §1.3 of the [ACM Code of Ethics](https://ethics.acm.org/code-of-ethics/).
+
 The papers I reviewed for CCS were all about finding bugs, and each and every paper bragged that they found more bugs than the state of the art. But none of my submissions came with even a whiff of discussion on whether the results would be generalizable, or why the algorithms would be correct. Not a single one would discuss statistical significance or effect size. Data sets, replication packages, threats to validity or even discussions of limitations were all absent.
 
 > **"At any SE or PL conference, these CCS papers would have sunk in an instant"**
 
 For more than half of my papers, the argument was that the new approach "can" find "up to N%" more vulnerabilities than the state of the art, and therefore is "better", without any exploration of why these "results" could be misleading.
-At any SE or PL conference, these papers could have sunk in an instant, simply because they would not be helpful in advancing the field - not to speak that any [such "results" can be constructed far too easily](https://andreas-zeller.info/2021/04/15/the-devils-guide-to-incremental-research.html).
+At any SE or PL conference, these papers could have sunk in an instant: First, from a methodological standpoint, "bugs found" is a very unreliable metric to compare approaches - which on top [can be constructed far too easily](https://andreas-zeller.info/2021/04/15/the-devils-guide-to-incremental-research.html). Second, reviewers would invariably question the evaluation design - How was the benchmark chosen? What is the average over multiple runs? How was the ground truth collected? Did the evaluation inform the development of the approach? If so, how is this an independent evaluation? and more. No, none of "my" papers addressed any of these questions.
+
 One paper reinvented [model-based testing](https://en.wikipedia.org/wiki/Model-based_testing) (and came _so_ close to invent model checking, too), another one reinvented [fuzzing thread schedules](https://www.cs.purdue.edu/homes/xyzhang/spring07/Papers/test-thread.pdf).
-Still, for the record, my overall score for CCS papers turned out to be higher than average.
+But despite all these weaknesses, I did my best to look out for positive aspects. And for the record, my overall score for CCS papers turned out to be higher than average.
 
 
 ## The Review Process
@@ -86,7 +88,7 @@ The important thing is that if you miss _any_ of these deadlines, _you will be t
 
 Also, reviewing _forms_ for ICSE are more detailed than for other conferences: You are asked to provide specific questions for authors to answer in their rebuttal; and you have a form field where you enter how the authors' answers influenced your review. If you miss to fill these out, you get – guess what? - another reminder.
 
-All this results in a slow, but very organized way of doing reviews, which does its best to prevent low-quality reviews. So again, as an author, you can expect detailed and constructive feedback, possibly the best from any SE conference. Still, there are some [formulaic ways to reject papers](https://autoreject.org) – "we need more evidence" being the most common, especially for empirical work.
+All this results in a slow, but pretty organized way of doing reviews, which does its best to prevent low-quality reviews. So again, as an author, you can expect detailed and constructive feedback, possibly the best from any SE conference. Still, there are some [formulaic ways to reject papers](https://autoreject.org) – "we need more evidence" being the most common, especially for empirical work.
 
 
 ### PLDI: Trust in people
@@ -103,7 +105,7 @@ the day of the review deadline, when reviews were to be sent out to authors, onl
 
 > **"My 'reviewing invariant' for CCS was: people were late"**
 
-The message all this sends out is that reviewers do not care - not about the papers, not about the conference, not about your co-reviewers, not about the program chairs. If my co-reviewers do not care, why should I? And if other reviewers do not care about my paper, why should I care about theirs the next time I review something? I hope that at least at the conference, people will show respect to each other.
+Having four flagship conferences in security, each with two "rolling" deadlines, means that some researchers will be overcommitted to a never-ending reviewing load, which is bad. But the message all this sends out is that reviewers do not care - not about the papers, not about the conference, not about your co-reviewers, not about the program chairs. If my co-reviewers do not care, why should I? And if other reviewers do not care about my paper, why should I care about theirs the next time I review something?
 
 Now here's an anecdote from ESEC/FSE 2011, where I was PC chair. One reviewer _was_ late - the deadline was over, and not a single review was in. When I called him on the phone and told him that we would open up for rebuttals the next day, he was shocked - he had thought he still had a week or so to finish his reviews. Within 24 hours, he (and his students?) produced fifteen impeccable reviews for his entire batch. As I said: You are not late. Ever.
 
@@ -133,7 +135,7 @@ At CCS, the discussions of "my" papers were rather short - again, my impression 
 
 But then, at CCS, being late extended to discussions, too – reviewers would be mum for weeks, only to emerge with a new question for authors after the discussion already had come to a conclusion. (At CCS, you would have two weeks in which reviewers could ask more questions to authors, to which authors promptly responded.) As it came to closing discussions, people were late, too; and some reviewers reversed their stance literally minutes before decisions were sent out, asking to still change the overall outcome.
 
-At the time of this writing, the CCS decisions were announced a week ago, but some authors are still waiting for to learn on why their paper was rejected.  How long does it take to write a decision summary? Ten minutes? What example does this give to young researchers?
+At the time of this writing, the CCS decisions were announced a week ago, but some authors are still waiting for to learn on why their paper was rejected.  How long does it take to write a decision summary? Ten minutes? Again, what example does this give to young researchers?
 
 On a more exemplary side, one neat aspect of PLDI is _universal conditional acceptance_: Even if your paper is accepted, it will always be a conditional accept, and you will work with the reviewers to get it into shape such that it can be proudly published. (And if your paper is rejected, at least you will get plenty of helpful feedback from experts.) Again, this indicates how the entire community builds a great conference. CCS has shepherding, but mostly to address presentation issues. ICSE has none of this - once your paper is accepted, you are fully trusted to publish a great final version of your work.
 
