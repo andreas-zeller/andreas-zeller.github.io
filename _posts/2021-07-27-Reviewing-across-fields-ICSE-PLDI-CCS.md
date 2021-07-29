@@ -141,7 +141,13 @@ But then, at CCS, being late extended to discussions, too – reviewers would be
 
 At the time of this writing, the CCS decisions were announced a week ago, but some authors are still waiting for to learn on why their paper was rejected.  How long does it take to write a decision summary? Ten minutes? Again, what example does this give to young researchers?
 
-On a more exemplary side, one neat aspect of PLDI is _universal conditional acceptance_: Even if your paper is accepted, it will always be a conditional accept, and you will work with the reviewers to get it into shape such that it can be proudly published. (And if your paper is rejected, at least you will get plenty of helpful feedback from experts.) Again, this indicates how the entire community builds a great conference. CCS has shepherding, but mostly to address presentation issues. ICSE has none of this - once your paper is accepted, you are fully trusted to publish a great final version of your work.
+## After Acceptance
+
+One neat aspect of PLDI is _universal conditional acceptance_: Even if your paper is accepted, it will always be a conditional accept, and you will work with the reviewers to get it into shape such that it can be proudly published. (And if your paper is rejected, at least you will get plenty of helpful feedback from experts.) Again, this indicates how the entire community builds a great conference.
+
+CCS has shepherding, but mostly to address presentation issues. And there's major revisions, meaning that the paper will be presented and checked to the same reviewers after a period of time. (I wasn't told details, but I expect these submissions to pop up on my desk again some day - hopefully not at a time when I'll be busy sorting the 600+ submissions for ICSE 2022.)
+
+ICSE has none this - once your paper is accepted, you are fully trusted to publish a great final version of your work. All reviewers are done with their work and can happily enjoy the holiday season. Their next task will be at the conference itself, where they will stand up and enjoy the applause from the audience.
 
 
 ## Final Thoughts
