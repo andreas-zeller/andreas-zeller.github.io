@@ -5,7 +5,7 @@ author: Andreas Zeller
 tags: popular
 ---
 
-**What's it like to serve for ICSE, PLDI, or CCS? And how do the papers (and review culture) compare?**
+**What's it like to review for ICSE, PLDI, or CCS? And how do the papers (and review culture) compare?**
 
 In 2021, I served as reviewer on the PCs of top-tier conferences in three distinct fields: software engineering, programming languages, and security. I was thankful for the opportunity! First, there's not too many researchers who get the opportunity to serve in different fields, and I was curious. Second, I would be acting as co-PC chair for ICSE next year, and I found plenty of insights and inspiration. In this post, I share and compare my experiences with each of the conferences, from invitation to decision.
 
