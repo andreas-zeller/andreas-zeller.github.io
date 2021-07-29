@@ -7,7 +7,9 @@ tags: popular
 
 **What's it like to serve for ICSE, PLDI, or CCS? And how do the papers (and review culture) compare?**
 
-In 2021, I served as reviewer on the PCs of top-tier conference in three distinct fields: software engineering, programming languages, and security. I was thankful for the opportunity, as I would be acting as co-PC chair for ICSE next year, and I found plenty of insights and inspiration. Let me share and compare my experiences with each of the conferences, from invitation to decision.
+In 2021, I served as reviewer on the PCs of top-tier conferences in three distinct fields: software engineering, programming languages, and security. I was thankful for the opportunity! First, there's not too many researchers who get the opportunity to serve in different fields, and I was curious. Second, I would be acting as co-PC chair for ICSE next year, and I found plenty of insights and inspiration. In this post, I share and compare my experiences with each of the conferences, from invitation to decision.
+
+_Note: All observations reported are based on a small fraction of papers, reviews, and subfields of the respective communities, and do not necessarily generalize. If you'd like to find out more, make it your research topic!_
 
 
 ## Invitation
@@ -36,7 +38,7 @@ Once all papers are in, you _bid_ for papers you want to review. All three confe
 
 For ICSE with its 600+ submissions, this can be pretty tedious; fortunately, authors already have tagged their papers with multiple areas, and you as a reviewer already have indicated your expertise on these. So, all fields are pre-filled with values; the higher, the better the match between the author-supplied areas and your expertise. This allows you to quickly filter.
 
-With PLDI 2021, you were asked to supply a number of your own papers first. Then, the [Toronto paper matching system](https://www.cs.toronto.edu/~zemel/documents/tpms.pdf) then determines, for each submission, how semantically close it is to your work and gives a high score for good matches. So I got a number of papers pre-assigned that were all on testing and debugging. However, you can still control which papers to bid on, which allowed me to avoid some papers on debugging quantum programs - I may be an expert in debugging, but not so much in quantum programs.
+With PLDI 2021, you were asked to supply a number of your own papers first. Then, the [Toronto paper matching system](https://www.cs.toronto.edu/~zemel/documents/tpms.pdf) then determines, for each submission, how semantically close it is to your work and gives a high score for good matches. So I got a number of papers pre-assigned that were all on testing and debugging. However, you can still control which papers to bid on, which allowed me to downvote some papers on debugging quantum programs - I may be an expert in debugging, but not so much in quantum programs.
 
 With CCS, you would simply go through the submissions and enter preferences; but then, this was not very hard, as authors select individual _tracks_ in the first place, and I would only see papers in the software security track. I mostly bid on papers on fuzzing and on program analysis.
 
@@ -57,7 +59,7 @@ PL people love semantics, and therefore it is no surprise that PLDI submissions 
 
 ### CCS: My tool finds more bugs
 
-But now to CCS. Typical Computer Science papers do a fair job in relaying the authors' excitement about their own work; this helps motivating the reader (or reviewer) to actually read it. This excitement can go over the top, but is _nothing_ compared to the bragging culture in CCS submissions. 
+But now to CCS. Typical Computer Science papers do a fair job in relaying the authors' excitement about their own work; this helps motivating the reader (or reviewer) to actually read it. This excitement can go over the top, but is _nothing_ compared to the bragging culture in "my" CCS submissions. 
 
 In security, vulnerabilities are key. If you find a vulnerability, this gives you bragging rights, in particular if it is widespread and exploitable. But if your work is about a _system_ to find vulnerabilities, then you as a computing professional "should be transparent and provide full disclosure of all pertinent system capabilities, limitations, and potential problems to the appropriate parties.", as stated in §1.3 of the [ACM Code of Ethics](https://ethics.acm.org/code-of-ethics/).
 
@@ -66,10 +68,12 @@ The papers I reviewed for CCS were all about finding bugs, and each and every pa
 > **"At any SE or PL conference, these CCS papers would have sunk in an instant"**
 
 For more than half of my papers, the argument was that the new approach "can" find "up to N%" more vulnerabilities than the state of the art, and therefore is "better", without any exploration of why these "results" could be misleading.
-At any SE or PL conference, these papers could have sunk in an instant: First, from a methodological standpoint, "bugs found" is a very unreliable metric to compare approaches - which on top [can be constructed far too easily](https://andreas-zeller.info/2021/04/15/the-devils-guide-to-incremental-research.html). Second, reviewers would invariably question the evaluation design - How was the benchmark chosen? What is the average over multiple runs? How was the ground truth collected? Did the evaluation inform the development of the approach? If so, how is this an independent evaluation? and more. No, none of "my" papers addressed any of these questions.
+At any SE or PL conference, these papers could have sunk in an instant: First, from a methodological standpoint, "bugs found" is a very unreliable metric to compare approaches - which on top [can be constructed far too easily](https://andreas-zeller.info/2021/04/15/the-devils-guide-to-incremental-research.html). Second, SE and PL reviewers would invariably question the evaluation design - How was the benchmark chosen? What is the average over multiple runs? How was the ground truth collected? Did the evaluation inform the development of the approach? If so, how is this a fair comparison? and more. No, none of "my" papers addressed any of these questions.
 
-One paper reinvented [model-based testing](https://en.wikipedia.org/wiki/Model-based_testing) (and came _so_ close to invent model checking, too), another one reinvented [fuzzing thread schedules](https://www.cs.purdue.edu/homes/xyzhang/spring07/Papers/test-thread.pdf).
-But despite all these weaknesses, I did my best to look out for positive aspects. And for the record, my overall score for CCS papers turned out to be higher than average.
+Having said that, as a reviewer, I _can_ make up my own mind if an approach works. And if the approach is well described and makes a reasonable argument on why it should work, I can live with a weak evaluation. This is what saved a number of papers, and my overall score for CCS papers turned out to be higher than average.
+
+(On a side note: One paper reinvented [model-based testing](https://en.wikipedia.org/wiki/Model-based_testing) (and came _so_ close to invent model checking, too); other papers reinvented [fuzzing thread schedules](https://www.cs.purdue.edu/homes/xyzhang/spring07/Papers/test-thread.pdf) or [process mining](https://en.wikipedia.org/wiki/Process_mining). Please, folks: when you search for related work, also look beyond your community.)
+
 
 
 ## The Review Process
@@ -95,7 +99,7 @@ All this results in a slow, but pretty organized way of doing reviews, which doe
 
 The PLDI review process is similar to the ICSE review process - reviews come in, discussions start, decisions are made. But the process is much more lightweight - there's no "quality gates", no formal acknowledgment that you have read and reacted to the rebuttal. No, PLDI simply _trusts_ its reviewers to do the right thing™. and they actually do it.
 
-Everything went smoothly: We got a few mails from the program chair (Eran Yahav) telling us to do X, and my co-reviewers did X. Reviewers were very eager to discuss, needing no special prompts; discussions also quickly aligned. Like a good football team, everybody seemed to always know what was to be done next. All in all, it was a huge amount of work reviewing these papers, but also a pleasure to work and discuss with real experts. If you get an invitation to serve for PLDI, I would highly recommend it.
+Everything went smoothly: We got a few mails from the program chair telling us to do X, and my co-reviewers did X. Reviewers were very eager to discuss, needing no special prompts; discussions also quickly aligned. Like a good football team, everybody seemed to always know what was to be done next. All in all, it was a huge amount of work reviewing these papers, but also a pleasure to work and discuss with real experts. If you get an invitation to serve for PLDI, I would highly recommend it.
 
 
 ### CCS: Professional negligence
@@ -107,7 +111,7 @@ the day of the review deadline, when reviews were to be sent out to authors, onl
 
 Having four flagship conferences in security, each with two "rolling" deadlines, means that some researchers will be overcommitted to a never-ending reviewing load, which is bad. But the message all this sends out is that reviewers do not care - not about the papers, not about the conference, not about your co-reviewers, not about the program chairs. If my co-reviewers do not care, why should I? And if other reviewers do not care about my paper, why should I care about theirs the next time I review something?
 
-Now here's an anecdote from ESEC/FSE 2011, where I was PC chair. One reviewer _was_ late - the deadline was over, and not a single review was in. When I called him on the phone and told him that we would open up for rebuttals the next day, he was shocked - he had thought he still had a week or so to finish his reviews. Within 24 hours, he (and his students?) produced fifteen impeccable reviews for his entire batch. As I said: You are not late. Ever.
+(Now here's an anecdote from ESEC/FSE 2011, where I was PC chair. One reviewer _was_ late - the deadline was over, and not a single review was in. When I called him on the phone and told him that we would open up for rebuttals the next day, he was shocked - he had thought he still had a week or so to finish his reviews. Within 24 hours, he (and his students?) produced fifteen impeccable reviews for his entire batch. As I said: You are not late. Ever.)
 
 
 ## Reviews
@@ -118,14 +122,14 @@ Again, as a PL person, you take semantics very seriously, and that is how papers
 
 > **"PL reviewers are a bunch of nerds who happily jump on every new bit of tech they find; SE reviewers are a panel of bureaucrats searching for any mistake you may have made"**
 
-ICSE reviewers also generally do a good job at reviewing, but the attitude is slightly different: If PL reviewers are a bunch of nerds who happily jump on every new bit of tech they find, then SE reviewers are a panel of bureaucrats searching for any mistake you may have made - and then using that very mistake to sink your paper. But as an author, if you get through the formalisms, ticking all the boxes, or simply "doing nothing wrong" - your paper will get in. ICSE is a conference of serious papers, all valuable, sometimes even exciting.
+ICSE reviewers also generally do a good job at reviewing, but the attitude is slightly different: If PL reviewers are a bunch of nerds who happily jump on every new bit of tech they find, then SE reviewers are a panel of bureaucrats searching for any mistake you may have made - and then using that very mistake to sink your paper. But as an author, if you show something useful and get through the formalisms, ticking all the boxes, or simply "doing nothing wrong" otherwise - your paper will likely get in. ICSE is a conference of serious papers, all valuable, sometimes even exciting.
 
 But if I were to describe the attitude of my CCS co-reviewers, the best word would be "worn out". Reviewers were able to precisely identify strengths and weaknesses, but also got quickly tired if something was badly presented and/or hard to comprehend. I could not always follow why some set of arguments brought forward would result in the specific stance of the reviewer. That might be because I am used to some [clearly defined criteria](https://conf.researchr.org/getImage/icse-2022/orig/ICSE+2022+Review+Process+and+Guidelines-2.pdf) that I can use to assess a paper; if finding more bugs is the sole criterion, then the outcome is harder to predict.
 
 
 ## Discussions and Decisions
 
-When all reviews are in, reviewers must find a _consensus_ on whether the paper should be accepted or not. This takes place in a discussion period of two weeks, also involving the authors' response.
+When all reviews are in, reviewers must find a _consensus_ on whether the paper should be accepted or not. This takes place in a discussion period of a few weeks, also involving the authors' response.
 
 At PL and SE conferences, the general scheme is that [at least one reviewer must champion the paper](http://scg.unibe.ch/download/champion/) and thus argue for acceptance. Arguing about soundness, semantics, and significance, reviewers can fight over papers in long discussions. These discussions are often as much worth a read as the papers themselves – the record, I believe, was 45 discussion items. Still, both at PLDI and ICSE, we always converged towards a consensus, and I learned a lot along that way.
 
@@ -133,7 +137,7 @@ One notable difference between PLDI and ICSE was that I found that at PLDI,  rev
 
 At CCS, the discussions of "my" papers were rather short - again, my impression was that too few reviewers really cared about the outcome. When I would raise points about methodology (statistical significance? validity? yada yada yada), authors would universally ignore these concerns in their rebuttals; and co-reviewers would not pick them up either. But neither would other issues be discussed at length. At some point, it felt as if every reviewer would happily agree with _any_ majority decision as long as the whole thing would finally be over.
 
-But then, at CCS, being late extended to discussions, too – reviewers would be mum for weeks, only to emerge with a new question for authors after the discussion already had come to a conclusion. (At CCS, you would have two weeks in which reviewers could ask more questions to authors, to which authors promptly responded.) As it came to closing discussions, people were late, too; and some reviewers reversed their stance literally minutes before decisions were sent out, asking to still change the overall outcome.
+But then, at CCS, being late extended to discussions, too – reviewers would be mum for weeks, only to emerge with a new question for authors after the discussion already had come to a conclusion. (This year, you would have two weeks in which reviewers could ask more questions to authors, to which authors promptly responded.) As it came to closing discussions, people were late, too; and some reviewers reversed their stance only hours before decisions were to be sent out, asking to still change the overall outcome.
 
 At the time of this writing, the CCS decisions were announced a week ago, but some authors are still waiting for to learn on why their paper was rejected.  How long does it take to write a decision summary? Ten minutes? Again, what example does this give to young researchers?
 
@@ -142,10 +146,10 @@ On a more exemplary side, one neat aspect of PLDI is _universal conditional acce
 
 ## Final Thoughts
 
-Serving in a number of different communities is enlightening - not only as it comes to the differences in the review process, but also in review culture, research methodology, and core values of the respective communities. I would strongly recommend for any researcher to occasionally review outside of their comfort zone - and conversely, have program committees explicitly include reviewers from outside of the community. Investigating the different scientific cultures in subfields of computer science might make a great research topic in itself.
+Serving in a number of different communities is enlightening - not only as it comes to the differences in the review process, but also in review culture, research methodology, and core values of the respective communities. I would strongly recommend for any researcher to occasionally review outside of their comfort zone - and conversely, _have program committees explicitly include reviewers from outside of the community_. Investigating the different scientific cultures in subfields of computer science might make a great research topic in itself.
 
 > **"I would strongly recommend for any researcher to occasionally review outside of their comfort zone."**
 
 My less then stellar experience in reviewing for CCS leaves me worried about research culture in the security community. For me, science is about the accumulation and distillation of knowledge, not about who is better than whom. If at all, "better" research comes through significance, not through a metric. Yet, as long as we keep on bragging about metrics, we will have more and more incremental papers – and exhausted reviewers.
 
-Bragging and overclaiming is a problem I see at all conferences. Since few years, the quality I now appreciate most in papers is _honesty_: Here's what we did, here's what it does, here's when we know it works, here's what will not work. Being honest, being disciplined, showing respect are values we must cherish and where we must lead by example. And anyone of us can start right now.
+Bragging and overclaiming is a problem I see at all conferences. Since few years, the quality I now appreciate most in papers is _honesty_: Here's what we did, here's what it does, here's when we know it works, here's what will not work. Being honest, being dependable, showing respect are values we must cherish and [where we must lead by example](https://ethics.acm.org/code-of-ethics/). And anyone of us can start right now.
