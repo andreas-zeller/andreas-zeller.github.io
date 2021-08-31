@@ -8,7 +8,6 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
 * Max Eisele (PhD student)
-* [Nikolas Havrikov](https://cispa.de/people/havrikov/) (PhD student)
 * [Alexander Kampmann](https://cispa.de/people/kampmann/) (PhD student)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
 * [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/) (PhD student)
@@ -21,10 +20,11 @@ We are constantly looking out for great students and Post-Docs.  Our positions a
 
 ## Former Group Members
 
+* [Nikolas Havrikov](https://cispa.de/people/havrikov/)
 * [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow)
-* [Ezekiel Soremekun](https://cispa.de/people/soremekun/)
+* [Dr.&nbsp;Ezekiel Soremekun](https://wwwen.uni.lu/snt/people/ezekiel_soremekun)
 * [Sascha Just](https://www.sascha-just.com/)
-* Andreas Rau
+* Dr.&nbsp;Andreas Rau
 * Dr.&nbsp;Nataniel Pereira Borges Junior
 * Matthias Höschele
 * Dr.&nbsp;Konrad Jamrozik
