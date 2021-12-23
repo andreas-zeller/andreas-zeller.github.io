@@ -29,20 +29,34 @@ My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&
 My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works and preprints, check out my [CISPA publication list](https://cispa.de/people/zeller/).
 
 
-## Current Courses
+## My Courses
 
-* In Winter 2020/21, we offer an [advanced course on automated debugging](https://cms.cispa.saarland/debug/), based on a [The Debugging Book](https://www.debuggingbook.org/), a new book on automated debugging.
-* In Summer 2021, we offer [seminars around automated testing and debugging](https://cms.cispa.saarland/).
-* In Winter 2021/22, we plan to re-offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
+* In Winter 2021/22, we offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
+* In Winter 2022/23, we plan to offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+
+Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
 
 Check out our courses [here](https://cms.cispa.saarland/).
 
 
 ## My Group
 
-At CISPA and Saarland University, I work with [great students and Post-Docs from across the world](Group.html) on cutting-edge research.
+At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
+
+* [Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
+* [Rahul Gopinath](https://cispa.de/people/rahul.gopinath/) (Post-Doc)
+* [Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
+
+* [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
+* Max Eisele (PhD student)
+* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
+* [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/) (PhD student)
+* [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
+* [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
 
 We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
+
+Here is a list of [former group members](Group.html).
 
 
 ## Theses

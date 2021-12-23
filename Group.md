@@ -1,25 +1,7 @@
-## My Group
-
-At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research.  The current group consists of:
-
-* [Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
-* [Rahul Gopinath](https://cispa.de/people/rahul.gopinath/) (Post-Doc)
-* [Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
-
-* [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
-* Max Eisele (PhD student)
-* [Alexander Kampmann](https://cispa.de/people/kampmann/) (PhD student)
-* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
-* [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/) (PhD student)
-* [Björn Mathis](https://cispa.de/people/bjoern.mathis/) (PhD student)
-* [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
-* [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
-
-We are constantly looking out for great students and Post-Docs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/).
-
-
 ## Former Group Members
 
+* [Alexander Kampmann](https://cispa.de/people/kampmann/) (PhD student)
+* [Björn Mathis](https://cispa.de/people/bjoern.mathis/) (PhD student)
 * [Nikolas Havrikov](https://cispa.de/people/havrikov/)
 * [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow)
 * [Dr.&nbsp;Ezekiel Soremekun](https://wwwen.uni.lu/snt/people/ezekiel_soremekun)
