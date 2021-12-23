@@ -1,7 +1,7 @@
 ## Former Group Members
 
-* [Alexander Kampmann](https://cispa.de/people/kampmann/) (PhD student)
-* [Björn Mathis](https://cispa.de/people/bjoern.mathis/) (PhD student)
+* [Alexander Kampmann](https://cispa.de/people/kampmann/)
+* [Björn Mathis](https://cispa.de/people/bjoern.mathis/)
 * [Nikolas Havrikov](https://cispa.de/people/havrikov/)
 * [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow)
 * [Dr.&nbsp;Ezekiel Soremekun](https://wwwen.uni.lu/snt/people/ezekiel_soremekun)
