@@ -50,7 +50,6 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
 * Max Eisele (PhD student)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
-* [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/) (PhD student)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
 

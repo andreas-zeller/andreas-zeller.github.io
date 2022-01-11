@@ -1,5 +1,6 @@
 ## Former Group Members
 
+* [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/)
 * [Alexander Kampmann](https://cispa.de/people/kampmann/)
 * [Björn Mathis](https://cispa.de/people/bjoern.mathis/)
 * [Nikolas Havrikov](https://cispa.de/people/havrikov/)
