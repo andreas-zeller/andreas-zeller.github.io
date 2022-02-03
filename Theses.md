@@ -85,6 +85,6 @@ Once you finished the steps described above, you'll get a certificate (Schein) f
 ## Frequently Asked Questions
 
 * **Can I start my thesis during the semester?** Yes, it is absolutely possible to start during the semester.
-* **I won't be able to work full-time on my thesis. What can I do?** Your study regulations allow you to apply for a part-time thesis which doubles the amount of time available for your thesis. For a bachelor thesis, you'll have 6 months and 12 months for a master thesis.
-* **Can you extend the thesis deadline?** Once the thesis is registered, extending the deadline is up to the Prüfungssekretariat. You can for example apply for a deadline extension if you're sick for a longer period.
+* **I won't be able to work full-time on my thesis. What can I do?** Your study regulations allow you to apply for part-time study (and a part-time thesis). Contact the examination office for details.
+* **Can you extend the thesis deadline?** Once the thesis is registered, extending the deadline is up to the examination office. You can for example apply for a deadline extension if you're sick for a longer period.
 * **Can I continue working on my topic after completion?** If you were unable to explore your topic fully and your advisor is also interested in continuing your work, it is sometimes possible to support further effort with a HiWi contract.
