@@ -4,7 +4,7 @@ If you are a student of Saarland University and have fun with automated program 
 
 ## Important Note
 
-**With 20+ theses running, we are currently at capacity and can accept further theses only for the most exceptional and motivated students.**
+**We are currently at capacity and can accept further theses only in exceptional cases.**
 
 
 ## Topic
