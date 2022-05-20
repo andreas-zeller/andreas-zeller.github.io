@@ -4,7 +4,7 @@ If you are a student of Saarland University and have fun with automated program 
 
 ## Important Note
 
-**We are currently at capacity and can accept further theses only in exceptional cases.**
+**My group and I are currently at capacity and can not act as advisors for additional theses. We will start advising new theses September 1, 2022.**
 
 
 ## Topic
