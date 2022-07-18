@@ -1,9 +1,11 @@
 ## Former Group Members
 
+* [Dr.&nbsp;Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
+* [Dr.&nbsp;Rahul Gopinath](https://rahul.gopinath.org/) (Post-Doc)
 * [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/)
 * [Alexander Kampmann](https://cispa.de/people/kampmann/)
 * [Björn Mathis](https://cispa.de/people/bjoern.mathis/)
-* [Nikolas Havrikov](https://cispa.de/people/havrikov/)
+* [Dr.&nbsp;Nikolas Havrikov](https://cispa.de/people/havrikov/)
 * [Jenny Rau](https://cispa.de/people/hotzkow/) (nee Hotzkow)
 * [Dr.&nbsp;Ezekiel Soremekun](https://wwwen.uni.lu/snt/people/ezekiel_soremekun)
 * [Sascha Just](https://www.sascha-just.com/)

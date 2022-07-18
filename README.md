@@ -19,9 +19,9 @@ Our **research projects** involve generating software tests, automated debugging
 * How can we accurately determine and characterize input formats?
 * How can we explain causes and circumstances of software failures?
 
-Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, and formal languages.
+Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, constraint solving, and formal languages.
 
-My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser. In 2021, I published [The Debugging Book](https://www.debuggingbook.org/), which presents and implements a number of  techniques for automated debugging and repair.
+My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser. In 2021, I published [The Debugging Book](https://www.debuggingbook.org/), which presents and implements a number of techniques for automated debugging and repair.
 
 
 ## Current Papers
@@ -43,13 +43,12 @@ Check out our courses [here](https://cms.cispa.saarland/).
 
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
 
-* [Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
-* [Rahul Gopinath](https://cispa.de/people/rahul.gopinath/) (Post-Doc)
-* [Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
-
+* [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
-* Max Eisele (PhD student)
-* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student)
+* [Martin Ebeerlein](https://cispa.de/de/people/c01maeb) (visiting PhD student from HU Berlin)
+* Max Eisele (PhD student @ Bosch)
+* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student @ Microsoft)
+* [Tural Mammadov](https://cispa.de/en/people/c01tuma) (PhD student)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
 
