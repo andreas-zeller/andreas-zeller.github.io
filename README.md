@@ -45,7 +45,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 * [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
-* [Martin Ebeerlein](https://cispa.de/de/people/c01maeb) (visiting PhD student from HU Berlin)
+* [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting PhD student from HU Berlin)
 * Max Eisele (PhD student @ Bosch)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student @ Microsoft)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (PhD student)
