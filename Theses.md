@@ -20,11 +20,12 @@ then we'd love to hear from you.
 
 ## Topic
 
-If you want to do a thesis at our group, please **send me a letter of motivation and your most recent transcript of records.**  I will then set up an appointment with you to discuss possible topics.
+If you want to do a thesis at our group, please **send me a letter of motivation and your most recent transcript of records.**  Your letter of motivation should also point out how you satisfy the above requirements.
+I will then set up an appointment with you to discuss possible topics.
 
 Topics will typically be related to our recent research interests.  You will do real research, and some students even had a chance to publish and present your work in front of an international audience.  
 
-You can suggest topics and express interests of your own.  Third-party topics, however, are only acceptable as part of an established 
+You can suggest topics and express interests of your own. Third-party topics, however, are only acceptable as part of an established 
 research cooperation.
 
 
