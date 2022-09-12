@@ -9,7 +9,7 @@ Due to capacity constraints, **we can only accept a very limited number of stude
 * *program analysis*
 * *compiler construction* and *programming languages*
 * *formal methods* and *automated reasoning*
-* *machine learning and statistics*
+* *machine learning* and *statistics*
 
 and/or
 
