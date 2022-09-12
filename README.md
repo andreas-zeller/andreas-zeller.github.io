@@ -31,8 +31,8 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 
 ## My Courses
 
-* In Winter 2021/22, we offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
-* In Winter 2022/23, we plan to offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+* In Winter 2022/23, we offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+* In Summer 2023, we plan to offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 
 Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
 
@@ -51,6 +51,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (PhD student)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
+* Fengmin "Paul" Zhu (PhD student, starting Oct 1)
 
 We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
 
