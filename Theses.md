@@ -2,9 +2,20 @@
 
 If you are a student of Saarland University and have fun with automated program analysis, testing, and debugging, you might want to do a thesis with us.  Here are the details on how this works.
 
-## Important Note
+## Requirements
 
-**My group and I are currently at capacity and can not act as advisors for additional theses. We will start advising new theses September 1, 2022.**
+Due to capacity constraints, **we can only accept a very limited number of students**. If you bring experience in 
+
+* *program analysis*
+* *compiler construction* and *programming languages*
+* *formal methods* and *automated reasoning*
+* *machine learning and statistics*
+
+and/or
+
+* have passed our courses on *automated testing* or *automated debugging* and/or our seminars with great success
+
+then we'd love to hear from you.
 
 
 ## Topic
