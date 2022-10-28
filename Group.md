@@ -15,15 +15,15 @@
 * Dr.&nbsp;Konrad Jamrozik
 * [Dr.&nbsp;Kevin Streit](https://cispa.de/people/streit/)
 * Dr.&nbsp;Clemens Hammacher
-* [Dr.&nbsp;María Gómez Lacruz](https://sites.google.com/site/spiralsmariagomez/)
-* [Dr.&nbsp;Alessio Gambi](https://staff.fim.uni-passau.de/~gambi/)
+* [Dr.&nbsp;María Gómez Lacruz](https://sites.google.com/site/spiralsmariagomez/) (Post-Doc)
+* [Dr.&nbsp;Alessio Gambi](https://staff.fim.uni-passau.de/~gambi/) (Post-Doc)
 * Dr.&nbsp;Vitalii Avdiienko
 * Andrey Tarasevich
-* [Dr.&nbsp;Sudipta Chattopadhyay](https://sudiptac.bitbucket.io)
-* [Dr.&nbsp;Alessandra Gorla](https://software.imdea.org/~alessandra.gorla/)
-* [Dr.&nbsp;Juan Pablo Galeotti](https://lafhis.dc.uba.ar/~jgaleotti)
-* [Dr.&nbsp;Marcel B&ouml;hme](https://mboehme.github.io)
-* [Dr.&nbsp;Gordon Fraser](https://www.fim.uni-passau.de/lehrstuhl-fuer-software-engineering-ii/)
+* [Dr.&nbsp;Sudipta Chattopadhyay](https://sudiptac.bitbucket.io) (Post-Doc)
+* [Dr.&nbsp;Alessandra Gorla](https://software.imdea.org/~alessandra.gorla/) (Post-Doc)
+* [Dr.&nbsp;Juan Pablo Galeotti](https://lafhis.dc.uba.ar/~jgaleotti) (Post-Doc)
+* [Dr.&nbsp;Marcel B&ouml;hme](https://mboehme.github.io) (Post-Doc)
+* [Dr.&nbsp;Gordon Fraser](https://www.fim.uni-passau.de/lehrstuhl-fuer-software-engineering-ii/) (Post-Doc)
 * Ilaria&nbsp;Tavecchia
 * Eva&nbsp;May 
 * Florian&nbsp;Gross
@@ -31,7 +31,7 @@
 * [Dr.&nbsp;Valentin&nbsp;Dallmeier](https://www.testfabrik.com/)
 * [Michael&nbsp;Mirold](https://www.testfabrik.com/)
 * [Bernd&nbsp;Pohl](https://www.testfabrik.com/)
-* Dr.&nbsp;Christian&nbsp;Lindig
+* Dr.&nbsp;Christian&nbsp;Lindig (Post-Doc)
 * [Dr.&nbsp;Martin&nbsp;Burger](http://www.martin-burger.net)
 * [Dr.&nbsp;Stephan&nbsp;Neuhaus](http://www.artdecode.de/)
 * Dr. Yana Mileva
