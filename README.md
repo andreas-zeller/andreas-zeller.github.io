@@ -8,7 +8,9 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 ## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
 
 <a class="twitter-timeline" data-lang="en" data-height="300" data-width="350" data-chrome="noheader nofooter noborders transparent"
-href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<small>(also available via <a href="https://mastodon.social/@AndreasZeller">@AndreasZeller@mastodon.social</a>)</small>
 
 
 ## Current Projects
@@ -44,16 +46,16 @@ Check out our courses [here](https://cms.cispa.saarland/).
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
 
 * [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
-* [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (PhD student)
-* [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting PhD student from HU Berlin)
-* Max Eisele (PhD student @ Bosch)
-* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (PhD student @ Microsoft)
-* [Tural Mammadov](https://cispa.de/en/people/c01tuma) (PhD student)
-* [Michaël Mera](https://cispa.de/people/michael.mera/) (PhD student)
-* [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (PhD student)
-* Fengmin "Paul" Zhu (PhD student, starting Oct 1)
+* [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
+* [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting Ph.D. student from HU Berlin)
+* Max Eisele (Ph.D. student @ Bosch)
+* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
+* [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
+* [Michaël Mera](https://cispa.de/people/michael.mera/) (Ph.D. student)
+* [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
+* Fengmin "Paul" Zhu (Ph.D. student)
 
-We are constantly looking out for great students and Postdocs.  Our positions are well paid and allow for highly productive research.  If you're interested in a PhD or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
+We are constantly looking out for great students and Postdocs.  Our positions are well-paid and allow for highly productive research.  If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
 
 Here is a list of [former group members](Group.html).
 
@@ -109,9 +111,12 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 
 ## Stay Tuned
 
-All relevant events regarding current work are [posted on Twitter](https://twitter.com/AndreasZeller).
+I post all relevant events regarding current work [on Twitter](https://twitter.com/AndreasZeller).
 
 <a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<small>I do not collect any data from this site, but Twitter does. See the <a href="https://twitter.com/en/privacy">Twitter privacy policy</a>
+As an alternative, my tweets are also [mirrored to Mastodon](https://mastodon.social/@AndreasZeller).
+
+<small>I do not collect any data from this site, but Twitter and GitHub do. See the <a href="https://twitter.com/en/privacy">Twitter privacy policy</a>
+and the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
 for details</small>.
