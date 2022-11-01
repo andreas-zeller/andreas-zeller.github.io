@@ -10,7 +10,7 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 <a class="twitter-timeline" data-lang="en" data-height="300"  data-chrome="noheader nofooter noborders transparent"
 href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<small>(also available via <a href="https://mastodon.social/@AndreasZeller">@AndreasZeller@mastodon.social</a>)</small>
+<small>(also available via <a href="https://mastodon.social/@AndreasZeller" rel="me">@AndreasZeller@mastodon.social</a>)</small>
 
 
 ## Current Projects

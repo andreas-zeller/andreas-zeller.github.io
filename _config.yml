@@ -34,6 +34,8 @@ bio: Andreas Zeller is faculty at the
     <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>
     <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller" target="_blank">@AndreasZeller</a> <br>
     <i class="fa fa-mastodon fa-fw" aria-hidden="true"></i>
-    <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a href="https://mastodon.social/@AndreasZeller" target="_blank">@AndreasZeller@mastodon.social</a>
+    <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a href="https://mastodon.social/@AndreasZeller" rel="me" target="_blank">@AndreasZeller@mastodon.social</a> <br>
+    <i class="fa fa-github fa-fw" aria-hidden="true"></i>
+        <span class="sr-only">GitHub:</span>&nbsp;&nbsp;<a href="https://github.com/andreas-zeller" target="_blank">andreas-zeller</a>
 logo: assets/Zeller2022-head.jpg
 logo_title: Andreas Zeller (high resolution photo)
