@@ -27,13 +27,13 @@ bio: Andreas Zeller is faculty at the
     His <a href="https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao" target=_blank>research</a> 
     on automated debugging, mining software archives, specification mining, and security testing has proven <a href="/assets/ZellerCV.pdf">highly influential</a>.  
     Zeller is an <a href="https://awards.acm.org/fellows" target=_blank>ACM Fellow</a> and holds an <a href="https://www.sigsoft.org/awards/outstandingResearchAward.html" target=_blank>ACM SIGSOFT Outstanding Research Award</a>.<p>
-    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    <i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i>
     <span class="sr-only">Mail:</span>&nbsp;&nbsp;<a href="mailto:office-zeller@cispa.de">office-zeller@cispa.de</a> <br>
-    <i class="fa fa-phone" aria-hidden="true"></i>
+    <i class="fa fa-phone fa-fw" aria-hidden="true"></i>
     <span class="sr-only">Phone:</span>&nbsp;&nbsp;<a href="tel:+49681870831001">+49 681 87083-1001</a> <br>
-    <i class="fa fa-twitter" aria-hidden="true"></i>
-    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller">@AndreasZeller</a> <br>
-    <i class="fa fa-mastodon" aria-hidden="true"></i>
-    <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a href="https://mastodon.social/@AndreasZeller">@AndreasZeller@mastodon.social</a>
+    <i class="fa fa-twitter fa-fw" aria-hidden="true"></i>
+    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller" target="_blank">@AndreasZeller</a> <br>
+    <i class="fa fa-mastodon fa-fw" aria-hidden="true"></i>
+    <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a href="https://mastodon.social/@AndreasZeller" target="_blank">@AndreasZeller@mastodon.social</a>
 logo: assets/Zeller2022-head.jpg
 logo_title: Andreas Zeller (high resolution photo)
