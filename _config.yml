@@ -32,6 +32,8 @@ bio: Andreas Zeller is faculty at the
     <i class="fa fa-phone" aria-hidden="true"></i>
     <span class="sr-only">Phone:</span>&nbsp;&nbsp;<a href="tel:+49681870831001">+49 681 87083-1001</a> <br>
     <i class="fa fa-twitter" aria-hidden="true"></i>
-    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller">@AndreasZeller</a>
+    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller">@AndreasZeller</a> <br>
+    <i class="fa fa-mastodon" aria-hidden="true"></i>
+    <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a href="https://mastodon.social/@AndreasZeller">@AndreasZeller@mastodon.social</a>
 logo: assets/Zeller2022-head.jpg
 logo_title: Andreas Zeller (high resolution photo)
