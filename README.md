@@ -21,9 +21,11 @@ Our **research projects** involve generating software tests, automated debugging
 * How can we accurately determine and characterize input formats?
 * How can we explain causes and circumstances of software failures?
 
-Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, constraint solving, and formal languages.
+Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, constraint solving, and formal languages:
 
-My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser. In 2021, I published [The Debugging Book](https://www.debuggingbook.org/), which presents and implements a number of techniques for automated debugging and repair.
+* My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
+* In 2021, my [Debugging Book](https://www.debuggingbook.org/)  presented and implemented techniques for automated debugging and repair.
+* In 2022 and beyond, our projects will focus on semantic fuzzing and debugging, centered around our all-new [ISLa specification language and input generator](https://rindphi.github.io/isla/).
 
 
 ## Current Papers
