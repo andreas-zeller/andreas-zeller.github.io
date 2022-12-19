@@ -5,12 +5,18 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have proven quite influential in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
+## Latest News
+
+<iframe allowfullscreen sandbox="allow-top-navigation allow-scripts" width="400" height="400" frameBorder="0" src="https://www.mastofeed.com/apiv2/feed?userurl=https%3A%2F%2Fmastodon.social%2Fusers%2FAndreasZeller&theme=light&size=80&header=false&replies=false&boosts=false"></iframe>
+
+<!--
 ## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
 
 <a class="twitter-timeline" data-lang="en" data-height="300"  data-chrome="noheader nofooter noborders transparent"
 href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <small>(also available via <a href="https://mastodon.social/@AndreasZeller" rel="me">@AndreasZeller@mastodon.social</a>)</small>
+-->
 
 
 ## Current Projects
@@ -113,12 +119,7 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 
 ## Stay Tuned
 
-I post all relevant events regarding current work [on Twitter](https://twitter.com/AndreasZeller).
+[Follow me on Mastodon](https://mastodon.social/@AndreasZeller) to stay updated about current work and relevant events.
 
-<a href="https://twitter.com/AndreasZeller?ref_src=twsrc%5Etfw" class="twitter-follow-button">Follow @AndreasZeller</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-As an alternative, my tweets are also [mirrored to Mastodon](https://mastodon.social/@AndreasZeller).
-
-<small>I do not collect any data from this site, but Twitter and GitHub do. See the <a href="https://twitter.com/en/privacy">Twitter privacy policy</a>
-and the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
+<small>I do not collect any data from this site, but GitHub may do. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
 for details</small>.
