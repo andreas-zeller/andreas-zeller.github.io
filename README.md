@@ -119,7 +119,7 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 
 ## Stay Tuned
 
-[Follow me on Mastodon](https://mastodon.social/@AndreasZeller) to stay updated about current work and relevant events.
+[Follow me on Mastodon](https://mastodon.social/invite/PmKzQ76V) to stay updated about current work and relevant events.
 
 <small>I do not collect any data from this site, but GitHub may do. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
 for details</small>.
