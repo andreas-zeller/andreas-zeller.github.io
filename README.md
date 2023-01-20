@@ -42,11 +42,11 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 ## My Courses
 
 * In Winter 2022/23, we offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
-* In Summer 2023, we plan to offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
+* In Winter 2023/24, we will offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 
 Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
 
-Check out our courses [here](https://cms.cispa.saarland/).
+Check out all our courses [here](https://cms.cispa.saarland/).
 
 
 ## My Group
