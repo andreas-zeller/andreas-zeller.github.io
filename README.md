@@ -29,9 +29,9 @@ Our **research projects** involve generating software tests, automated debugging
 
 Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, constraint solving, and formal languages:
 
-* My largest project in 2020 was [The Fuzzing Book](https://www.fuzzingbook.org/)&mdash;an interactive textbook on test generation ("fuzzing") techniques.  You can execute and edit the code right in your browser.
-* In 2021, my [Debugging Book](https://www.debuggingbook.org/)  presented and implemented techniques for automated debugging and repair.
-* In 2022 and beyond, our projects will focus on semantic fuzzing and debugging, centered around our all-new [ISLa specification language and input generator](https://rindphi.github.io/isla/).
+* In 2023, I have received an ERC Advanced Grant of 2.5 million EUR for the project ["Semantics of Software Systems" (S3)](https://www.cispa.de/s3) on massive generation of tests and oracles for software. Come work with me!
+* Since 2022, most of our projects focus on semantic fuzzing and debugging, centered around our all-new [ISLa specification language and input generator](https://rindphi.github.io/isla/).
+* Since 2021, my [Debugging Book](https://www.debuggingbook.org/) presents and implements techniques for automated debugging and repair, and [The Fuzzing Book](https://www.fuzzingbook.org/) introduces test generation ("fuzzing") techniques. Both books are interactive – you can execute and edit the code right in your browser.
 
 
 ## Current Papers
