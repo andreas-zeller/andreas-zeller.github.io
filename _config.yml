@@ -23,10 +23,10 @@ social:
 description: Andreas Zeller does software research on automated debugging, mining software archives, specification mining, and security testing at CISPA and Saarland University
 bio: Andreas Zeller is faculty at the 
     <a href="https://www.cispa.de" target=_blank>CISPA Helmholtz Center for Information Security</a> and professor for Software Engineering at 
-    <a href="https://saarland-informatics-campus.de/en/" target=_blank>Saarland University</a>, both in Saarbrücken, Germany.  
+    <a href="https://saarland-informatics-campus.de/en/" target=_blank>Saarland University</a><!--, both in Saarbrücken, Germany-->.  
     His <a href="https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao" target=_blank>research</a> 
     on automated debugging, mining software archives, specification mining, and security testing has proven <a href="/assets/ZellerCV.pdf">highly influential</a>.  
-    Zeller is an <a href="https://awards.acm.org/fellows" target=_blank>ACM Fellow</a> and holds an <a href="https://www.sigsoft.org/awards/outstandingResearchAward.html" target=_blank>ACM SIGSOFT Outstanding Research Award</a>.<p>
+    Zeller is an <a href="https://awards.acm.org/fellows" target=_blank>ACM Fellow</a> and holds an <a href="https://www.sigsoft.org/awards/outstandingResearchAward.html" target=_blank>ACM SIGSOFT Outstanding Research Award</a>. He is one of the few researchers to have received two <a href="https://erc.europa.eu/apply-grant/advanced-grant">ERC Advanced Grants</a>, most recently for his <a href="https://www.cispa.de/s3/">S3</a> project.<p>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" title="Mail"></i>
     <span class="sr-only">Mail:</span>&nbsp;&nbsp;<a href="mailto:office-zeller@cispa.de" title="Mail">office-zeller@cispa.de</a> <br>
     <i class="fa fa-phone fa-fw" aria-hidden="true" title="Phone"></i>
