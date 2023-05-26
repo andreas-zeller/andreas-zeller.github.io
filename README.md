@@ -55,13 +55,11 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 * [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
-* [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting Ph.D. student from HU Berlin)
-* Max Eisele (Ph.D. student @ Bosch)
+* [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
-* [Michaël Mera](https://cispa.de/people/michael.mera/) (Ph.D. student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
-* Fengmin "Paul" Zhu (Ph.D. student)
+* [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
 
 We are constantly looking out for great students and Postdocs.  Our positions are well-paid and allow for highly productive research.  If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
 

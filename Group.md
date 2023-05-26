@@ -1,5 +1,7 @@
 ## Former Group Members
 
+* [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting Ph.D. student from HU Berlin)
+* [Michaël Mera](https://cispa.de/people/michael.mera/) (Ph.D. student)
 * [Dr.&nbsp;Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
 * [Dr.&nbsp;Rahul Gopinath](https://rahul.gopinath.org/) (Post-Doc)
 * [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/)
