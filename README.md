@@ -53,7 +53,10 @@ Check out all our courses [here](https://cms.cispa.saarland/).
 
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
 
+* [Dr.&nbsp;Rafael Dutra](https://cispa.de/de/people/c01radu) (Post-Doc)
+* [Dr.&nbsp;Jordan Samhi](https://www.jordansamhi.com) (Post-Doc)
 * [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
+* [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
 * [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
