@@ -41,8 +41,8 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 
 ## My Courses
 
-* In Winter 2022/23, we offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
-* In Winter 2023/24, we will offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
+* In Winter 2023/24, we offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
+* In Winter 2024/25, we will offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
 
 Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
 
@@ -59,6 +59,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
 * [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
+* [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
@@ -122,6 +123,7 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 ## Stay Tuned
 
 [Follow me on Mastodon](https://mastodon.social/invite/PmKzQ76V) to stay updated about current work and relevant events.
+You can also [find me on X](https://www.twitter.com/AndreasZeller).
 
 <small>I do not collect any data from this site, but GitHub may do. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
 for details</small>.
