@@ -35,7 +35,11 @@ bio: Andreas Zeller is faculty at the
     <span class="sr-only">Phone:</span>&nbsp;&nbsp;<a href="tel:+49681870831001" title="Phone">+49 681 87083-1001</a> <br>
     <i class="fa fa-mastodon fa-fw" aria-hidden="true" title="Mastodon"></i>
     <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a rel="me noopener"  href="https://mastodon.social/@AndreasZeller" title="Mastodon" target="_blank">@AndreasZeller@mastodon.social</a> <br>
-    <i class="fa fa-twitter fa-fw" aria-hidden="true" title="Twitter"></i>
+    <!-- <i class="fa fa-twitter fa-fw" aria-hidden="true" title="Twitter"></i> -->
+    <!-- adapted from https://fontawesomeicons.com/fa/twitter-x-logo -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 31 24" version="1.1" height="1em">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#767676"></path>
+    </svg>
     <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller" title="Twitter" target="_blank">@AndreasZeller</a> <br>
     <i class="fa fa-github fa-fw" aria-hidden="true" title="GitHub"></i>
         <span class="sr-only">GitHub:</span>&nbsp;&nbsp;<a href="https://github.com/andreas-zeller" title="GitHub" target="_blank">andreas-zeller</a>
