@@ -7,7 +7,19 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 
 ## Latest News
 
+<!-- See https://gitlab.com/idotj/mastodon-embed-feed-timeline -->
+<link rel="stylesheet" href="/assets/css/mastodon-timeline.css" />
+<script src="/assets/js/mastodon-timeline.js"></script>
+<div class="mt-timeline">
+  <div id="mt-body" class="mt-body" role="feed">
+    <div class="loading-spinner"></div>
+  </div>
+</div>
+
+
+<!--
 <iframe allowfullscreen sandbox="allow-top-navigation allow-scripts" width="400" height="400" frameBorder="0" src="https://www.mastofeed.com/apiv2/feed?userurl=https%3A%2F%2Fmastodon.social%2Fusers%2FAndreasZeller&theme=light&size=80&header=false&replies=false&boosts=false"></iframe>
+-->
 
 <!--
 ## Latest News from [@AndreasZeller](https://twitter.com/AndreasZeller)
