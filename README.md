@@ -45,6 +45,8 @@ Our **solutions** typically apply and combine several techniques including dynam
 * Since 2022, most of our projects focus on semantic fuzzing and debugging, centered around our all-new [ISLa specification language and input generator](https://rindphi.github.io/isla/).
 * Since 2021, my [Debugging Book](https://www.debuggingbook.org/) presents and implements techniques for automated debugging and repair, and [The Fuzzing Book](https://www.fuzzingbook.org/) introduces test generation ("fuzzing") techniques. Both books are interactive – you can execute and edit the code right in your browser.
 
+I am hiring [PhDs and PostDocs who would like to work on these topics](https://jobs.cispa.saarland/de_DE/jobs/detail/postdoctoral-researchers-for-s3-semantics-of-software-systems-227). Apply now!
+
 
 ## Current Papers
 
