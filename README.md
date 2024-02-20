@@ -5,6 +5,13 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have proven quite influential in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
+## Quick Links
+
+* <a href="https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227" target="_new">Open positions for PhD and PostDocs</a>
+* <a href="https://andreas-zeller.info/Theses.html">Doing a BSc or MSc thesis with me</a>
+* <a href="https://publications.cispa.de/search?q=%3Aauthor%3A%20Zeller" target="_new">Recent papers</a>
+
+
 ## Latest News
 
 <!-- See https://gitlab.com/idotj/mastodon-embed-feed-timeline -->
@@ -50,7 +57,7 @@ I am hiring [PhDs and PostDocs who would like to work on these topics](https://j
 
 ## Current Papers
 
-My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works and preprints, check out my [CISPA publication list](https://cispa.de/people/zeller/).
+My papers can be found on [Google Scholar](https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao), in the [ACM Digital Library](https://dl.acm.org/profile/81100307506), and in [DBLP](https://dblp.uni-trier.de/pers/z/Zeller:Andreas.html). For recent works and preprints, check out my [CISPA publication list](https://publications.cispa.de/search?q=%3Aauthor%3A%20Zeller).
 
 
 ## My Courses
@@ -137,7 +144,7 @@ Again, detailed [slides and full manuscript](assets/ICSE-2018-Keynote-Zeller.pdf
 ## Stay Tuned
 
 [Follow me on Mastodon](https://mastodon.social/invite/PmKzQ76V) to stay updated about current work and relevant events.
-You may also find me on other platforms (see left), but Mastodon is where I post.
+You may also find me on other platforms (see links on the left), but Mastodon is where I post.
 
 <small>I do not collect any data from this site, but GitHub may do. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">GitHub Privacy Statement</a>
 for details</small>.
