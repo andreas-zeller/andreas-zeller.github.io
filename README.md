@@ -4,6 +4,8 @@ I do software research focusing on **help the new generation of IT students and 
 
 My [Curriculum Vitae](assets/SamuelCV.pdf) lists the most important achievements.
 
+_This website is based on <a href="https://andreas-zeller.info" target="_new">Andreas Zeller's website</a>. Many thanks!!!_
+
 ## Quick Links
 
 * <a href="2021/04/15/the-devils-guide-to-incremental-research.html" target="_new">Natal (Brazil): A travelers' guide</a>
