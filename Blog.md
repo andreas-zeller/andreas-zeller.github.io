@@ -1,6 +1,6 @@
-# Andreas Zeller's Blog
+# Samuel Ferino's Blog
 
-My blog has a mixture of various topics from academia and software development, often with a humorous touch.  Here is the list of all posts:
+My blog includes a variety of topics, from academia and software development to my tourism experience reports.  Here is the list of all posts:
 
 <ul>
   {% for post in site.posts %}

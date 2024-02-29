@@ -2,7 +2,7 @@
 layout: post
 title:  "How do different fields review papers? Experiences from ICSE, PLDI, and CCS"
 author: Andreas Zeller
-tags: popular
+tags: 
 ---
 
 **What's it like to review for ICSE, PLDI, or CCS? And how do the papers (and review culture) compare?**

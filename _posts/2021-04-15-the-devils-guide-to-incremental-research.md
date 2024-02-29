@@ -2,7 +2,7 @@
 layout: post
 title:  "The Devil's Guide to Incremental Research"
 author: Andreas Zeller
-tags: popular
+tags: 
 ---
 
 _This post originally [appeared on Twitter](https://twitter.com/andreaszeller/status/1382702351161655298?s=21) on April 15, 2021._

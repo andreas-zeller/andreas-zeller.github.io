@@ -2,7 +2,7 @@
 layout: post
 title:  "Patterns for writing good rebuttals"
 author: Andreas Zeller
-tags: popular
+tags: 
 redirect_from: 
   - "/onresearch/rebuttal-patterns.php3.html"
 ---

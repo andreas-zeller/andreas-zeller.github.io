@@ -2,7 +2,7 @@
 layout: post
 title:  "What's it like to be a PhD student in Germany"
 author: Andreas Zeller
-tags: popular
+tags: 
 ---
 
 _This post originally [appeared on Twitter](https://twitter.com/AndreasZeller/status/1278246191482974209?s=20) on July 1. The text is unchanged; I have added subtitles and links for your convenience._
