@@ -82,12 +82,15 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
 * [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
+* [Kuangxiangzi Liu](https://www.linkedin.com/in/kuangxiangzi-liu-2638ab297/) (Ph.D. student @ Volkswagen)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
 
-We are constantly looking out for great students and Postdocs.  Our positions are well-paid and allow for highly productive research.  If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://www.cispa.de/) and state your specific interests.
+I am constantly looking out for great students and Postdocs.
+Our positions are well paid and allow for highly productive research.
+If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227) and state your specific interests.
 
 Here is a list of [former group members](Group.html).
 
