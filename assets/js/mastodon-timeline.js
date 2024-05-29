@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
     spinner_class: "loading-spinner",
 
     // Preferred color theme: 'light', 'dark' or 'auto'. Default: auto
-    default_theme: "auto",
+    default_theme: "light",
 
     // Your Mastodon instance
     instance_url: "https://mastodon.social",
