@@ -84,7 +84,7 @@ So, as a reviewer, you read all the papers, submit all your reviews, and you're 
 
 ICSE is the flagship conference of the Software Engineering community. As a good Software Engineer, you believe in the power of process; and you know that despite all best efforts, errors may crawl in at any time. The ICSE reviewing process is modeled with these principles in mind. 
 
-Reviewing for ICSE means to adhere to a _ton_ of deadlines – there's a deadline each for 50% and 100% of your reviews; there's a deadline for completing 50%, 75%, 100% of discussions; there's a deadline for entering the meta-review; and there's a deadline for approving the meta-review. You will be constantly reminded of these deadlines, especially it looks like you may miss them.
+Reviewing for ICSE means to adhere to a _ton_ of deadlines – there's a deadline each for 50% and 100% of your reviews; there's a deadline for completing 50%, 75%, 100% of discussions; there's a deadline for entering the meta-review; and there's a deadline for approving the meta-review. You will be constantly reminded of these deadlines, especially if it looks like you may miss them.
 
 The important thing is that if you miss _any_ of these deadlines, _you will be terminated_ – as a reviewer not only for ICSE, but also for other SE conferences. In fact, when composing a program committee, the question of how reliable you are as a reviewer is almost as important as your expertise. You simply _are not late, ever_ (unless you have a good reason such as sickness). All this is well understood in the community, and reminders therefore come with some distinctive authoritative tone.
 
