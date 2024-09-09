@@ -8,6 +8,7 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 ## Quick Links
 
 * <a href="https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227" target="_new">Open positions for PhD and PostDocs</a>
+* <a href="https://cispa.de/en/career/faq">What's it like working at CISPA?</a>
 * <a href="https://andreas-zeller.info/Theses.html">Doing a BSc or MSc thesis with me</a>
 * <a href="https://publications.cispa.de/search?q=%3Aauthor%3A%20Zeller" target="_new">Recent papers</a>
 
