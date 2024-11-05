@@ -1,5 +1,9 @@
 ## Former Group Members
 
+* [Dr.&nbsp;Jordan Samhi](https://www.jordansamhi.com) (Post-Doc)
+* [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
+* [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
+* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
 * [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting Ph.D. student from HU Berlin)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (Ph.D. student)
 * [Dr.&nbsp;Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)

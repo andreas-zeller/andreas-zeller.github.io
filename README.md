@@ -63,8 +63,8 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 
 ## My Courses
 
-* In Winter 2023/24, we offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
-* In Winter 2024/25, we will offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+* In Winter 2024/25, we offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+* In Winter 2025/26, we will offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 
 Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
 
@@ -76,15 +76,14 @@ Check out all our courses [here](https://cms.cispa.saarland/).
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
 
 * [Dr.&nbsp;Rafael Dutra](https://cispa.de/de/people/c01radu) (Post-Doc)
-* [Dr.&nbsp;Jordan Samhi](https://www.jordansamhi.com) (Post-Doc)
-* [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
 * [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
-* [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
 * [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
-* [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
+* Alexander Liggesmeyer (Ph.D. student)
+* Haoyang Liu (Ph.D. student)
 * [Kuangxiangzi Liu](https://www.linkedin.com/in/kuangxiangzi-liu-2638ab297/) (Ph.D. student @ Volkswagen)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
+* [Laura Plein](https://laura-plein.com) (Ph.D. student)
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
