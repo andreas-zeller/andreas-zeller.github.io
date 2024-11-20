@@ -20,6 +20,7 @@ twitter:
 social:
   links:
     - https://mastodon.social/@AndreasZeller
+    - https://bsky.app/profile/andreaszeller.bsky.social
 description: Andreas Zeller does software research on automated debugging, mining software archives, specification mining, and security testing at CISPA and Saarland University
 bio: Andreas Zeller is faculty at the 
     <a href="https://www.cispa.de" target=_blank>CISPA Helmholtz Center for Information Security</a> and professor for Software Engineering at 
@@ -30,17 +31,21 @@ bio: Andreas Zeller is faculty at the
     Zeller is an <a href="https://awards.acm.org/fellows" target=_blank>ACM Fellow</a> and holds an <a href="https://www.sigsoft.org/awards/outstandingResearchAward.html" target=_blank>ACM SIGSOFT Outstanding Research Award</a>.
     <p>
     <i class="fa fa-envelope-o fa-fw" aria-hidden="true" title="Mail"></i>
-    <span class="sr-only">Mail:</span>&nbsp;&nbsp;<a href="mailto:office-zeller@cispa.de" title="Mail">office-zeller@cispa.de</a> <br>
+    <span class="sr-only">Mail:</span>&nbsp;&nbsp;<a href="mailto:andreas.zeller@cispa.de" title="Mail">andreas.zeller@cispa.de</a> <br>
     <i class="fa fa-phone fa-fw" aria-hidden="true" title="Phone"></i>
     <span class="sr-only">Phone:</span>&nbsp;&nbsp;<a href="tel:+49681870831001" title="Phone">+49 681 87083-1001</a> <br>
     <i class="fa fa-mastodon fa-fw" aria-hidden="true" title="Mastodon"></i>
     <span class="sr-only">Mastodon:</span>&nbsp;&nbsp;<a rel="me noopener"  href="https://mastodon.social/@AndreasZeller" title="Mastodon" target="_blank">@AndreasZeller@mastodon.social</a> <br>
-    <!-- <i class="fa fa-twitter fa-fw" aria-hidden="true" title="Twitter"></i> -->
+    
+    <svg viewBox="-50 -70 430 390" aria-hidden="true" height="1.1em"><path d="M180 141.964C163.699 110.262 119.308 51.1817 78.0347 22.044C38.4971 -5.86834 23.414 -1.03207 13.526 3.43594C2.08093 8.60755 0 26.1785 0 36.5164C0 46.8542 5.66748 121.272 9.36416 133.694C21.5786 174.738 65.0603 188.607 105.104 184.156C107.151 183.852 109.227 183.572 111.329 183.312C109.267 183.642 107.19 183.924 105.104 184.156C46.4204 192.847 -5.69621 214.233 62.6582 290.33C137.848 368.18 165.705 273.637 180 225.702C194.295 273.637 210.76 364.771 295.995 290.33C360 225.702 313.58 192.85 254.896 184.158C252.81 183.926 250.733 183.645 248.671 183.315C250.773 183.574 252.849 183.855 254.896 184.158C294.94 188.61 338.421 174.74 350.636 133.697C354.333 121.275 360 46.8568 360 36.519C360 26.1811 357.919 8.61012 346.474 3.43851C336.586 -1.02949 321.503 -5.86576 281.965 22.0466C240.692 51.1843 196.301 110.262 180 141.964Z" fill="#767676"></path></svg>
+    <span class="sr-only">Bluesky:</span>&nbsp;&nbsp;<a href="https://bsky.app/profile/andreaszeller.bsky.social" title="Bluesky" target="_blank">@andreaszeller.bsky.social</a> <br>
+
     <!-- adapted from https://fontawesomeicons.com/fa/twitter-x-logo -->
+    <!--
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 31 24" version="1.1" height="1em">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#767676"></path>
     </svg>
-    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller" title="Twitter" target="_blank">@AndreasZeller</a> <br>
+    <span class="sr-only">Twitter:</span>&nbsp;&nbsp;<a href="https://www.twitter.com/AndreasZeller" title="Twitter" target="_blank">@AndreasZeller</a> <br> -->
     <i class="fa fa-github fa-fw" aria-hidden="true" title="GitHub"></i>
         <span class="sr-only">GitHub:</span>&nbsp;&nbsp;<a href="https://github.com/andreas-zeller" title="GitHub" target="_blank">andreas-zeller</a>
 logo: assets/Zeller2022-head.jpg
