@@ -28,9 +28,9 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
   </bsky-embed>
   
 Find more posts
-[on BlueSky](https://bsky.app/profile/andreaszeller.bsky.social)
+<a href="https://bsky.app/profile/andreaszeller.bsky.social" target="_blank">on BlueSky</a>
 and
-[on Mastodon](https://mastodon.social/@AndreasZeller)
+<a href="https://mastodon.social/@AndreasZeller" target="_blank">on Mastodon</a>
 
 
 <!-- See https://gitlab.com/idotj/mastodon-embed-feed-timeline -->
