@@ -1,7 +1,9 @@
 theme: jekyll-theme-minimal
+# remote_theme: pages-themes/minimal@v0.2.0
 title: Andreas Zeller
 layout: default
 plugins:
+#    - jekyll-remote-theme
     - jekyll-optional-front-matter
     - jekyll-redirect-from
     - jekyll-feed
