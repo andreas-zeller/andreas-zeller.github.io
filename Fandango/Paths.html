@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Accessing Input Elements &#8212; Fuzzing with Fandango</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Paths';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Case Study: ISO 8601 Date + Time" href="ISO8601.html" />
+    <link rel="prev" title="Complex Input Structures" href="Recursive.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fandango.png" class="logo__image only-light" alt="Fuzzing with Fandango - Home"/>
+    <img src="_static/fandango.png" class="logo__image only-dark pst-js-only" alt="Fuzzing with Fandango - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Intro.html">
+                    Fuzzing with Fandango
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About Fandango</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="About.html">About Fandango</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Fandango Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Installing Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FirstSpec.html">A First Fandango Spec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invoking.html">Invoking Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fuzzing.html">Fuzzing with Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Strategies.html">Some Fuzzing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Constraints.html">Shaping Inputs with Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shell.html">The Fandango Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generators.html">Data Generators and Fakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Complex Input Structures</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Accessing Input Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ISO8601.html">Case Study: ISO 8601 Date + Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Binary.html">Generating Binary Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bits.html">Bits and Bit Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gif.html">Case Study: The GIF Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Distributions.html">Statistical Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Whitebox.html">Coverage-Guided Fuzzing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hatching.html">Hatching Specs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Reference.html">Fandango Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Stdlib.html">Fandango Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Including.html">Fandango Spec Locations</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Paths.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accessing Input Elements</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-trees">Derivation Trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-paths">Specifying Paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-children">Accessing Children</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-children">Selecting Children</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-descendants">Selecting Descendants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chains">Chains</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiers">Quantifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#star-expressions">Star Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existential-quantification">Existential Quantification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-quantification">Universal Quantification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications">Implications</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-input-elements">
+<span id="sec-paths"></span><h1>Accessing Input Elements<a class="headerlink" href="#accessing-input-elements" title="Link to this heading">#</a></h1>
+<p>When dealing with <a class="reference internal" href="Recursive.html#sec-recursive"><span class="std std-ref">complex input formats</span></a>, attaching <a class="reference internal" href="Constraints.html#sec-constraints"><span class="std std-ref">constraints</span></a> can be complex, as elements can occur <em>multiple times</em> in a generated input.
+Fandango offers a few mechanisms to disambiguate these, and to specify specific <em>contexts</em> in which to search for elements.</p>
+<section id="derivation-trees">
+<span id="sec-derivation-trees"></span><h2>Derivation Trees<a class="headerlink" href="#derivation-trees" title="Link to this heading">#</a></h2>
+<p>So far, we have always assumed that Fandango generates <em>strings</em> from the grammar.
+Behind the scenes, though, Fandango creates a far richer data structure - a so-called <em>derivation tree</em> that <em>maintains the structure of the string</em> and <em>allows accessing individual elements</em>.
+Every time Fandango sees a grammar rule</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">symbol</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>it generates a derivation tree whose root is <code class="docutils literal notranslate"><span class="pre">&lt;symbol&gt;</span></code> and whose children are the elements of the right-hand side of the rule.</p>
+<p>Let’s have a look at our <a class="reference download internal" download="" href="_downloads/eb75cca3f691010aefb22548a3d912ba/persons.fan"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">persons.fan</span></code></span></a> spec:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;start&gt; ::= &lt;person_name&gt; &quot;,&quot; &lt;age&gt;;
+&lt;person_name&gt; ::= &lt;first_name&gt; &quot; &quot; &lt;last_name&gt;;
+&lt;first_name&gt; ::= &lt;name&gt;;
+&lt;last_name&gt; ::= &lt;name&gt;;
+&lt;name&gt; ::= &lt;ascii_uppercase_letter&gt;&lt;ascii_lowercase_letter&gt;+;
+&lt;age&gt; ::= &lt;digit&gt;+;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;</span></code> rule says</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;start&gt; ::= &lt;person_name&gt; &quot;,&quot; &lt;age&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, a resulting derivation tree for <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;</span></code> looks like this:</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/ebea57d3533d35a59ddf22aaf1581eacfc1ba59377cd5f14510472d7d19d9f83.png" src="_images/ebea57d3533d35a59ddf22aaf1581eacfc1ba59377cd5f14510472d7d19d9f83.png" />
+</div>
+</div>
+<p>As Fandango expands more and more symbols, it expands the derivation tree accordingly.
+Since the grammar definition for <code class="docutils literal notranslate"><span class="pre">&lt;person_name&gt;</span></code> says</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;person_name&gt; ::= &lt;first_name&gt; &quot; &quot; &lt;last_name&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>the above derivation tree would be extended to</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/24d986b5b24340bad3745224167fb0b59ca0649b008e99d50fa8948d6705e8bd.png" src="_images/24d986b5b24340bad3745224167fb0b59ca0649b008e99d50fa8948d6705e8bd.png" />
+</div>
+</div>
+<p>And if we next extend <code class="docutils literal notranslate"><span class="pre">&lt;age&gt;</span></code> and then <code class="docutils literal notranslate"><span class="pre">&lt;digit&gt;</span></code> based on their definitions</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;age&gt; ::= &lt;digit&gt;+;
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>If one has a Kleene operator like <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, or <code class="docutils literal notranslate"><span class="pre">?</span></code>, the elements operated on become children of the symbol being defined.
+Hence, the <code class="docutils literal notranslate"><span class="pre">&lt;digit&gt;</span></code> elements become children of the <code class="docutils literal notranslate"><span class="pre">&lt;age&gt;</span></code> symbol.</p>
+</aside>
+<p>our tree gets to look like this:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/0029f6eae15ab84041632440b0283534b76b881e642d1edeaff587874f2d4655.png" src="_images/0029f6eae15ab84041632440b0283534b76b881e642d1edeaff587874f2d4655.png" />
+</div>
+</div>
+<p>Repeating the process, it thus obtains a tree like this:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/70bfe3da95633ff1526808bd1226598f22b8f175b27691f17afecb7466842d29.png" src="_images/70bfe3da95633ff1526808bd1226598f22b8f175b27691f17afecb7466842d29.png" />
+</div>
+</div>
+<p>Note how the tree records the entire history of how it was created - how it was <em>derived</em>, actually.</p>
+<p>To obtain a string from the tree, we traverse its children left-to-right,
+ignoring all <em>nonterminal</em> symbols (in <code class="docutils literal notranslate"><span class="pre">&lt;...&gt;</span></code>) and considering only the <em>terminal</em> symbols (in quotes).
+This is what we get for the above tree:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Ex Pltz,18
+</pre></div>
+</div>
+<p>And this is the string Fandango produces.
+However, viewing the Fandango results as derivation trees allows us to access <em>elements</em> of the Fandango-produced strings and to express <em>constraints</em> on them.</p>
+</section>
+<section id="specifying-paths">
+<h2>Specifying Paths<a class="headerlink" href="#specifying-paths" title="Link to this heading">#</a></h2>
+<p>One effect of Fandango producing derivation trees rather than “just” strings is that we can define special <em>operators</em> that allow us to access <em>subtrees</em> (or sub-elements) of the produced strings - and express constraints on them.
+This is especially useful if we want constraints to apply only in specific <em>contexts</em> - say, as part of some element <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code>, but not as part of an element <code class="docutils literal notranslate"><span class="pre">&lt;b&gt;</span></code>.</p>
+<section id="accessing-children">
+<h3>Accessing Children<a class="headerlink" href="#accessing-children" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>These selectors are similar to XPath, but better aligned with Python.
+In XPath, the first child has the index 1, in Fandango, it has the index 0.</p>
+</aside>
+<p>The expression <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;[N]</span></code> accesses the <code class="docutils literal notranslate"><span class="pre">N</span></code>-th child of <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>, starting with zero.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code> is defined in the grammar as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">foo</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">&lt;</span><span class="n">bar</span><span class="o">&gt;</span> <span class="s2">&quot;:&quot;</span> <span class="o">&lt;</span><span class="n">baz</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>then <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;[0]</span></code> returns the <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> element, <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;[1]</span></code> returns <code class="docutils literal notranslate"><span class="pre">&quot;:&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;[2]</span></code> returns the <code class="docutils literal notranslate"><span class="pre">&lt;baz&gt;</span></code> element.</p>
+<p>In our <a class="reference internal" href="#sec-derivation-trees"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">persons.fan</span></code> derivation tree for <code class="docutils literal notranslate"><span class="pre">Ex</span> <span class="pre">Pltz</span></code></span></a>, for instance, <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;[0]</span></code> would return the <code class="docutils literal notranslate"><span class="pre">&lt;person_name&gt;</span></code> element (<code class="docutils literal notranslate"><span class="pre">&quot;Ex</span> <span class="pre">Pltz&quot;</span></code>), and <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;[2]</span></code> would return the <code class="docutils literal notranslate"><span class="pre">&lt;age&gt;</span></code> element (<code class="docutils literal notranslate"><span class="pre">18</span></code>).</p>
+<p>We can use this to access elements in specific contexts.
+For instance, if we want to refer to a <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> element, but only if it is the child of a <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> element, we can refer to it as <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;[0]</span></code> - the first child of a <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> element:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;first_name&gt; ::= &lt;name&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is a constraint that makes Fandango produce first names that end with <code class="docutils literal notranslate"><span class="pre">x</span></code>:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Since a <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> is defined to be a <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>, we could also write <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;.endswith(&quot;x&quot;)</span></code></p>
+</aside>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;first_name&gt;[0].endswith(&quot;x&quot;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 1/500 <span class=" -Color -Color-BGC46">            </span><span class=" -Color -Color-BGC244">                                                </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Hpznx Bnwdva,97
+Ixnx Dqcjs,69
+Fnx Argb,67213
+Tx Mkwf,187
+Hpznx Bnwdva,97
+Ixnx Dqcjs,69
+Fnx Argb,67213
+Tx Mkwf,187
+Hpznx Bnwdva,97
+Ixnx Dqcjq,69
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As in Python, you can use <em>negative</em> indexes to refer to the last elements.
+<code class="docutils literal notranslate"><span class="pre">&lt;age&gt;[-1]</span></code>, for instance, gives you the <em>last</em> child of an <code class="docutils literal notranslate"><span class="pre">&lt;age&gt;</span></code> subtree.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While symbols act as strings in many contexts, this is where they differ.
+To access the first <em>character</em> of a symbol <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>, you need to explicitly convert it to a string first, as in <code class="docutils literal notranslate"><span class="pre">str(&lt;foo&gt;)[0]</span></code>.</p>
+</div>
+</section>
+<section id="selecting-children">
+<h3>Selecting Children<a class="headerlink" href="#selecting-children" title="Link to this heading">#</a></h3>
+<p>Referring to children by <em>number</em>, as in <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;[0]</span></code> can be a bit cumbersome.
+This is why in Fandango, you can also refer to elements by <em>name</em>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In XPath, the corresponding operator is <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
+</aside>
+<p>The expression <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;.&lt;bar&gt;</span></code> allows accessing elements <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> when they are a <em>direct child</em> of a symbol <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>.
+This requires that <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> occurs in the grammar rule defining <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">foo</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">...</span><span class="n">some</span> <span class="n">expansion</span> <span class="n">that</span> <span class="n">has</span> <span class="o">&lt;</span><span class="n">bar</span><span class="o">&gt;...</span>
+</pre></div>
+</div>
+<p>To refer to the <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> element as a direct child of a <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> element, you thus write <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;.&lt;first_name&gt;</span></code>.
+This allows you to express the earlier constraint in a possibly more readable form:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;first_name&gt;.&lt;name&gt;.endswith(&quot;x&quot;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 1/500 <span class=" -Color -Color-BGC46">                     </span><span class=" -Color -Color-BGC244">                                       </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Uhx Fsjsyh,88
+Czmx Fgyky,5
+Xhkqhx Yrmj,20
+Tjx Nwez,60350
+Uhx Fsjsyh,88
+Czmx Fgyky,5
+Xhkqhx Yrmj,20
+Tjx Nwez,60350
+Tjx Nwez,60350
+Czmx Fgyky,3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can only access <em>nonterminal</em> children this way; <code class="docutils literal notranslate"><span class="pre">&lt;person_name&gt;.&quot;</span> <span class="pre">&quot;</span></code> (the space in the <code class="docutils literal notranslate"><span class="pre">&lt;person_name&gt;</span></code>) gives an error.</p>
+</div>
+</section>
+<section id="selecting-descendants">
+<h3>Selecting Descendants<a class="headerlink" href="#selecting-descendants" title="Link to this heading">#</a></h3>
+<p>Often, you want to refer to elements in a particular <em>context</em> set by the enclosing element.
+This is why in Fandango, you can also refer to <em>descendants</em>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In XPath, the corresponding operator is <code class="docutils literal notranslate"><span class="pre">//</span></code>.</p>
+</aside>
+<p>The expression <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;..&lt;bar&gt;</span></code> allows accessing elements <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> when they are a <em>descendant</em> of a symbol <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>.
+<code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> is a descendant of <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code> if</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;..&lt;bar&gt;</span></code> includes <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;.&lt;bar&gt;</span></code>.</p>
+</aside>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> is a child of <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>; or</p></li>
+<li><p>one of <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>’s children has <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code> as a descendant.</p></li>
+</ul>
+<p>If that sounds like a recursive definition, that is because it is.
+A simpler way to think about <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;..&lt;bar&gt;</span></code> may be “All <code class="docutils literal notranslate"><span class="pre">&lt;bar&gt;</span></code>s that occur within <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code>”.</p>
+<p>Let us take a look at some rules in our <code class="docutils literal notranslate"><span class="pre">persons.fan</span></code> example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">first_name</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="n">last_name</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="o">&lt;</span><span class="n">ascii_uppercase_letter</span><span class="o">&gt;&lt;</span><span class="n">ascii_lowercase_letter</span><span class="o">&gt;+</span><span class="p">;</span>
+<span class="o">&lt;</span><span class="n">ascii_uppercase_letter</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="s2">&quot;A&quot;</span> <span class="o">|</span> <span class="s2">&quot;B&quot;</span> <span class="o">|</span> <span class="s2">&quot;C&quot;</span> <span class="o">|</span> <span class="o">...</span> <span class="o">|</span> <span class="s2">&quot;Z&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To refer to all <code class="docutils literal notranslate"><span class="pre">&lt;ascii_uppercase_letter&gt;</span></code> element as descendant of a <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> element, you thus write <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;..&lt;ascii_uppercase_letter&gt;</span></code>.</p>
+<p>Hence, to make all uppercase letters <code class="docutils literal notranslate"><span class="pre">X</span></code>, but only as part of a first name, you may write</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;first_name&gt;..&lt;ascii_uppercase_letter&gt; == &quot;X&quot;&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Xwb Yufhhf,397
+Xf Cjwv,823
+Xnym Epykny,43
+Xlf Vb,380
+Xnvth Zpdd,56
+Xbc Bchfv,236
+Xavw Qfhve,6690
+Xwa Kwpcw,288
+Xawwa Dzx,15
+Xy Bzzcw,42
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chains">
+<h3>Chains<a class="headerlink" href="#chains" title="Link to this heading">#</a></h3>
+<p>You can freely combine <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">.</span></code>, and <code class="docutils literal notranslate"><span class="pre">..</span></code> into <em>chains</em> that select subtrees.
+What would the expression <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;[0].&lt;last_name&gt;..&lt;ascii_lowercase_letter&gt;</span></code> refer to, for instance?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>This is easy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;start&gt;[0]</span></code> is the first element of start, hence a <code class="docutils literal notranslate"><span class="pre">&lt;person_name&gt;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.&lt;last_name&gt;</span></code> refers to the child of type <code class="docutils literal notranslate"><span class="pre">&lt;last_name&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">..&lt;ascii_lowercase_letter&gt;</span></code> refers to all descendants of type <code class="docutils literal notranslate"><span class="pre">&lt;ascii_lowercase_letter&gt;</span></code></p></li>
+</ul>
+</div>
+<p>Let’s use this in a constraint:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;start&gt;[0].&lt;last_name&gt;..&lt;ascii_lowercase_letter&gt; == &quot;x&quot;&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Fxau Bxx,44590
+Poqxjp Sxxxx,99
+Nbt Exxxxx,4596
+Dcbwdd Fx,76
+Wwbjbn Kx,69
+Fh Dxx,09
+Vcs Tx,289
+Ndqyt Bxx,96
+Cjh Oxxxxx,1532
+Hchxpb Xxx,4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="quantifiers">
+<h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Link to this heading">#</a></h2>
+<p>By default, whenever you use a symbol <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code> in a constraint, this constraint applies to <em>all</em> occurrences of <code class="docutils literal notranslate"><span class="pre">&lt;foo&gt;</span></code> in the produced output string.
+For your purposes, though, one such instance already may suffice.
+This is why Fandango allows expressing <em>quantification</em> in constraints.</p>
+<section id="star-expressions">
+<h3>Star Expressions<a class="headerlink" href="#star-expressions" title="Link to this heading">#</a></h3>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> syntax is not operational yet.</p>
+</div>
+<p>In Fandango, you can prefix an element with <code class="docutils literal notranslate"><span class="pre">*</span></code> to obtain a collection of <em>all</em> these elements within an individual string.
+Hence, <code class="docutils literal notranslate"><span class="pre">*&lt;name&gt;</span></code> is a collection of <em>all</em> <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> elements within the generated string.
+This syntax can be used in a variety of ways.
+For instance, we can have a constraint check whether a particular element is in the collection:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Not every constraint that can be <em>expressed</em> also can be <em>solved</em> by Fandango.</p>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Pablo&quot;</span> <span class="ow">in</span> <span class="o">*&lt;</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This constraint evaluates to True if any of the values in <code class="docutils literal notranslate"><span class="pre">*&lt;name&gt;</span></code> (= one of the two <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> elements) is equal to <code class="docutils literal notranslate"><span class="pre">&quot;Pablo&quot;</span></code>.
+<code class="docutils literal notranslate"><span class="pre">*</span></code>-expressions are mostly useful in quantifiers, which we discuss below.</p>
+</section>
+<section id="existential-quantification">
+<h3>Existential Quantification<a class="headerlink" href="#existential-quantification" title="Link to this heading">#</a></h3>
+<p>To express that within a particular scope, at least one instance of a symbol must satisfy a constraint, use a <code class="docutils literal notranslate"><span class="pre">*</span></code>-expression in combination with <code class="docutils literal notranslate"><span class="pre">any()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">any</span><span class="p">(</span><span class="n">CONSTRAINT</span> <span class="k">for</span> <span class="n">ELEM</span> <span class="ow">in</span> <span class="o">*</span><span class="n">SCOPE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SCOPE</span></code> is a nonterminal (e.g. <code class="docutils literal notranslate"><span class="pre">&lt;age&gt;</span></code>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ELEM</span></code> is a Python variable; and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONSTRAINT</span></code> is a constraint over <code class="docutils literal notranslate"><span class="pre">ELEM</span></code></p></li>
+</ul>
+<p>Hence, the expression</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">any</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="o">*&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ensures there is at least <em>one</em> element <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> that starts with an “A”:</p>
+<p>Let us decompose this expression for a moment:</p>
+<ul class="simple">
+<li><p>The expression <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">*&lt;name&gt;</span></code> lets Python iterate over <code class="docutils literal notranslate"><span class="pre">*&lt;name&gt;</span></code> (all <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> objects within a person)…</p></li>
+<li><p>… and evaluate <code class="docutils literal notranslate"><span class="pre">n.startswith(&quot;A&quot;)</span></code> for each of them, resulting in a collection of Boolean values.</p></li>
+<li><p>The Python function <code class="docutils literal notranslate"><span class="pre">any(list)</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if at least one element in <code class="docutils literal notranslate"><span class="pre">list</span></code> is True.</p></li>
+</ul>
+<p>So, what we get is existential quantification:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;any(n.startswith(&quot;A&quot;) for n in *&lt;name&gt;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 1/500 48;5;-14m   48;5;-14m   48;5;-14m   48;5;-14m   <span class=" -Color -Color-BGC244">                                                </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Aajq Qgiirx,477
+Agybk Es,72
+Aath Fn,33
+Awm Ynz,71
+Aajq Qgiirx,477
+Agybk Es,72
+Aath Fn,33
+Awm Ynz,71
+Agybh Es,72
+Agyxk Es,72
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="universal-quantification">
+<h3>Universal Quantification<a class="headerlink" href="#universal-quantification" title="Link to this heading">#</a></h3>
+<p>Where there are existential quantifiers, there also are <em>universal</em> quantifiers.
+Here we use the Python <code class="docutils literal notranslate"><span class="pre">all()</span></code> function; <code class="docutils literal notranslate"><span class="pre">all(list)</span></code> evaluates to True only if <em>all</em> elements in <code class="docutils literal notranslate"><span class="pre">list</span></code> are True.</p>
+<p>We use a <code class="docutils literal notranslate"><span class="pre">*</span></code>-expression in combination with <code class="docutils literal notranslate"><span class="pre">all()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">(</span><span class="n">CONSTRAINT</span> <span class="k">for</span> <span class="n">ELEM</span> <span class="ow">in</span> <span class="o">*</span><span class="n">SCOPE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hence, the expression</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">all</span><span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="o">*&lt;</span><span class="n">first_name</span><span class="o">&gt;..&lt;</span><span class="n">ascii_lowercase_letter</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ensures that <em>all</em> sub-elements <code class="docutils literal notranslate"><span class="pre">&lt;ascii_lowercase_letter&gt;</span></code> in <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> have the value “a”.</p>
+<p>Again, let us decompose this expression:</p>
+<ul class="simple">
+<li><p>The expression <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">c</span> <span class="pre">in</span> <span class="pre">*&lt;first_name&gt;..&lt;ascii_lowercase_letter&gt;</span></code> lets Python iterate over all <code class="docutils literal notranslate"><span class="pre">&lt;ascii_lowercase_letter&gt;</span></code> objects within <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code>…</p></li>
+<li><p>… and evaluate <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">==</span> <span class="pre">&quot;A&quot;</span></code> for each of them, resulting in a collection of Boolean values.</p></li>
+<li><p>The Python function <code class="docutils literal notranslate"><span class="pre">all(list)</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all elements in <code class="docutils literal notranslate"><span class="pre">list</span></code> are True.</p></li>
+</ul>
+<p>So, what we get is universal quantification:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;all(c == &quot;a&quot; for c in *&lt;first_name&gt;..&lt;ascii_lowercase_letter&gt;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Ca Xagll,78817
+Ua Mkquo,089
+Vaaaaa Nuz,8
+Qaaaaa Taad,123
+Yaaaaa Bzqydh,01
+Naa Bvp,15477
+Ta Ozkobb,723
+Fa Mkyh,9377
+Pa Qkie,558
+Taaa Fehiab,994
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, all symbols are universally quantified within <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;</span></code>, so a dedicated universal quantifier is only needed if you want to <em>limit the scope</em> to some sub-element.
+This is what we do here with <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;..&lt;ascii_lowercase_letter&gt;</span></code>, limiting the scope to <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code>.</p>
+<p>Given the default universal quantification, you can actually achieve the same effect as above without <code class="docutils literal notranslate"><span class="pre">all()</span></code> and without a <code class="docutils literal notranslate"><span class="pre">*</span></code>. How?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solution</p>
+<p>You can access all <code class="docutils literal notranslate"><span class="pre">&lt;ascii_lowercase_letter&gt;</span></code> elements within <code class="docutils literal notranslate"><span class="pre">&lt;first_name&gt;</span></code> directly:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;first_name&gt;..&lt;ascii_lowercase_letter&gt; == &quot;a&quot;&#39;</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="implications">
+<h2>Implications<a class="headerlink" href="#implications" title="Link to this heading">#</a></h2>
+<p>Finally, Fandango supports <em>implications</em> - that is, constraints that only need to hold if some other constraint is met.
+The syntax is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ANTECEDENT</span> <span class="o">-&gt;</span> <span class="n">CONSEQUENCE</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">ANTECEDENT</span></code> and <code class="docutils literal notranslate"><span class="pre">CONSEQUENCE</span></code> are constraints.
+If <code class="docutils literal notranslate"><span class="pre">ANTECEDENT</span></code> is met, then <code class="docutils literal notranslate"><span class="pre">CONSEQUENCE</span></code> must also be met.</p>
+<p>Hence, the expression</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="o">&lt;</span><span class="n">age</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">30</span> <span class="o">-&gt;</span> <span class="o">&lt;</span><span class="n">first_name</span><span class="o">&gt;.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>ensures that if a person is aged more than 30, then their first name should start with an <code class="docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code>.
+Let’s try this:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;int(&lt;age&gt;) &gt; 30 -&gt; &lt;first_name&gt;.startswith(&quot;A&quot;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+Fkr Zf,5
+Ayfky Us,7280
+Cg Hh,09
+Rrdwyd Izlgh,29
+Bop Mqug,9
+Abrh Ykabi,9
+Trsztb Yceve,28
+Luuomn Pz,8
+Apvbbd Aue,8154
+Fei Pamfst,1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note how Fandango “solves” the problem by mostly producing only persons whose age is <em>below</em> the threshold.
+But if we have the age come from a Gaussian distribution, as discussed in <a class="reference internal" href="Generators.html#sec-generators"><span class="std std-ref">Data Generators and Fakers</span></a>, we get</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>persons-faker-gauss.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;int(&lt;age&gt;) &gt; 30 -&gt; &lt;first_name&gt;.startswith(&quot;A&quot;)&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alan Christensen,33
+Andrea Kramer,34
+Allen Perry,35
+Amanda Adkins,33
+April Fisher,34
+Annette Williams,33
+April Pham,34
+Ashley Moore,36
+Amy Pratt,33
+Amanda Hahn,34
+</pre></div>
+</div>
+</div>
+</div>
+<p>While the implication is indeed resolved, note that the Gaussian distribution no longer holds.
+We will revisit this issue in <a class="reference internal" href="Distributions.html#sec-distributions"><span class="std std-ref">Statistical Distributions</span></a>, when we specify targets that must hold for the entire population.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Recursive.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complex Input Structures</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ISO8601.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Case Study: ISO 8601 Date + Time</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-trees">Derivation Trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-paths">Specifying Paths</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-children">Accessing Children</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-children">Selecting Children</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-descendants">Selecting Descendants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chains">Chains</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifiers">Quantifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#star-expressions">Star Expressions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#existential-quantification">Existential Quantification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-quantification">Universal Quantification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implications">Implications</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By José Antonio Zamudio Amaya, Marius Smytzek, and Andreas Zeller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CISPA Helmholtz Center for Information Security (www.cispa.de). All Rights Reserved..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fandango Standard Library &#8212; Fuzzing with Fandango</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Stdlib';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fandango Spec Locations" href="Including.html" />
+    <link rel="prev" title="Installing Fandango" href="Installing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fandango.png" class="logo__image only-light" alt="Fuzzing with Fandango - Home"/>
+    <img src="_static/fandango.png" class="logo__image only-dark pst-js-only" alt="Fuzzing with Fandango - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Intro.html">
+                    Fuzzing with Fandango
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About Fandango</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="About.html">About Fandango</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Fandango Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Installing Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FirstSpec.html">A First Fandango Spec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invoking.html">Invoking Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fuzzing.html">Fuzzing with Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Strategies.html">Some Fuzzing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Constraints.html">Shaping Inputs with Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shell.html">The Fandango Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generators.html">Data Generators and Fakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Complex Input Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Paths.html">Accessing Input Elements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ISO8601.html">Case Study: ISO 8601 Date + Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Binary.html">Generating Binary Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bits.html">Bits and Bit Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gif.html">Case Study: The GIF Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Distributions.html">Statistical Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Whitebox.html">Coverage-Guided Fuzzing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hatching.html">Hatching Specs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Reference.html">Fandango Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing Fandango</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fandango Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Including.html">Fandango Spec Locations</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Stdlib.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fandango Standard Library</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printable-characters">Printable Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-characters">ASCII Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-control-characters">ASCII Control Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bits">Bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bytes">Bytes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characters">Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utf-8-characters">UTF-8 characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-numbers">Binary Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fandango-dancer">Fandango Dancer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fandango-standard-library">
+<span id="sec-stdlib"></span><h1>Fandango Standard Library<a class="headerlink" href="#fandango-standard-library" title="Link to this heading">#</a></h1>
+<p>Fandango provides a set of predefined grammar symbols.
+Each symbol is defined as</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;_SYMBOL&gt;</span></code> (with the actual “official” definition), and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;SYMBOL&gt;</span></code> (defined as <code class="docutils literal notranslate"><span class="pre">&lt;_SYMBOL&gt;</span></code> by default; can be overridden in individual specifications)</p></li>
+</ul>
+<p>If you’d like to narrow the definition of, say, punctuation characters, you can redefine <code class="docutils literal notranslate"><span class="pre">&lt;punctuation&gt;</span></code> to your liking:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">punctuation</span><span class="o">&gt;</span> <span class="p">:</span><span class="o">:=</span> <span class="s1">&#39;!&#39;</span> <span class="o">|</span> <span class="s1">&#39;?&#39;</span> <span class="o">|</span> <span class="s1">&#39;,&#39;</span> <span class="o">|</span> <span class="s1">&#39;.&#39;</span> <span class="o">|</span> <span class="s1">&#39;;&#39;</span> <span class="o">|</span> <span class="s1">&#39;:&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The original definition of <code class="docutils literal notranslate"><span class="pre">&lt;_punctuation&gt;</span></code>, however, must not be changed, as other definitions may depend on it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Symbols starting with an underscore must <em>not</em> be redefined.</p>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section id="printable-characters">
+<h2>Printable Characters<a class="headerlink" href="#printable-characters" title="Link to this heading">#</a></h2>
+<p>These symbols mimic the <a class="reference external" href="https://docs.python.org/3/library/string.html">string constants from the Python <code class="docutils literal notranslate"><span class="pre">string</span></code> module</a>.
+Use <code class="docutils literal notranslate"><span class="pre">&lt;digit&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;ascii_letter&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;whitespace&gt;</span></code>, and more to your liking.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_printable&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39; | &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39; | &#39;!&#39; | &#39;&quot;&#39; | &#39;#&#39; | &#39;$&#39; | &#39;%&#39; | &#39;&amp;&#39; | &quot;&#39;&quot; | &#39;(&#39; | &#39;)&#39; | &#39;*&#39; | &#39;+&#39; | &#39;,&#39; | &#39;-&#39; | &#39;.&#39; | &#39;/&#39; | &#39;:&#39; | &#39;;&#39; | &#39;&lt;&#39; | &#39;=&#39; | &#39;&gt;&#39; | &#39;?&#39; | &#39;@&#39; | &#39;[&#39; | &#39;\\&#39; | &#39;]&#39; | &#39;^&#39; | &#39;_&#39; | &#39;`&#39; | &#39;{&#39; | &#39;|&#39; | &#39;}&#39; | &#39;~&#39; | &#39; &#39; | &#39;\t&#39; | &#39;\n&#39; | &#39;\r&#39; | &#39;\x0b&#39; | &#39;\x0c&#39;;
+&lt;printable&gt; ::= &lt;_printable&gt;;
+
+&lt;_whitespace&gt; ::= &#39; &#39; | &#39;\t&#39; | &#39;\n&#39; | &#39;\r&#39; | &#39;\x0b&#39; | &#39;\x0c&#39;;
+&lt;whitespace&gt; ::= &lt;_whitespace&gt;;
+
+&lt;_digit&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39;;
+&lt;digit&gt; ::= &lt;_digit&gt;;
+
+&lt;_hexdigit&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39; | &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39;;
+&lt;hexdigit&gt; ::= &lt;_hexdigit&gt;;
+
+&lt;_octdigit&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39;;
+&lt;octdigit&gt; ::= &lt;_octdigit&gt;;
+
+&lt;_ascii_letter&gt; ::= &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39;;
+&lt;ascii_letter&gt; ::= &lt;_ascii_letter&gt;;
+
+&lt;_ascii_lowercase_letter&gt; ::= &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39;;
+&lt;ascii_lowercase_letter&gt; ::= &lt;_ascii_lowercase_letter&gt;;
+
+&lt;_ascii_uppercase_letter&gt; ::= &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39;;
+&lt;ascii_uppercase_letter&gt; ::= &lt;_ascii_uppercase_letter&gt;;
+
+&lt;_punctuation&gt; ::= &#39;!&#39; | &#39;&quot;&#39; | &#39;#&#39; | &#39;$&#39; | &#39;%&#39; | &#39;&amp;&#39; | &quot;&#39;&quot; | &#39;(&#39; | &#39;)&#39; | &#39;*&#39; | &#39;+&#39; | &#39;,&#39; | &#39;-&#39; | &#39;.&#39; | &#39;/&#39; | &#39;:&#39; | &#39;;&#39; | &#39;&lt;&#39; | &#39;=&#39; | &#39;&gt;&#39; | &#39;?&#39; | &#39;@&#39; | &#39;[&#39; | &#39;\\&#39; | &#39;]&#39; | &#39;^&#39; | &#39;_&#39; | &#39;`&#39; | &#39;{&#39; | &#39;|&#39; | &#39;}&#39; | &#39;~&#39;;
+&lt;punctuation&gt; ::= &lt;_punctuation&gt;;
+
+&lt;_alphanum&gt; ::= &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39; | &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39;;
+&lt;alphanum&gt; ::= &lt;_alphanum&gt;;
+
+&lt;_alphanum_&gt; ::= &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39; | &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39; | &#39;_&#39;;
+&lt;alphanum_&gt; ::= &lt;_alphanum_&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ascii-characters">
+<h2>ASCII Characters<a class="headerlink" href="#ascii-characters" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;ascii_char&gt;</span></code> expands into all 7-bit characters in the ASCII range 0x00-0x7F, printable and non-printable.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_ascii_char&gt; ::= b&#39;\x00&#39; | b&#39;\x01&#39; | b&#39;\x02&#39; | b&#39;\x03&#39; | b&#39;\x04&#39; | b&#39;\x05&#39; | b&#39;\x06&#39; | b&#39;\x07&#39; | b&#39;\x08&#39; | &#39;\t&#39; | &#39;\n&#39; | &#39;\x0b&#39; | &#39;\x0c&#39; | &#39;\r&#39; | b&#39;\x0e&#39; | b&#39;\x0f&#39; | b&#39;\x10&#39; | b&#39;\x11&#39; | b&#39;\x12&#39; | b&#39;\x13&#39; | b&#39;\x14&#39; | b&#39;\x15&#39; | b&#39;\x16&#39; | b&#39;\x17&#39; | b&#39;\x18&#39; | b&#39;\x19&#39; | b&#39;\x1a&#39; | b&#39;\x1b&#39; | b&#39;\x1c&#39; | b&#39;\x1d&#39; | b&#39;\x1e&#39; | b&#39;\x1f&#39; | &#39; &#39; | &#39;!&#39; | &#39;&quot;&#39; | &#39;#&#39; | &#39;$&#39; | &#39;%&#39; | &#39;&amp;&#39; | &quot;&#39;&quot; | &#39;(&#39; | &#39;)&#39; | &#39;*&#39; | &#39;+&#39; | &#39;,&#39; | &#39;-&#39; | &#39;.&#39; | &#39;/&#39; | &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39; | &#39;:&#39; | &#39;;&#39; | &#39;&lt;&#39; | &#39;=&#39; | &#39;&gt;&#39; | &#39;?&#39; | &#39;@&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39; | &#39;[&#39; | &#39;\\&#39; | &#39;]&#39; | &#39;^&#39; | &#39;_&#39; | &#39;`&#39; | &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;{&#39; | &#39;|&#39; | &#39;}&#39; | &#39;~&#39; | b&#39;\x7f&#39;;
+&lt;ascii_char&gt; ::= &lt;_ascii_char&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ascii-control-characters">
+<h2>ASCII Control Characters<a class="headerlink" href="#ascii-control-characters" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;ascii_control&gt;</span></code> expands into any of the ASCII control characters 0x00-0x1F and 0x7F.
+We also provide ASCII codes such as <code class="docutils literal notranslate"><span class="pre">&lt;ESC&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;LF&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&lt;NUL&gt;</span></code>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_NUL&gt; ::= b&#39;\x00&#39;;
+&lt;NUL&gt; ::= &lt;_NUL&gt;;
+
+&lt;_SOH&gt; ::= b&#39;\x01&#39;;
+&lt;SOH&gt; ::= &lt;_SOH&gt;;
+
+&lt;_STX&gt; ::= b&#39;\x02&#39;;
+&lt;STX&gt; ::= &lt;_STX&gt;;
+
+&lt;_ETX&gt; ::= b&#39;\x03&#39;;
+&lt;ETX&gt; ::= &lt;_ETX&gt;;
+
+&lt;_EOT&gt; ::= b&#39;\x04&#39;;
+&lt;EOT&gt; ::= &lt;_EOT&gt;;
+
+&lt;_ENQ&gt; ::= b&#39;\x05&#39;;
+&lt;ENQ&gt; ::= &lt;_ENQ&gt;;
+
+&lt;_ACK&gt; ::= b&#39;\x06&#39;;
+&lt;ACK&gt; ::= &lt;_ACK&gt;;
+
+&lt;_BEL&gt; ::= b&#39;\x07&#39;;
+&lt;BEL&gt; ::= &lt;_BEL&gt;;
+
+&lt;_BS&gt; ::= b&#39;\x08&#39;;
+&lt;BS&gt; ::= &lt;_BS&gt;;
+
+&lt;_HT&gt; ::= b&#39;\x09&#39;;
+&lt;HT&gt; ::= &lt;_HT&gt;;
+
+&lt;_LF&gt; ::= b&#39;\x0a&#39;;
+&lt;LF&gt; ::= &lt;_LF&gt;;
+
+&lt;_VT&gt; ::= b&#39;\x0b&#39;;
+&lt;VT&gt; ::= &lt;_VT&gt;;
+
+&lt;_FF&gt; ::= b&#39;\x0c&#39;;
+&lt;FF&gt; ::= &lt;_FF&gt;;
+
+&lt;_CR&gt; ::= b&#39;\x0d&#39;;
+&lt;CR&gt; ::= &lt;_CR&gt;;
+
+&lt;_SO&gt; ::= b&#39;\x0e&#39;;
+&lt;SO&gt; ::= &lt;_SO&gt;;
+
+&lt;_SI&gt; ::= b&#39;\x0f&#39;;
+&lt;SI&gt; ::= &lt;_SI&gt;;
+
+&lt;_DLE&gt; ::= b&#39;\x10&#39;;
+&lt;DLE&gt; ::= &lt;_DLE&gt;;
+
+&lt;_DC1&gt; ::= b&#39;\x11&#39;;
+&lt;DC1&gt; ::= &lt;_DC1&gt;;
+
+&lt;_DC2&gt; ::= b&#39;\x12&#39;;
+&lt;DC2&gt; ::= &lt;_DC2&gt;;
+
+&lt;_DC3&gt; ::= b&#39;\x13&#39;;
+&lt;DC3&gt; ::= &lt;_DC3&gt;;
+
+&lt;_DC4&gt; ::= b&#39;\x14&#39;;
+&lt;DC4&gt; ::= &lt;_DC4&gt;;
+
+&lt;_NAK&gt; ::= b&#39;\x15&#39;;
+&lt;NAK&gt; ::= &lt;_NAK&gt;;
+
+&lt;_SYN&gt; ::= b&#39;\x16&#39;;
+&lt;SYN&gt; ::= &lt;_SYN&gt;;
+
+&lt;_ETB&gt; ::= b&#39;\x17&#39;;
+&lt;ETB&gt; ::= &lt;_ETB&gt;;
+
+&lt;_CAN&gt; ::= b&#39;\x18&#39;;
+&lt;CAN&gt; ::= &lt;_CAN&gt;;
+
+&lt;_EM&gt; ::= b&#39;\x19&#39;;
+&lt;EM&gt; ::= &lt;_EM&gt;;
+
+&lt;_SUB&gt; ::= b&#39;\x1a&#39;;
+&lt;SUB&gt; ::= &lt;_SUB&gt;;
+
+&lt;_ESC&gt; ::= b&#39;\x1b&#39;;
+&lt;ESC&gt; ::= &lt;_ESC&gt;;
+
+&lt;_FS&gt; ::= b&#39;\x1c&#39;;
+&lt;FS&gt; ::= &lt;_FS&gt;;
+
+&lt;_GS&gt; ::= b&#39;\x1d&#39;;
+&lt;GS&gt; ::= &lt;_GS&gt;;
+
+&lt;_RS&gt; ::= b&#39;\x1e&#39;;
+&lt;RS&gt; ::= &lt;_RS&gt;;
+
+&lt;_US&gt; ::= b&#39;\x1f&#39;;
+&lt;US&gt; ::= &lt;_US&gt;;
+
+&lt;_SP&gt; ::= b&#39;\x20&#39;;
+&lt;SP&gt; ::= &lt;_SP&gt;;
+
+&lt;_DEL&gt; ::= b&#39;\x7f&#39;;
+&lt;DEL&gt; ::= &lt;_DEL&gt;;
+
+&lt;_ascii_control&gt; ::= &lt;NUL&gt; | &lt;SOH&gt; | &lt;STX&gt; | &lt;ETX&gt; | &lt;EOT&gt; | &lt;ENQ&gt; | &lt;ACK&gt; | &lt;BEL&gt; | &lt;BS&gt; | &lt;HT&gt; | &lt;LF&gt; | &lt;VT&gt; | &lt;FF&gt; | &lt;CR&gt; | &lt;SO&gt; | &lt;SI&gt; | &lt;DLE&gt; | &lt;DC1&gt; | &lt;DC2&gt; | &lt;DC3&gt; | &lt;DC4&gt; | &lt;NAK&gt; | &lt;SYN&gt; | &lt;ETB&gt; | &lt;CAN&gt; | &lt;EM&gt; | &lt;SUB&gt; | &lt;ESC&gt; | &lt;FS&gt; | &lt;GS&gt; | &lt;RS&gt; | &lt;US&gt; | &lt;SP&gt; | &lt;DEL&gt;;
+&lt;ascii_control&gt; ::= &lt;_ascii_control&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bits">
+<h2>Bits<a class="headerlink" href="#bits" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;bit&gt;</span></code> represents a bit of 0 or 1.
+Use <code class="docutils literal notranslate"><span class="pre">&lt;bit&gt;{N}</span></code> to specify a sequence of <code class="docutils literal notranslate"><span class="pre">N</span></code> bits.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_bit&gt; ::= 0 | 1;
+&lt;bit&gt; ::= &lt;_bit&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bytes">
+<h2>Bytes<a class="headerlink" href="#bytes" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;byte&gt;</span></code> is any byte 0x00-0xFF.
+During parsing and production, it will always be interpreted as a single byte.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_byte&gt; ::= b&#39;\x00&#39; | b&#39;\x01&#39; | b&#39;\x02&#39; | b&#39;\x03&#39; | b&#39;\x04&#39; | b&#39;\x05&#39; | b&#39;\x06&#39; | b&#39;\x07&#39; | b&#39;\x08&#39; | b&#39;\x09&#39; | b&#39;\x0a&#39; | b&#39;\x0b&#39; | b&#39;\x0c&#39; | b&#39;\x0d&#39; | b&#39;\x0e&#39; | b&#39;\x0f&#39; | b&#39;\x10&#39; | b&#39;\x11&#39; | b&#39;\x12&#39; | b&#39;\x13&#39; | b&#39;\x14&#39; | b&#39;\x15&#39; | b&#39;\x16&#39; | b&#39;\x17&#39; | b&#39;\x18&#39; | b&#39;\x19&#39; | b&#39;\x1a&#39; | b&#39;\x1b&#39; | b&#39;\x1c&#39; | b&#39;\x1d&#39; | b&#39;\x1e&#39; | b&#39;\x1f&#39; | b&#39;\x20&#39; | b&#39;\x21&#39; | b&#39;\x22&#39; | b&#39;\x23&#39; | b&#39;\x24&#39; | b&#39;\x25&#39; | b&#39;\x26&#39; | b&#39;\x27&#39; | b&#39;\x28&#39; | b&#39;\x29&#39; | b&#39;\x2a&#39; | b&#39;\x2b&#39; | b&#39;\x2c&#39; | b&#39;\x2d&#39; | b&#39;\x2e&#39; | b&#39;\x2f&#39; | b&#39;\x30&#39; | b&#39;\x31&#39; | b&#39;\x32&#39; | b&#39;\x33&#39; | b&#39;\x34&#39; | b&#39;\x35&#39; | b&#39;\x36&#39; | b&#39;\x37&#39; | b&#39;\x38&#39; | b&#39;\x39&#39; | b&#39;\x3a&#39; | b&#39;\x3b&#39; | b&#39;\x3c&#39; | b&#39;\x3d&#39; | b&#39;\x3e&#39; | b&#39;\x3f&#39; | b&#39;\x40&#39; | b&#39;\x41&#39; | b&#39;\x42&#39; | b&#39;\x43&#39; | b&#39;\x44&#39; | b&#39;\x45&#39; | b&#39;\x46&#39; | b&#39;\x47&#39; | b&#39;\x48&#39; | b&#39;\x49&#39; | b&#39;\x4a&#39; | b&#39;\x4b&#39; | b&#39;\x4c&#39; | b&#39;\x4d&#39; | b&#39;\x4e&#39; | b&#39;\x4f&#39; | b&#39;\x50&#39; | b&#39;\x51&#39; | b&#39;\x52&#39; | b&#39;\x53&#39; | b&#39;\x54&#39; | b&#39;\x55&#39; | b&#39;\x56&#39; | b&#39;\x57&#39; | b&#39;\x58&#39; | b&#39;\x59&#39; | b&#39;\x5a&#39; | b&#39;\x5b&#39; | b&#39;\x5c&#39; | b&#39;\x5d&#39; | b&#39;\x5e&#39; | b&#39;\x5f&#39; | b&#39;\x60&#39; | b&#39;\x61&#39; | b&#39;\x62&#39; | b&#39;\x63&#39; | b&#39;\x64&#39; | b&#39;\x65&#39; | b&#39;\x66&#39; | b&#39;\x67&#39; | b&#39;\x68&#39; | b&#39;\x69&#39; | b&#39;\x6a&#39; | b&#39;\x6b&#39; | b&#39;\x6c&#39; | b&#39;\x6d&#39; | b&#39;\x6e&#39; | b&#39;\x6f&#39; | b&#39;\x70&#39; | b&#39;\x71&#39; | b&#39;\x72&#39; | b&#39;\x73&#39; | b&#39;\x74&#39; | b&#39;\x75&#39; | b&#39;\x76&#39; | b&#39;\x77&#39; | b&#39;\x78&#39; | b&#39;\x79&#39; | b&#39;\x7a&#39; | b&#39;\x7b&#39; | b&#39;\x7c&#39; | b&#39;\x7d&#39; | b&#39;\x7e&#39; | b&#39;\x7f&#39; | b&#39;\x80&#39; | b&#39;\x81&#39; | b&#39;\x82&#39; | b&#39;\x83&#39; | b&#39;\x84&#39; | b&#39;\x85&#39; | b&#39;\x86&#39; | b&#39;\x87&#39; | b&#39;\x88&#39; | b&#39;\x89&#39; | b&#39;\x8a&#39; | b&#39;\x8b&#39; | b&#39;\x8c&#39; | b&#39;\x8d&#39; | b&#39;\x8e&#39; | b&#39;\x8f&#39; | b&#39;\x90&#39; | b&#39;\x91&#39; | b&#39;\x92&#39; | b&#39;\x93&#39; | b&#39;\x94&#39; | b&#39;\x95&#39; | b&#39;\x96&#39; | b&#39;\x97&#39; | b&#39;\x98&#39; | b&#39;\x99&#39; | b&#39;\x9a&#39; | b&#39;\x9b&#39; | b&#39;\x9c&#39; | b&#39;\x9d&#39; | b&#39;\x9e&#39; | b&#39;\x9f&#39; | b&#39;\xa0&#39; | b&#39;\xa1&#39; | b&#39;\xa2&#39; | b&#39;\xa3&#39; | b&#39;\xa4&#39; | b&#39;\xa5&#39; | b&#39;\xa6&#39; | b&#39;\xa7&#39; | b&#39;\xa8&#39; | b&#39;\xa9&#39; | b&#39;\xaa&#39; | b&#39;\xab&#39; | b&#39;\xac&#39; | b&#39;\xad&#39; | b&#39;\xae&#39; | b&#39;\xaf&#39; | b&#39;\xb0&#39; | b&#39;\xb1&#39; | b&#39;\xb2&#39; | b&#39;\xb3&#39; | b&#39;\xb4&#39; | b&#39;\xb5&#39; | b&#39;\xb6&#39; | b&#39;\xb7&#39; | b&#39;\xb8&#39; | b&#39;\xb9&#39; | b&#39;\xba&#39; | b&#39;\xbb&#39; | b&#39;\xbc&#39; | b&#39;\xbd&#39; | b&#39;\xbe&#39; | b&#39;\xbf&#39; | b&#39;\xc0&#39; | b&#39;\xc1&#39; | b&#39;\xc2&#39; | b&#39;\xc3&#39; | b&#39;\xc4&#39; | b&#39;\xc5&#39; | b&#39;\xc6&#39; | b&#39;\xc7&#39; | b&#39;\xc8&#39; | b&#39;\xc9&#39; | b&#39;\xca&#39; | b&#39;\xcb&#39; | b&#39;\xcc&#39; | b&#39;\xcd&#39; | b&#39;\xce&#39; | b&#39;\xcf&#39; | b&#39;\xd0&#39; | b&#39;\xd1&#39; | b&#39;\xd2&#39; | b&#39;\xd3&#39; | b&#39;\xd4&#39; | b&#39;\xd5&#39; | b&#39;\xd6&#39; | b&#39;\xd7&#39; | b&#39;\xd8&#39; | b&#39;\xd9&#39; | b&#39;\xda&#39; | b&#39;\xdb&#39; | b&#39;\xdc&#39; | b&#39;\xdd&#39; | b&#39;\xde&#39; | b&#39;\xdf&#39; | b&#39;\xe0&#39; | b&#39;\xe1&#39; | b&#39;\xe2&#39; | b&#39;\xe3&#39; | b&#39;\xe4&#39; | b&#39;\xe5&#39; | b&#39;\xe6&#39; | b&#39;\xe7&#39; | b&#39;\xe8&#39; | b&#39;\xe9&#39; | b&#39;\xea&#39; | b&#39;\xeb&#39; | b&#39;\xec&#39; | b&#39;\xed&#39; | b&#39;\xee&#39; | b&#39;\xef&#39; | b&#39;\xf0&#39; | b&#39;\xf1&#39; | b&#39;\xf2&#39; | b&#39;\xf3&#39; | b&#39;\xf4&#39; | b&#39;\xf5&#39; | b&#39;\xf6&#39; | b&#39;\xf7&#39; | b&#39;\xf8&#39; | b&#39;\xf9&#39; | b&#39;\xfa&#39; | b&#39;\xfb&#39; | b&#39;\xfc&#39; | b&#39;\xfd&#39; | b&#39;\xfe&#39; | b&#39;\xff&#39;;
+&lt;byte&gt; ::= &lt;_byte&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="characters">
+<h2>Characters<a class="headerlink" href="#characters" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;char&gt;</span></code> is any Unicode character.</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;char&gt;</span></code> is currently not defined.
+Use <code class="docutils literal notranslate"><span class="pre">&lt;ascii_char&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;byte&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&lt;utf8_char&gt;</span></code> instead.</p>
+</div>
+</section>
+<section id="utf-8-characters">
+<h2>UTF-8 characters<a class="headerlink" href="#utf-8-characters" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">&lt;utf8_char&gt;</span></code> is a UTF-8 encoding of a character, occupying one (<code class="docutils literal notranslate"><span class="pre">&lt;utf8_char1&gt;</span></code>) to four (<code class="docutils literal notranslate"><span class="pre">&lt;utf8_char4</span></code>) bytes.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_utf8_char1&gt; ::= b&#39;\x00&#39; | b&#39;\x01&#39; | b&#39;\x02&#39; | b&#39;\x03&#39; | b&#39;\x04&#39; | b&#39;\x05&#39; | b&#39;\x06&#39; | b&#39;\x07&#39; | b&#39;\x08&#39; | &#39;\t&#39; | &#39;\n&#39; | &#39;\x0b&#39; | &#39;\x0c&#39; | &#39;\r&#39; | b&#39;\x0e&#39; | b&#39;\x0f&#39; | b&#39;\x10&#39; | b&#39;\x11&#39; | b&#39;\x12&#39; | b&#39;\x13&#39; | b&#39;\x14&#39; | b&#39;\x15&#39; | b&#39;\x16&#39; | b&#39;\x17&#39; | b&#39;\x18&#39; | b&#39;\x19&#39; | b&#39;\x1a&#39; | b&#39;\x1b&#39; | b&#39;\x1c&#39; | b&#39;\x1d&#39; | b&#39;\x1e&#39; | b&#39;\x1f&#39; | &#39; &#39; | &#39;!&#39; | &#39;&quot;&#39; | &#39;#&#39; | &#39;$&#39; | &#39;%&#39; | &#39;&amp;&#39; | &quot;&#39;&quot; | &#39;(&#39; | &#39;)&#39; | &#39;*&#39; | &#39;+&#39; | &#39;,&#39; | &#39;-&#39; | &#39;.&#39; | &#39;/&#39; | &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39; | &#39;:&#39; | &#39;;&#39; | &#39;&lt;&#39; | &#39;=&#39; | &#39;&gt;&#39; | &#39;?&#39; | &#39;@&#39; | &#39;A&#39; | &#39;B&#39; | &#39;C&#39; | &#39;D&#39; | &#39;E&#39; | &#39;F&#39; | &#39;G&#39; | &#39;H&#39; | &#39;I&#39; | &#39;J&#39; | &#39;K&#39; | &#39;L&#39; | &#39;M&#39; | &#39;N&#39; | &#39;O&#39; | &#39;P&#39; | &#39;Q&#39; | &#39;R&#39; | &#39;S&#39; | &#39;T&#39; | &#39;U&#39; | &#39;V&#39; | &#39;W&#39; | &#39;X&#39; | &#39;Y&#39; | &#39;Z&#39; | &#39;[&#39; | &#39;\\&#39; | &#39;]&#39; | &#39;^&#39; | &#39;_&#39; | &#39;`&#39; | &#39;a&#39; | &#39;b&#39; | &#39;c&#39; | &#39;d&#39; | &#39;e&#39; | &#39;f&#39; | &#39;g&#39; | &#39;h&#39; | &#39;i&#39; | &#39;j&#39; | &#39;k&#39; | &#39;l&#39; | &#39;m&#39; | &#39;n&#39; | &#39;o&#39; | &#39;p&#39; | &#39;q&#39; | &#39;r&#39; | &#39;s&#39; | &#39;t&#39; | &#39;u&#39; | &#39;v&#39; | &#39;w&#39; | &#39;x&#39; | &#39;y&#39; | &#39;z&#39; | &#39;{&#39; | &#39;|&#39; | &#39;}&#39; | &#39;~&#39; | b&#39;\x7f&#39;;
+&lt;utf8_char1&gt; ::= &lt;_utf8_char1&gt;;
+
+&lt;_utf8_continuation_byte&gt; ::= b&#39;\x80&#39; | b&#39;\x81&#39; | b&#39;\x82&#39; | b&#39;\x83&#39; | b&#39;\x84&#39; | b&#39;\x85&#39; | b&#39;\x86&#39; | b&#39;\x87&#39; | b&#39;\x88&#39; | b&#39;\x89&#39; | b&#39;\x8a&#39; | b&#39;\x8b&#39; | b&#39;\x8c&#39; | b&#39;\x8d&#39; | b&#39;\x8e&#39; | b&#39;\x8f&#39; | b&#39;\x90&#39; | b&#39;\x91&#39; | b&#39;\x92&#39; | b&#39;\x93&#39; | b&#39;\x94&#39; | b&#39;\x95&#39; | b&#39;\x96&#39; | b&#39;\x97&#39; | b&#39;\x98&#39; | b&#39;\x99&#39; | b&#39;\x9a&#39; | b&#39;\x9b&#39; | b&#39;\x9c&#39; | b&#39;\x9d&#39; | b&#39;\x9e&#39; | b&#39;\x9f&#39; | b&#39;\xa0&#39; | b&#39;\xa1&#39; | b&#39;\xa2&#39; | b&#39;\xa3&#39; | b&#39;\xa4&#39; | b&#39;\xa5&#39; | b&#39;\xa6&#39; | b&#39;\xa7&#39; | b&#39;\xa8&#39; | b&#39;\xa9&#39; | b&#39;\xaa&#39; | b&#39;\xab&#39; | b&#39;\xac&#39; | b&#39;\xad&#39; | b&#39;\xae&#39; | b&#39;\xaf&#39; | b&#39;\xb0&#39; | b&#39;\xb1&#39; | b&#39;\xb2&#39; | b&#39;\xb3&#39; | b&#39;\xb4&#39; | b&#39;\xb5&#39; | b&#39;\xb6&#39; | b&#39;\xb7&#39; | b&#39;\xb8&#39; | b&#39;\xb9&#39; | b&#39;\xba&#39; | b&#39;\xbb&#39; | b&#39;\xbc&#39; | b&#39;\xbd&#39; | b&#39;\xbe&#39; | b&#39;\xbf&#39;;
+&lt;utf8_continuation_byte&gt; ::= &lt;_utf8_continuation_byte&gt;;
+
+&lt;_utf8_char2&gt; ::= (b&#39;\xc2&#39; | b&#39;\xc3&#39; | b&#39;\xc4&#39; | b&#39;\xc5&#39; | b&#39;\xc6&#39; | b&#39;\xc7&#39; | b&#39;\xc8&#39; | b&#39;\xc9&#39; | b&#39;\xca&#39; | b&#39;\xcb&#39; | b&#39;\xcc&#39; | b&#39;\xcd&#39; | b&#39;\xce&#39; | b&#39;\xcf&#39; | b&#39;\xd0&#39; | b&#39;\xd1&#39; | b&#39;\xd2&#39; | b&#39;\xd3&#39; | b&#39;\xd4&#39; | b&#39;\xd5&#39; | b&#39;\xd6&#39; | b&#39;\xd7&#39; | b&#39;\xd8&#39; | b&#39;\xd9&#39; | b&#39;\xda&#39; | b&#39;\xdb&#39; | b&#39;\xdc&#39; | b&#39;\xdd&#39; | b&#39;\xde&#39; | b&#39;\xdf&#39;) &lt;utf8_continuation_byte&gt;;
+&lt;utf8_char2&gt; ::= &lt;_utf8_char2&gt;;
+
+&lt;_utf8_char3&gt; ::= (b&#39;\xe0&#39; | b&#39;\xe1&#39; | b&#39;\xe2&#39; | b&#39;\xe3&#39; | b&#39;\xe4&#39; | b&#39;\xe5&#39; | b&#39;\xe6&#39; | b&#39;\xe7&#39; | b&#39;\xe8&#39; | b&#39;\xe9&#39; | b&#39;\xea&#39; | b&#39;\xeb&#39; | b&#39;\xec&#39; | b&#39;\xed&#39; | b&#39;\xee&#39; | b&#39;\xef&#39;) &lt;utf8_continuation_byte&gt;{2};
+&lt;utf8_char3&gt; ::= &lt;_utf8_char3&gt;;
+
+&lt;_utf8_char4&gt; ::= (b&#39;\xf0&#39; | b&#39;\xf1&#39; | b&#39;\xf2&#39; | b&#39;\xf3&#39; | b&#39;\xf4&#39; | b&#39;\xf5&#39;) &lt;utf8_continuation_byte&gt;{3};
+&lt;utf8_char4&gt; ::= &lt;_utf8_char4&gt;;
+
+&lt;_utf8_char&gt; ::= &lt;utf8_char1&gt; | &lt;utf8_char2&gt; | &lt;utf8_char3&gt; | &lt;utf8_char4&gt;;
+&lt;utf8_char&gt; ::= &lt;_utf8_char&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="binary-numbers">
+<h2>Binary Numbers<a class="headerlink" href="#binary-numbers" title="Link to this heading">#</a></h2>
+<p>For binary representations of numbers, use symbols such as <code class="docutils literal notranslate"><span class="pre">&lt;int8&gt;</span></code> (8 bits) or <code class="docutils literal notranslate"><span class="pre">&lt;int32&gt;</span></code> (32 bits).
+Note that these symbols only specify the <em>length</em>; they do not cover signs, endianness, or byte ordering.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_int8&gt; ::= &lt;byte&gt;;
+&lt;int8&gt; ::= &lt;_int8&gt;;
+
+&lt;_int16&gt; ::= &lt;byte&gt;&lt;byte&gt;;
+&lt;int16&gt; ::= &lt;_int16&gt;;
+
+&lt;_int32&gt; ::= &lt;byte&gt;{4};
+&lt;int32&gt; ::= &lt;_int32&gt;;
+
+&lt;_int64&gt; ::= &lt;byte&gt;{8};
+&lt;int64&gt; ::= &lt;_int64&gt;;
+
+&lt;_float32&gt; ::= &lt;byte&gt;{4};
+&lt;float32&gt; ::= &lt;_float32&gt;;
+
+&lt;_float64&gt; ::= &lt;byte&gt;{8};
+&lt;float64&gt; ::= &lt;_float64&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fandango-dancer">
+<h2>Fandango Dancer<a class="headerlink" href="#fandango-dancer" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;fandango-dancer&gt;</span></code> symbol is used to test UTF-8 compatibility.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_fandango_dancer&gt; ::= &#39;💃&#39;;
+&lt;fandango_dancer&gt; ::= &lt;_fandango_dancer&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Installing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Installing Fandango</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Including.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fandango Spec Locations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printable-characters">Printable Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-characters">ASCII Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ascii-control-characters">ASCII Control Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bits">Bits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bytes">Bytes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characters">Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utf-8-characters">UTF-8 characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-numbers">Binary Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fandango-dancer">Fandango Dancer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By José Antonio Zamudio Amaya, Marius Smytzek, and Andreas Zeller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CISPA Helmholtz Center for Information Security (www.cispa.de). All Rights Reserved..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

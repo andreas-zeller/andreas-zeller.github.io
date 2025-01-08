@@ -1,0 +1,1355 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Case Study: ISO 8601 Date + Time &#8212; Fuzzing with Fandango</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ISO8601';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Generating Binary Inputs" href="Binary.html" />
+    <link rel="prev" title="Accessing Input Elements" href="Paths.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fandango.png" class="logo__image only-light" alt="Fuzzing with Fandango - Home"/>
+    <img src="_static/fandango.png" class="logo__image only-dark pst-js-only" alt="Fuzzing with Fandango - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Intro.html">
+                    Fuzzing with Fandango
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About Fandango</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="About.html">About Fandango</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial.html">Fandango Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Setup.html">Installing Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FirstSpec.html">A First Fandango Spec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invoking.html">Invoking Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fuzzing.html">Fuzzing with Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Strategies.html">Some Fuzzing Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Constraints.html">Shaping Inputs with Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shell.html">The Fandango Shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Generators.html">Data Generators and Fakers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Complex Input Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Paths.html">Accessing Input Elements</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Case Study: ISO 8601 Date + Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Binary.html">Generating Binary Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bits.html">Bits and Bit Fields</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Gif.html">Case Study: The GIF Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Distributions.html">Statistical Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Whitebox.html">Coverage-Guided Fuzzing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hatching.html">Hatching Specs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fandango Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Reference.html">Fandango Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Installing.html">Installing Fandango</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Stdlib.html">Fandango Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Including.html">Fandango Spec Locations</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ISO8601.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Case Study: ISO 8601 Date + Time</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-grammars-programmatically">Creating Grammars Programmatically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spec-header">Spec Header</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date">Date</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calendar-dates">Calendar Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#months">Months</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days">Days</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-dates">Week Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-dates">Ordinal Dates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hours">Hours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minutes">Minutes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seconds">Seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-zones">Time Zones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensuring-validity">Ensuring Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#even-better-validity">Even Better Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzing-dates-and-times">Fuzzing Dates and Times</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="case-study-iso-8601-date-time">
+<span id="sec-iso8601"></span><h1>Case Study: ISO 8601 Date + Time<a class="headerlink" href="#case-study-iso-8601-date-time" title="Link to this heading">#</a></h1>
+<p>Let us make use of what we have explored so far in a more elaborate case study.
+<a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> is an international standard for exchange and communication of <em>date and time-related data</em>, providing an unambiguous method of representing calendar dates and times.</p>
+<p>In this chapter, we will define a full Fandango spec for ISO 8601 date and time formats, ensuring both syntactic and semantic validity.
+To make matters more interesting, we will create the spec <em>programmatically</em> - that is, by having a number of Python functions that generate the spec for us.</p>
+<section id="creating-grammars-programmatically">
+<h2>Creating Grammars Programmatically<a class="headerlink" href="#creating-grammars-programmatically" title="Link to this heading">#</a></h2>
+<p>We start with a number of functions that help us create fragments of the grammar.</p>
+<p><code class="docutils literal notranslate"><span class="pre">make_rule()</span></code> creates a grammar rule from <code class="docutils literal notranslate"><span class="pre">symbol</span></code> and its possible <code class="docutils literal notranslate"><span class="pre">expansions</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">def</span> <span class="nf">print_s</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">make_rule</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expansions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">print_s</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="s2">&lt;</span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">&gt; ::= &quot;</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">expansions</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&lt;iso8601datetime&gt;&quot;</span><span class="p">]);</span>  <span class="c1"># a final &quot;;&quot; suppresses result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;start&gt; ::= &lt;iso8601datetime&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">make_rule()</span></code> to quickly create a list of expansions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;digit&quot;</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">digit</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;digit&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>These additional functions help in adding non-grammar elements such as headers, code, and constraints:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_header</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">print_s</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"># </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_comment</span><span class="p">(</span><span class="n">comment</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">print_s</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="s2"># </span><span class="si">{</span><span class="n">comment</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_constraint</span><span class="p">(</span><span class="n">constraint</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">print_s</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">constraint</span><span class="si">}</span><span class="s2">;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_code</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">print_s</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">make_header</span><span class="p">(</span><span class="s2">&quot;ISO 8601 grammar&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ISO 8601 grammar
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spec-header">
+<h2>Spec Header<a class="headerlink" href="#spec-header" title="Link to this heading">#</a></h2>
+<p>Let us create a Fandango spec.
+For now, we store the final spec in the <code class="docutils literal notranslate"><span class="pre">iso8601lib</span></code> string variable, to be saved in a file at the end.
+Every time we add a new fragment, the new fragment will be output here, so we can see the actual content of <code class="docutils literal notranslate"><span class="pre">iso8601lib</span></code> incrementally.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">=</span> <span class="n">make_header</span><span class="p">(</span><span class="s2">&quot;ISO 8601 date and time&quot;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_comment</span><span class="p">(</span><span class="s2">&quot;Generated by docs/ISO8601.md. Do not edit.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ISO 8601 date and time
+# Generated by docs/ISO8601.md. Do not edit.
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will need the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> library below, so we import it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_code</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">import datetime</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>import datetime
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="date">
+<h2>Date<a class="headerlink" href="#date" title="Link to this heading">#</a></h2>
+<p>We start with a <code class="docutils literal notranslate"><span class="pre">&lt;start&gt;</span></code> symbol.
+An ISO 8601 date/time spec starts with a date, and an optional time, separated by <code class="docutils literal notranslate"><span class="pre">T</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&lt;iso8601datetime&gt;&quot;</span><span class="p">])</span>
+
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601datetime&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&lt;iso8601date&gt; (&#39;T&#39; &lt;iso8601time&gt;)?&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;start&gt; ::= &lt;iso8601datetime&gt;;
+&lt;iso8601datetime&gt; ::= &lt;iso8601date&gt; (&#39;T&#39; &lt;iso8601time&gt;)?;
+</pre></div>
+</div>
+</div>
+</div>
+<p>A date can either be a <em>calendar date</em>, but also a <em>week date</em> or an <em>ordinal date</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601date&quot;</span><span class="p">,</span>
+                        <span class="p">[</span><span class="s2">&quot;&lt;iso8601calendardate&gt;&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;&lt;iso8601weekdate&gt;&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;&lt;iso8601ordinaldate&gt;&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601date&gt; ::= &lt;iso8601calendardate&gt; | &lt;iso8601weekdate&gt; | &lt;iso8601ordinaldate&gt;;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="calendar-dates">
+<h3>Calendar Dates<a class="headerlink" href="#calendar-dates" title="Link to this heading">#</a></h3>
+<p>An ISO 8601 calendar date has the format YYYY-MM-DD, but can also be YYYY-MM or YYYYMMDD.
+The year can be prefixed with <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">-</span></code> to indicate <a class="reference external" href="https://en.wikipedia.org/wiki/Anno_Domini">AC/BC</a> o(or <a class="reference external" href="https://en.wikipedia.org/wiki/Common_Era">CE/BCE</a>) designators.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601calendardate&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&lt;iso8601year&gt; &#39;-&#39; &lt;iso8601month&gt; (&#39;-&#39; &lt;iso8601day&gt;)?&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;&lt;iso8601year&gt; &lt;iso8601month&gt; &lt;iso8601day&gt;&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601year&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;(&#39;+&#39;|&#39;-&#39;)? &lt;digit&gt;</span><span class="si">{4}</span><span class="s2">&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601calendardate&gt; ::= &lt;iso8601year&gt; &#39;-&#39; &lt;iso8601month&gt; (&#39;-&#39; &lt;iso8601day&gt;)? | &lt;iso8601year&gt; &lt;iso8601month&gt; &lt;iso8601day&gt;;
+&lt;iso8601year&gt; ::= (&#39;+&#39;|&#39;-&#39;)? &lt;digit&gt;{4};
+</pre></div>
+</div>
+</div>
+</div>
+<p>And yes, we need digits for specifying a year:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;digit&quot;</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">digit</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">digit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;digit&gt; ::= &#39;0&#39; | &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39; | &#39;8&#39; | &#39;9&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="months">
+<h3>Months<a class="headerlink" href="#months" title="Link to this heading">#</a></h3>
+<p>Months are easy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601month&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">month</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601month&gt; ::= &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="days">
+<h3>Days<a class="headerlink" href="#days" title="Link to this heading">#</a></h3>
+<p>As with months, we define each day individually to avoid biasing the grammar.
+The fact that some months have only 28, 29, or 30 days will be handled later on in a constraint.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601day&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601day&gt; ::= &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39; | &#39;13&#39; | &#39;14&#39; | &#39;15&#39; | &#39;16&#39; | &#39;17&#39; | &#39;18&#39; | &#39;19&#39; | &#39;20&#39; | &#39;21&#39; | &#39;22&#39; | &#39;23&#39; | &#39;24&#39; | &#39;25&#39; | &#39;26&#39; | &#39;27&#39; | &#39;28&#39; | &#39;29&#39; | &#39;30&#39; | &#39;31&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For testing purposes, it makes sense to test with <em>extreme</em> values - in our case, January 1, February 28 or 29, and December 31.</p>
+</div>
+</section>
+<section id="week-dates">
+<h3>Week Dates<a class="headerlink" href="#week-dates" title="Link to this heading">#</a></h3>
+<p>ISO 8601 also allows specifying dates by week numbers (1 - 53) and optional days of the week (1 - 7).
+<code class="docutils literal notranslate"><span class="pre">2025-W12-1</span></code> is the Monday of the 12th week in 2025.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601weekdate&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&lt;iso8601year&gt; &#39;-&#39;? &#39;W&#39; &lt;iso8601week&gt; (&#39;-&#39; &lt;iso8601weekday&gt;)?&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601week&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">week</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">week</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">54</span><span class="p">)])</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601weekday&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">weekday</span><span class="si">:</span><span class="s2">1d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">weekday</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601weekdate&gt; ::= &lt;iso8601year&gt; &#39;-&#39;? &#39;W&#39; &lt;iso8601week&gt; (&#39;-&#39; &lt;iso8601weekday&gt;)?;
+&lt;iso8601week&gt; ::= &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39; | &#39;13&#39; | &#39;14&#39; | &#39;15&#39; | &#39;16&#39; | &#39;17&#39; | &#39;18&#39; | &#39;19&#39; | &#39;20&#39; | &#39;21&#39; | &#39;22&#39; | &#39;23&#39; | &#39;24&#39; | &#39;25&#39; | &#39;26&#39; | &#39;27&#39; | &#39;28&#39; | &#39;29&#39; | &#39;30&#39; | &#39;31&#39; | &#39;32&#39; | &#39;33&#39; | &#39;34&#39; | &#39;35&#39; | &#39;36&#39; | &#39;37&#39; | &#39;38&#39; | &#39;39&#39; | &#39;40&#39; | &#39;41&#39; | &#39;42&#39; | &#39;43&#39; | &#39;44&#39; | &#39;45&#39; | &#39;46&#39; | &#39;47&#39; | &#39;48&#39; | &#39;49&#39; | &#39;50&#39; | &#39;51&#39; | &#39;52&#39; | &#39;53&#39;;
+&lt;iso8601weekday&gt; ::= &#39;1&#39; | &#39;2&#39; | &#39;3&#39; | &#39;4&#39; | &#39;5&#39; | &#39;6&#39; | &#39;7&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ordinal-dates">
+<h3>Ordinal Dates<a class="headerlink" href="#ordinal-dates" title="Link to this heading">#</a></h3>
+<p>ISO 8601 also allows specifying dates by day numbers (1 - 366).
+<code class="docutils literal notranslate"><span class="pre">2000-366</span></code>, for instance, specifies the last day in 2000 (which was a leap year).
+Again, we specify each day programmatically (and individually).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601ordinaldate&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&lt;iso8601year&gt; (&#39;-&#39;? &lt;iso8601ordinalday&gt;)?&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601ordinalday&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">367</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601ordinaldate&gt; ::= &lt;iso8601year&gt; (&#39;-&#39;? &lt;iso8601ordinalday&gt;)?;
+&lt;iso8601ordinalday&gt; ::= &#39;001&#39; | &#39;002&#39; | &#39;003&#39; | &#39;004&#39; | &#39;005&#39; | &#39;006&#39; | &#39;007&#39; | &#39;008&#39; | &#39;009&#39; | &#39;010&#39; | &#39;011&#39; | &#39;012&#39; | &#39;013&#39; | &#39;014&#39; | &#39;015&#39; | &#39;016&#39; | &#39;017&#39; | &#39;018&#39; | &#39;019&#39; | &#39;020&#39; | &#39;021&#39; | &#39;022&#39; | &#39;023&#39; | &#39;024&#39; | &#39;025&#39; | &#39;026&#39; | &#39;027&#39; | &#39;028&#39; | &#39;029&#39; | &#39;030&#39; | &#39;031&#39; | &#39;032&#39; | &#39;033&#39; | &#39;034&#39; | &#39;035&#39; | &#39;036&#39; | &#39;037&#39; | &#39;038&#39; | &#39;039&#39; | &#39;040&#39; | &#39;041&#39; | &#39;042&#39; | &#39;043&#39; | &#39;044&#39; | &#39;045&#39; | &#39;046&#39; | &#39;047&#39; | &#39;048&#39; | &#39;049&#39; | &#39;050&#39; | &#39;051&#39; | &#39;052&#39; | &#39;053&#39; | &#39;054&#39; | &#39;055&#39; | &#39;056&#39; | &#39;057&#39; | &#39;058&#39; | &#39;059&#39; | &#39;060&#39; | &#39;061&#39; | &#39;062&#39; | &#39;063&#39; | &#39;064&#39; | &#39;065&#39; | &#39;066&#39; | &#39;067&#39; | &#39;068&#39; | &#39;069&#39; | &#39;070&#39; | &#39;071&#39; | &#39;072&#39; | &#39;073&#39; | &#39;074&#39; | &#39;075&#39; | &#39;076&#39; | &#39;077&#39; | &#39;078&#39; | &#39;079&#39; | &#39;080&#39; | &#39;081&#39; | &#39;082&#39; | &#39;083&#39; | &#39;084&#39; | &#39;085&#39; | &#39;086&#39; | &#39;087&#39; | &#39;088&#39; | &#39;089&#39; | &#39;090&#39; | &#39;091&#39; | &#39;092&#39; | &#39;093&#39; | &#39;094&#39; | &#39;095&#39; | &#39;096&#39; | &#39;097&#39; | &#39;098&#39; | &#39;099&#39; | &#39;100&#39; | &#39;101&#39; | &#39;102&#39; | &#39;103&#39; | &#39;104&#39; | &#39;105&#39; | &#39;106&#39; | &#39;107&#39; | &#39;108&#39; | &#39;109&#39; | &#39;110&#39; | &#39;111&#39; | &#39;112&#39; | &#39;113&#39; | &#39;114&#39; | &#39;115&#39; | &#39;116&#39; | &#39;117&#39; | &#39;118&#39; | &#39;119&#39; | &#39;120&#39; | &#39;121&#39; | &#39;122&#39; | &#39;123&#39; | &#39;124&#39; | &#39;125&#39; | &#39;126&#39; | &#39;127&#39; | &#39;128&#39; | &#39;129&#39; | &#39;130&#39; | &#39;131&#39; | &#39;132&#39; | &#39;133&#39; | &#39;134&#39; | &#39;135&#39; | &#39;136&#39; | &#39;137&#39; | &#39;138&#39; | &#39;139&#39; | &#39;140&#39; | &#39;141&#39; | &#39;142&#39; | &#39;143&#39; | &#39;144&#39; | &#39;145&#39; | &#39;146&#39; | &#39;147&#39; | &#39;148&#39; | &#39;149&#39; | &#39;150&#39; | &#39;151&#39; | &#39;152&#39; | &#39;153&#39; | &#39;154&#39; | &#39;155&#39; | &#39;156&#39; | &#39;157&#39; | &#39;158&#39; | &#39;159&#39; | &#39;160&#39; | &#39;161&#39; | &#39;162&#39; | &#39;163&#39; | &#39;164&#39; | &#39;165&#39; | &#39;166&#39; | &#39;167&#39; | &#39;168&#39; | &#39;169&#39; | &#39;170&#39; | &#39;171&#39; | &#39;172&#39; | &#39;173&#39; | &#39;174&#39; | &#39;175&#39; | &#39;176&#39; | &#39;177&#39; | &#39;178&#39; | &#39;179&#39; | &#39;180&#39; | &#39;181&#39; | &#39;182&#39; | &#39;183&#39; | &#39;184&#39; | &#39;185&#39; | &#39;186&#39; | &#39;187&#39; | &#39;188&#39; | &#39;189&#39; | &#39;190&#39; | &#39;191&#39; | &#39;192&#39; | &#39;193&#39; | &#39;194&#39; | &#39;195&#39; | &#39;196&#39; | &#39;197&#39; | &#39;198&#39; | &#39;199&#39; | &#39;200&#39; | &#39;201&#39; | &#39;202&#39; | &#39;203&#39; | &#39;204&#39; | &#39;205&#39; | &#39;206&#39; | &#39;207&#39; | &#39;208&#39; | &#39;209&#39; | &#39;210&#39; | &#39;211&#39; | &#39;212&#39; | &#39;213&#39; | &#39;214&#39; | &#39;215&#39; | &#39;216&#39; | &#39;217&#39; | &#39;218&#39; | &#39;219&#39; | &#39;220&#39; | &#39;221&#39; | &#39;222&#39; | &#39;223&#39; | &#39;224&#39; | &#39;225&#39; | &#39;226&#39; | &#39;227&#39; | &#39;228&#39; | &#39;229&#39; | &#39;230&#39; | &#39;231&#39; | &#39;232&#39; | &#39;233&#39; | &#39;234&#39; | &#39;235&#39; | &#39;236&#39; | &#39;237&#39; | &#39;238&#39; | &#39;239&#39; | &#39;240&#39; | &#39;241&#39; | &#39;242&#39; | &#39;243&#39; | &#39;244&#39; | &#39;245&#39; | &#39;246&#39; | &#39;247&#39; | &#39;248&#39; | &#39;249&#39; | &#39;250&#39; | &#39;251&#39; | &#39;252&#39; | &#39;253&#39; | &#39;254&#39; | &#39;255&#39; | &#39;256&#39; | &#39;257&#39; | &#39;258&#39; | &#39;259&#39; | &#39;260&#39; | &#39;261&#39; | &#39;262&#39; | &#39;263&#39; | &#39;264&#39; | &#39;265&#39; | &#39;266&#39; | &#39;267&#39; | &#39;268&#39; | &#39;269&#39; | &#39;270&#39; | &#39;271&#39; | &#39;272&#39; | &#39;273&#39; | &#39;274&#39; | &#39;275&#39; | &#39;276&#39; | &#39;277&#39; | &#39;278&#39; | &#39;279&#39; | &#39;280&#39; | &#39;281&#39; | &#39;282&#39; | &#39;283&#39; | &#39;284&#39; | &#39;285&#39; | &#39;286&#39; | &#39;287&#39; | &#39;288&#39; | &#39;289&#39; | &#39;290&#39; | &#39;291&#39; | &#39;292&#39; | &#39;293&#39; | &#39;294&#39; | &#39;295&#39; | &#39;296&#39; | &#39;297&#39; | &#39;298&#39; | &#39;299&#39; | &#39;300&#39; | &#39;301&#39; | &#39;302&#39; | &#39;303&#39; | &#39;304&#39; | &#39;305&#39; | &#39;306&#39; | &#39;307&#39; | &#39;308&#39; | &#39;309&#39; | &#39;310&#39; | &#39;311&#39; | &#39;312&#39; | &#39;313&#39; | &#39;314&#39; | &#39;315&#39; | &#39;316&#39; | &#39;317&#39; | &#39;318&#39; | &#39;319&#39; | &#39;320&#39; | &#39;321&#39; | &#39;322&#39; | &#39;323&#39; | &#39;324&#39; | &#39;325&#39; | &#39;326&#39; | &#39;327&#39; | &#39;328&#39; | &#39;329&#39; | &#39;330&#39; | &#39;331&#39; | &#39;332&#39; | &#39;333&#39; | &#39;334&#39; | &#39;335&#39; | &#39;336&#39; | &#39;337&#39; | &#39;338&#39; | &#39;339&#39; | &#39;340&#39; | &#39;341&#39; | &#39;342&#39; | &#39;343&#39; | &#39;344&#39; | &#39;345&#39; | &#39;346&#39; | &#39;347&#39; | &#39;348&#39; | &#39;349&#39; | &#39;350&#39; | &#39;351&#39; | &#39;352&#39; | &#39;353&#39; | &#39;354&#39; | &#39;355&#39; | &#39;356&#39; | &#39;357&#39; | &#39;358&#39; | &#39;359&#39; | &#39;360&#39; | &#39;361&#39; | &#39;362&#39; | &#39;363&#39; | &#39;364&#39; | &#39;365&#39; | &#39;366&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For testing purposes, it makes sense to test with <em>extreme</em> values - in our case, <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">365</span></code> and <code class="docutils literal notranslate"><span class="pre">366</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="time">
+<h2>Time<a class="headerlink" href="#time" title="Link to this heading">#</a></h2>
+<p>Now for <em>time</em> specifications.
+In ISO 8601, time is specified as <code class="docutils literal notranslate"><span class="pre">HH:MM:SS</span></code>, where <code class="docutils literal notranslate"><span class="pre">HH</span></code> comes in 24-hour format.
+<code class="docutils literal notranslate"><span class="pre">MM</span></code> and <code class="docutils literal notranslate"><span class="pre">SS</span></code> are optional, as is the colon separator in an “unambiguous” context.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601time&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;&#39;T&#39;? &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt; (&#39;:&#39;? &lt;iso8601second&gt; ((&#39;.&#39; | &#39;,&#39;) &lt;iso8601fraction&gt;)? )? )? &lt;iso8601timezone&gt;?&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601time&gt; ::= &#39;T&#39;? &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt; (&#39;:&#39;? &lt;iso8601second&gt; ((&#39;.&#39; | &#39;,&#39;) &lt;iso8601fraction&gt;)? )? )? &lt;iso8601timezone&gt;?;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hours">
+<h3>Hours<a class="headerlink" href="#hours" title="Link to this heading">#</a></h3>
+<p>Hours normally go from <code class="docutils literal notranslate"><span class="pre">00</span></code> to <code class="docutils literal notranslate"><span class="pre">23</span></code>, but <code class="docutils literal notranslate"><span class="pre">24:00:00</span></code> is allowed to represent midnight at the end of a day.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_comment</span><span class="p">(</span><span class="s2">&quot;24:00:00 is allowed to represent midnight at the end of a day&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601hour&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">hour</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">hour</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># 24:00:00 is allowed to represent midnight at the end of a day
+&lt;iso8601hour&gt; ::= &#39;00&#39; | &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39; | &#39;13&#39; | &#39;14&#39; | &#39;15&#39; | &#39;16&#39; | &#39;17&#39; | &#39;18&#39; | &#39;19&#39; | &#39;20&#39; | &#39;21&#39; | &#39;22&#39; | &#39;23&#39; | &#39;24&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minutes">
+<h3>Minutes<a class="headerlink" href="#minutes" title="Link to this heading">#</a></h3>
+<p>Minutes go from <code class="docutils literal notranslate"><span class="pre">00</span></code> to <code class="docutils literal notranslate"><span class="pre">59</span></code>.
+Nothing special here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601minute&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">minute</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">minute</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601minute&gt; ::= &#39;00&#39; | &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39; | &#39;13&#39; | &#39;14&#39; | &#39;15&#39; | &#39;16&#39; | &#39;17&#39; | &#39;18&#39; | &#39;19&#39; | &#39;20&#39; | &#39;21&#39; | &#39;22&#39; | &#39;23&#39; | &#39;24&#39; | &#39;25&#39; | &#39;26&#39; | &#39;27&#39; | &#39;28&#39; | &#39;29&#39; | &#39;30&#39; | &#39;31&#39; | &#39;32&#39; | &#39;33&#39; | &#39;34&#39; | &#39;35&#39; | &#39;36&#39; | &#39;37&#39; | &#39;38&#39; | &#39;39&#39; | &#39;40&#39; | &#39;41&#39; | &#39;42&#39; | &#39;43&#39; | &#39;44&#39; | &#39;45&#39; | &#39;46&#39; | &#39;47&#39; | &#39;48&#39; | &#39;49&#39; | &#39;50&#39; | &#39;51&#39; | &#39;52&#39; | &#39;53&#39; | &#39;54&#39; | &#39;55&#39; | &#39;56&#39; | &#39;57&#39; | &#39;58&#39; | &#39;59&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="seconds">
+<h3>Seconds<a class="headerlink" href="#seconds" title="Link to this heading">#</a></h3>
+<p>Seconds normally go from <code class="docutils literal notranslate"><span class="pre">00</span></code> to <code class="docutils literal notranslate"><span class="pre">59</span></code>, but <code class="docutils literal notranslate"><span class="pre">60</span></code> can be used to represent leap seconds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_comment</span><span class="p">(</span><span class="s2">&quot;xx:yy:60 is allowed to represent leap seconds&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601second&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">second</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&#39;&quot;</span> <span class="k">for</span> <span class="n">second</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">61</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># xx:yy:60 is allowed to represent leap seconds
+&lt;iso8601second&gt; ::= &#39;00&#39; | &#39;01&#39; | &#39;02&#39; | &#39;03&#39; | &#39;04&#39; | &#39;05&#39; | &#39;06&#39; | &#39;07&#39; | &#39;08&#39; | &#39;09&#39; | &#39;10&#39; | &#39;11&#39; | &#39;12&#39; | &#39;13&#39; | &#39;14&#39; | &#39;15&#39; | &#39;16&#39; | &#39;17&#39; | &#39;18&#39; | &#39;19&#39; | &#39;20&#39; | &#39;21&#39; | &#39;22&#39; | &#39;23&#39; | &#39;24&#39; | &#39;25&#39; | &#39;26&#39; | &#39;27&#39; | &#39;28&#39; | &#39;29&#39; | &#39;30&#39; | &#39;31&#39; | &#39;32&#39; | &#39;33&#39; | &#39;34&#39; | &#39;35&#39; | &#39;36&#39; | &#39;37&#39; | &#39;38&#39; | &#39;39&#39; | &#39;40&#39; | &#39;41&#39; | &#39;42&#39; | &#39;43&#39; | &#39;44&#39; | &#39;45&#39; | &#39;46&#39; | &#39;47&#39; | &#39;48&#39; | &#39;49&#39; | &#39;50&#39; | &#39;51&#39; | &#39;52&#39; | &#39;53&#39; | &#39;54&#39; | &#39;55&#39; | &#39;56&#39; | &#39;57&#39; | &#39;58&#39; | &#39;59&#39; | &#39;60&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Seconds can be followed by <code class="docutils literal notranslate"><span class="pre">,</span></code> or a <code class="docutils literal notranslate"><span class="pre">.</span></code> (see <code class="docutils literal notranslate"><span class="pre">&lt;iso8601time&gt;</span></code>, above) and a fraction - an arbitrary number of digits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601fraction&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&lt;digit&gt;+&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601fraction&gt; ::= &lt;digit&gt;+;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Testing with <em>extreme</em> values would mandate times such as <code class="docutils literal notranslate"><span class="pre">20:15:00,99999999999999999999</span></code> to test for possible buffer overflows.</p>
+</div>
+</section>
+<section id="time-zones">
+<h3>Time Zones<a class="headerlink" href="#time-zones" title="Link to this heading">#</a></h3>
+<p>Any time can be followed by a time zone designator.
+This is either <code class="docutils literal notranslate"><span class="pre">Z</span></code>, indicating Coordinated Universal Time (UTC), or an offset designating the time zone.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_rule</span><span class="p">(</span><span class="s2">&quot;iso8601timezone&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&#39;Z&#39;&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;&#39;+&#39; &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt;)?&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;&#39;-&#39; &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt;)?&quot;</span><span class="p">],</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;iso8601timezone&gt; ::= &#39;Z&#39; | &#39;+&#39; &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt;)? | &#39;-&#39; &lt;iso8601hour&gt; (&#39;:&#39;? &lt;iso8601minute&gt;)?;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ensuring-validity">
+<h2>Ensuring Validity<a class="headerlink" href="#ensuring-validity" title="Link to this heading">#</a></h2>
+<p>So far, our dates and times are <em>syntactically</em> valid, but not necessarily <em>semantically</em>.
+We can easily create invalid dates such as <code class="docutils literal notranslate"><span class="pre">2025-02-31</span></code> (February 31) or invalid times such as <code class="docutils literal notranslate"><span class="pre">24:10:00</span></code> (10 minutes past midnight - only <code class="docutils literal notranslate"><span class="pre">24:00:00</span></code> is allowed).
+We could now add a number of additional <em>rules</em> to check for all these properties, and/or extend the grammar accordingly.
+However, we can also simply be lazy and have the existing Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module check all this for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_valid_iso8601datetime</span><span class="p">(</span><span class="n">iso8601datetime</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True iff `iso8601datetime` is valid.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">iso8601datetime</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2025-01-01T14:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2025-02-31&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2000-02-29T00:00:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">def is_valid_iso8601datetime(iso8601datetime: str) -&gt; bool:</span>
+<span class="s1">    &quot;&quot;&quot;Return True iff `iso8601datetime` is valid.&quot;&quot;&quot;</span>
+<span class="s1">    try:</span>
+<span class="s1">        datetime.datetime.fromisoformat(iso8601datetime)</span>
+<span class="s1">        return True</span>
+<span class="s1">    except ValueError:</span>
+<span class="s1">        return False</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this, we can now add a <em>constraint</em> that limits our generator to only valid dates and times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">+=</span> <span class="n">make_constraint</span><span class="p">(</span><span class="s2">&quot;is_valid_iso8601datetime(str(&lt;iso8601datetime&gt;))&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>is_valid_iso8601datetime(str(&lt;iso8601datetime&gt;));
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="even-better-validity">
+<h2>Even Better Validity<a class="headerlink" href="#even-better-validity" title="Link to this heading">#</a></h2>
+<p>The Python <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module has a number of limitations, which extend to our spec:</p>
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> does not support <code class="docutils literal notranslate"><span class="pre">24:00:00</span></code> as a valid time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T24:00:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> does not support <code class="docutils literal notranslate"><span class="pre">,</span></code> as a separator of fractions (only <code class="docutils literal notranslate"><span class="pre">.</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T00:00:00,100&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> does not support fractions unless <a class="reference external" href="https://github.com/python/cpython/issues/60077">they have exactly 3 or 6 digits</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T00:00:00.10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hence, our <code class="docutils literal notranslate"><span class="pre">iso8601.fan</span></code> spec will miss out a number of ISO 9601 features.</p>
+<p>Fortunately, there is an alternative to <code class="docutils literal notranslate"><span class="pre">datetime</span></code>.
+The <a class="reference external" href="https://dateutil.readthedocs.io/en/stable/index.html"><code class="docutils literal notranslate"><span class="pre">dateutil</span></code> module</a> provides an ISO 9601 parser without these deficiencies.</p>
+<p>Let us redefine <code class="docutils literal notranslate"><span class="pre">is_valid_iso8601datetime()</span></code> to make use of the <code class="docutils literal notranslate"><span class="pre">dateutil</span></code> parser:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_valid_iso8601datetime</span><span class="p">(</span><span class="n">iso8601datetime</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True iff `iso8601datetime` is valid.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">dateutil</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">isoparse</span><span class="p">(</span><span class="n">iso8601datetime</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us see if the above examples now work:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T24:00:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T00:00:00,100&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2024-12-31T00:00:00.10&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>This now works! How about the earlier examples?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2025-01-01T14:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2025-02-31&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_valid_iso8601datetime</span><span class="p">(</span><span class="s2">&quot;2000-02-29T00:00:00&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>These also work.
+Let us fix the spec to use <code class="docutils literal notranslate"><span class="pre">dateutil</span></code> instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iso8601lib</span> <span class="o">=</span> <span class="n">iso8601lib</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;datetime.datetime.fromisoformat&#39;</span><span class="p">,</span> <span class="s1">&#39;dateutil.parser.isoparse&#39;</span><span class="p">)</span>
+<span class="n">iso8601lib</span> <span class="o">=</span> <span class="n">iso8601lib</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;import datetime&#39;</span><span class="p">,</span> <span class="s1">&#39;import dateutil  # See https://dateutil.readthedocs.io&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fuzzing-dates-and-times">
+<h2>Fuzzing Dates and Times<a class="headerlink" href="#fuzzing-dates-and-times" title="Link to this heading">#</a></h2>
+<p>Our ISO 8601 spec is now complete.
+Let us write it into a <code class="docutils literal notranslate"><span class="pre">.fan</span></code> file, so we can use it for fuzzing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ISO8601.fan&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">iso8601lib</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here comes <a class="reference internal" href="#iso9601.fan"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">iso9601.fan</span></code></span></a> in all its glory:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ISO 8601 date and time
+# Generated by docs/ISO8601.md. Do not edit.
+
+<span class=" -Color -Color-Bold">import</span> <span class=" -Color -Color-Bold">dateutil</span>  # See https://dateutil.readthedocs.io
+
+&lt;start&gt; ::= &lt;iso8601datetime&gt;;
+&lt;iso8601datetime&gt; ::= &lt;iso8601date&gt; (<span class=" -Color -Color-Yellow">&#39;T&#39;</span> &lt;iso8601time&gt;)?;
+
+&lt;iso8601date&gt; ::= &lt;iso8601calendardate&gt; | &lt;iso8601weekdate&gt; | 
+&lt;iso8601ordinaldate&gt;;
+
+&lt;iso8601calendardate&gt; ::= &lt;iso8601year&gt; <span class=" -Color -Color-Yellow">&#39;-&#39;</span> &lt;iso8601month&gt; (<span class=" -Color -Color-Yellow">&#39;-&#39;</span> &lt;iso8601day&gt;)? 
+| &lt;iso8601year&gt; &lt;iso8601month&gt; &lt;iso8601day&gt;;
+&lt;iso8601year&gt; ::= (<span class=" -Color -Color-Yellow">&#39;+&#39;</span>|<span class=" -Color -Color-Yellow">&#39;-&#39;</span>)? &lt;digit&gt;{4};
+&lt;digit&gt; ::= <span class=" -Color -Color-Yellow">&#39;0&#39;</span> | <span class=" -Color -Color-Yellow">&#39;1&#39;</span> | <span class=" -Color -Color-Yellow">&#39;2&#39;</span> | <span class=" -Color -Color-Yellow">&#39;3&#39;</span> | <span class=" -Color -Color-Yellow">&#39;4&#39;</span> | <span class=" -Color -Color-Yellow">&#39;5&#39;</span> | <span class=" -Color -Color-Yellow">&#39;6&#39;</span> | <span class=" -Color -Color-Yellow">&#39;7&#39;</span> | <span class=" -Color -Color-Yellow">&#39;8&#39;</span> | <span class=" -Color -Color-Yellow">&#39;9&#39;</span>;
+&lt;iso8601month&gt; ::= <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | <span class=" -Color -Color-Yellow">&#39;08&#39;</span> | <span class=" -Color -Color-Yellow">&#39;09&#39;</span> 
+| <span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span>;
+&lt;iso8601day&gt; ::= <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | <span class=" -Color -Color-Yellow">&#39;08&#39;</span> | <span class=" -Color -Color-Yellow">&#39;09&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span> | <span class=" -Color -Color-Yellow">&#39;13&#39;</span> | <span class=" -Color -Color-Yellow">&#39;14&#39;</span> | <span class=" -Color -Color-Yellow">&#39;15&#39;</span> | <span class=" -Color -Color-Yellow">&#39;16&#39;</span> | <span class=" -Color -Color-Yellow">&#39;17&#39;</span> | <span class=" -Color -Color-Yellow">&#39;18&#39;</span> | <span class=" -Color -Color-Yellow">&#39;19&#39;</span> | <span class=" -Color -Color-Yellow">&#39;20&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;21&#39;</span> | <span class=" -Color -Color-Yellow">&#39;22&#39;</span> | <span class=" -Color -Color-Yellow">&#39;23&#39;</span> | <span class=" -Color -Color-Yellow">&#39;24&#39;</span> | <span class=" -Color -Color-Yellow">&#39;25&#39;</span> | <span class=" -Color -Color-Yellow">&#39;26&#39;</span> | <span class=" -Color -Color-Yellow">&#39;27&#39;</span> | <span class=" -Color -Color-Yellow">&#39;28&#39;</span> | <span class=" -Color -Color-Yellow">&#39;29&#39;</span> | <span class=" -Color -Color-Yellow">&#39;30&#39;</span> | <span class=" -Color -Color-Yellow">&#39;31&#39;</span>;
+
+&lt;iso8601weekdate&gt; ::= &lt;iso8601year&gt; <span class=" -Color -Color-Yellow">&#39;-&#39;</span>? <span class=" -Color -Color-Yellow">&#39;W&#39;</span> &lt;iso8601week&gt; (<span class=" -Color -Color-Yellow">&#39;-&#39;</span> 
+&lt;iso8601weekday&gt;)?;
+&lt;iso8601week&gt; ::= <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | <span class=" -Color -Color-Yellow">&#39;08&#39;</span> | <span class=" -Color -Color-Yellow">&#39;09&#39;</span> 
+| <span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span> | <span class=" -Color -Color-Yellow">&#39;13&#39;</span> | <span class=" -Color -Color-Yellow">&#39;14&#39;</span> | <span class=" -Color -Color-Yellow">&#39;15&#39;</span> | <span class=" -Color -Color-Yellow">&#39;16&#39;</span> | <span class=" -Color -Color-Yellow">&#39;17&#39;</span> | <span class=" -Color -Color-Yellow">&#39;18&#39;</span> | <span class=" -Color -Color-Yellow">&#39;19&#39;</span> | <span class=" -Color -Color-Yellow">&#39;20&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;21&#39;</span> | <span class=" -Color -Color-Yellow">&#39;22&#39;</span> | <span class=" -Color -Color-Yellow">&#39;23&#39;</span> | <span class=" -Color -Color-Yellow">&#39;24&#39;</span> | <span class=" -Color -Color-Yellow">&#39;25&#39;</span> | <span class=" -Color -Color-Yellow">&#39;26&#39;</span> | <span class=" -Color -Color-Yellow">&#39;27&#39;</span> | <span class=" -Color -Color-Yellow">&#39;28&#39;</span> | <span class=" -Color -Color-Yellow">&#39;29&#39;</span> | <span class=" -Color -Color-Yellow">&#39;30&#39;</span> | <span class=" -Color -Color-Yellow">&#39;31&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;32&#39;</span> | <span class=" -Color -Color-Yellow">&#39;33&#39;</span> | <span class=" -Color -Color-Yellow">&#39;34&#39;</span> | <span class=" -Color -Color-Yellow">&#39;35&#39;</span> | <span class=" -Color -Color-Yellow">&#39;36&#39;</span> | <span class=" -Color -Color-Yellow">&#39;37&#39;</span> | <span class=" -Color -Color-Yellow">&#39;38&#39;</span> | <span class=" -Color -Color-Yellow">&#39;39&#39;</span> | <span class=" -Color -Color-Yellow">&#39;40&#39;</span> | <span class=" -Color -Color-Yellow">&#39;41&#39;</span> | <span class=" -Color -Color-Yellow">&#39;42&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;43&#39;</span> | <span class=" -Color -Color-Yellow">&#39;44&#39;</span> | <span class=" -Color -Color-Yellow">&#39;45&#39;</span> | <span class=" -Color -Color-Yellow">&#39;46&#39;</span> | <span class=" -Color -Color-Yellow">&#39;47&#39;</span> | <span class=" -Color -Color-Yellow">&#39;48&#39;</span> | <span class=" -Color -Color-Yellow">&#39;49&#39;</span> | <span class=" -Color -Color-Yellow">&#39;50&#39;</span> | <span class=" -Color -Color-Yellow">&#39;51&#39;</span> | <span class=" -Color -Color-Yellow">&#39;52&#39;</span> | <span class=" -Color -Color-Yellow">&#39;53&#39;</span>;
+&lt;iso8601weekday&gt; ::= <span class=" -Color -Color-Yellow">&#39;1&#39;</span> | <span class=" -Color -Color-Yellow">&#39;2&#39;</span> | <span class=" -Color -Color-Yellow">&#39;3&#39;</span> | <span class=" -Color -Color-Yellow">&#39;4&#39;</span> | <span class=" -Color -Color-Yellow">&#39;5&#39;</span> | <span class=" -Color -Color-Yellow">&#39;6&#39;</span> | <span class=" -Color -Color-Yellow">&#39;7&#39;</span>;
+
+&lt;iso8601ordinaldate&gt; ::= &lt;iso8601year&gt; (<span class=" -Color -Color-Yellow">&#39;-&#39;</span>? &lt;iso8601ordinalday&gt;)?;
+&lt;iso8601ordinalday&gt; ::= <span class=" -Color -Color-Yellow">&#39;001&#39;</span> | <span class=" -Color -Color-Yellow">&#39;002&#39;</span> | <span class=" -Color -Color-Yellow">&#39;003&#39;</span> | <span class=" -Color -Color-Yellow">&#39;004&#39;</span> | <span class=" -Color -Color-Yellow">&#39;005&#39;</span> | <span class=" -Color -Color-Yellow">&#39;006&#39;</span> | <span class=" -Color -Color-Yellow">&#39;007&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;008&#39;</span> | <span class=" -Color -Color-Yellow">&#39;009&#39;</span> | <span class=" -Color -Color-Yellow">&#39;010&#39;</span> | <span class=" -Color -Color-Yellow">&#39;011&#39;</span> | <span class=" -Color -Color-Yellow">&#39;012&#39;</span> | <span class=" -Color -Color-Yellow">&#39;013&#39;</span> | <span class=" -Color -Color-Yellow">&#39;014&#39;</span> | <span class=" -Color -Color-Yellow">&#39;015&#39;</span> | <span class=" -Color -Color-Yellow">&#39;016&#39;</span> | <span class=" -Color -Color-Yellow">&#39;017&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;018&#39;</span> | <span class=" -Color -Color-Yellow">&#39;019&#39;</span> | <span class=" -Color -Color-Yellow">&#39;020&#39;</span> | <span class=" -Color -Color-Yellow">&#39;021&#39;</span> | <span class=" -Color -Color-Yellow">&#39;022&#39;</span> | <span class=" -Color -Color-Yellow">&#39;023&#39;</span> | <span class=" -Color -Color-Yellow">&#39;024&#39;</span> | <span class=" -Color -Color-Yellow">&#39;025&#39;</span> | <span class=" -Color -Color-Yellow">&#39;026&#39;</span> | <span class=" -Color -Color-Yellow">&#39;027&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;028&#39;</span> | <span class=" -Color -Color-Yellow">&#39;029&#39;</span> | <span class=" -Color -Color-Yellow">&#39;030&#39;</span> | <span class=" -Color -Color-Yellow">&#39;031&#39;</span> | <span class=" -Color -Color-Yellow">&#39;032&#39;</span> | <span class=" -Color -Color-Yellow">&#39;033&#39;</span> | <span class=" -Color -Color-Yellow">&#39;034&#39;</span> | <span class=" -Color -Color-Yellow">&#39;035&#39;</span> | <span class=" -Color -Color-Yellow">&#39;036&#39;</span> | <span class=" -Color -Color-Yellow">&#39;037&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;038&#39;</span> | <span class=" -Color -Color-Yellow">&#39;039&#39;</span> | <span class=" -Color -Color-Yellow">&#39;040&#39;</span> | <span class=" -Color -Color-Yellow">&#39;041&#39;</span> | <span class=" -Color -Color-Yellow">&#39;042&#39;</span> | <span class=" -Color -Color-Yellow">&#39;043&#39;</span> | <span class=" -Color -Color-Yellow">&#39;044&#39;</span> | <span class=" -Color -Color-Yellow">&#39;045&#39;</span> | <span class=" -Color -Color-Yellow">&#39;046&#39;</span> | <span class=" -Color -Color-Yellow">&#39;047&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;048&#39;</span> | <span class=" -Color -Color-Yellow">&#39;049&#39;</span> | <span class=" -Color -Color-Yellow">&#39;050&#39;</span> | <span class=" -Color -Color-Yellow">&#39;051&#39;</span> | <span class=" -Color -Color-Yellow">&#39;052&#39;</span> | <span class=" -Color -Color-Yellow">&#39;053&#39;</span> | <span class=" -Color -Color-Yellow">&#39;054&#39;</span> | <span class=" -Color -Color-Yellow">&#39;055&#39;</span> | <span class=" -Color -Color-Yellow">&#39;056&#39;</span> | <span class=" -Color -Color-Yellow">&#39;057&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;058&#39;</span> | <span class=" -Color -Color-Yellow">&#39;059&#39;</span> | <span class=" -Color -Color-Yellow">&#39;060&#39;</span> | <span class=" -Color -Color-Yellow">&#39;061&#39;</span> | <span class=" -Color -Color-Yellow">&#39;062&#39;</span> | <span class=" -Color -Color-Yellow">&#39;063&#39;</span> | <span class=" -Color -Color-Yellow">&#39;064&#39;</span> | <span class=" -Color -Color-Yellow">&#39;065&#39;</span> | <span class=" -Color -Color-Yellow">&#39;066&#39;</span> | <span class=" -Color -Color-Yellow">&#39;067&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;068&#39;</span> | <span class=" -Color -Color-Yellow">&#39;069&#39;</span> | <span class=" -Color -Color-Yellow">&#39;070&#39;</span> | <span class=" -Color -Color-Yellow">&#39;071&#39;</span> | <span class=" -Color -Color-Yellow">&#39;072&#39;</span> | <span class=" -Color -Color-Yellow">&#39;073&#39;</span> | <span class=" -Color -Color-Yellow">&#39;074&#39;</span> | <span class=" -Color -Color-Yellow">&#39;075&#39;</span> | <span class=" -Color -Color-Yellow">&#39;076&#39;</span> | <span class=" -Color -Color-Yellow">&#39;077&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;078&#39;</span> | <span class=" -Color -Color-Yellow">&#39;079&#39;</span> | <span class=" -Color -Color-Yellow">&#39;080&#39;</span> | <span class=" -Color -Color-Yellow">&#39;081&#39;</span> | <span class=" -Color -Color-Yellow">&#39;082&#39;</span> | <span class=" -Color -Color-Yellow">&#39;083&#39;</span> | <span class=" -Color -Color-Yellow">&#39;084&#39;</span> | <span class=" -Color -Color-Yellow">&#39;085&#39;</span> | <span class=" -Color -Color-Yellow">&#39;086&#39;</span> | <span class=" -Color -Color-Yellow">&#39;087&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;088&#39;</span> | <span class=" -Color -Color-Yellow">&#39;089&#39;</span> | <span class=" -Color -Color-Yellow">&#39;090&#39;</span> | <span class=" -Color -Color-Yellow">&#39;091&#39;</span> | <span class=" -Color -Color-Yellow">&#39;092&#39;</span> | <span class=" -Color -Color-Yellow">&#39;093&#39;</span> | <span class=" -Color -Color-Yellow">&#39;094&#39;</span> | <span class=" -Color -Color-Yellow">&#39;095&#39;</span> | <span class=" -Color -Color-Yellow">&#39;096&#39;</span> | <span class=" -Color -Color-Yellow">&#39;097&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;098&#39;</span> | <span class=" -Color -Color-Yellow">&#39;099&#39;</span> | <span class=" -Color -Color-Yellow">&#39;100&#39;</span> | <span class=" -Color -Color-Yellow">&#39;101&#39;</span> | <span class=" -Color -Color-Yellow">&#39;102&#39;</span> | <span class=" -Color -Color-Yellow">&#39;103&#39;</span> | <span class=" -Color -Color-Yellow">&#39;104&#39;</span> | <span class=" -Color -Color-Yellow">&#39;105&#39;</span> | <span class=" -Color -Color-Yellow">&#39;106&#39;</span> | <span class=" -Color -Color-Yellow">&#39;107&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;108&#39;</span> | <span class=" -Color -Color-Yellow">&#39;109&#39;</span> | <span class=" -Color -Color-Yellow">&#39;110&#39;</span> | <span class=" -Color -Color-Yellow">&#39;111&#39;</span> | <span class=" -Color -Color-Yellow">&#39;112&#39;</span> | <span class=" -Color -Color-Yellow">&#39;113&#39;</span> | <span class=" -Color -Color-Yellow">&#39;114&#39;</span> | <span class=" -Color -Color-Yellow">&#39;115&#39;</span> | <span class=" -Color -Color-Yellow">&#39;116&#39;</span> | <span class=" -Color -Color-Yellow">&#39;117&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;118&#39;</span> | <span class=" -Color -Color-Yellow">&#39;119&#39;</span> | <span class=" -Color -Color-Yellow">&#39;120&#39;</span> | <span class=" -Color -Color-Yellow">&#39;121&#39;</span> | <span class=" -Color -Color-Yellow">&#39;122&#39;</span> | <span class=" -Color -Color-Yellow">&#39;123&#39;</span> | <span class=" -Color -Color-Yellow">&#39;124&#39;</span> | <span class=" -Color -Color-Yellow">&#39;125&#39;</span> | <span class=" -Color -Color-Yellow">&#39;126&#39;</span> | <span class=" -Color -Color-Yellow">&#39;127&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;128&#39;</span> | <span class=" -Color -Color-Yellow">&#39;129&#39;</span> | <span class=" -Color -Color-Yellow">&#39;130&#39;</span> | <span class=" -Color -Color-Yellow">&#39;131&#39;</span> | <span class=" -Color -Color-Yellow">&#39;132&#39;</span> | <span class=" -Color -Color-Yellow">&#39;133&#39;</span> | <span class=" -Color -Color-Yellow">&#39;134&#39;</span> | <span class=" -Color -Color-Yellow">&#39;135&#39;</span> | <span class=" -Color -Color-Yellow">&#39;136&#39;</span> | <span class=" -Color -Color-Yellow">&#39;137&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;138&#39;</span> | <span class=" -Color -Color-Yellow">&#39;139&#39;</span> | <span class=" -Color -Color-Yellow">&#39;140&#39;</span> | <span class=" -Color -Color-Yellow">&#39;141&#39;</span> | <span class=" -Color -Color-Yellow">&#39;142&#39;</span> | <span class=" -Color -Color-Yellow">&#39;143&#39;</span> | <span class=" -Color -Color-Yellow">&#39;144&#39;</span> | <span class=" -Color -Color-Yellow">&#39;145&#39;</span> | <span class=" -Color -Color-Yellow">&#39;146&#39;</span> | <span class=" -Color -Color-Yellow">&#39;147&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;148&#39;</span> | <span class=" -Color -Color-Yellow">&#39;149&#39;</span> | <span class=" -Color -Color-Yellow">&#39;150&#39;</span> | <span class=" -Color -Color-Yellow">&#39;151&#39;</span> | <span class=" -Color -Color-Yellow">&#39;152&#39;</span> | <span class=" -Color -Color-Yellow">&#39;153&#39;</span> | <span class=" -Color -Color-Yellow">&#39;154&#39;</span> | <span class=" -Color -Color-Yellow">&#39;155&#39;</span> | <span class=" -Color -Color-Yellow">&#39;156&#39;</span> | <span class=" -Color -Color-Yellow">&#39;157&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;158&#39;</span> | <span class=" -Color -Color-Yellow">&#39;159&#39;</span> | <span class=" -Color -Color-Yellow">&#39;160&#39;</span> | <span class=" -Color -Color-Yellow">&#39;161&#39;</span> | <span class=" -Color -Color-Yellow">&#39;162&#39;</span> | <span class=" -Color -Color-Yellow">&#39;163&#39;</span> | <span class=" -Color -Color-Yellow">&#39;164&#39;</span> | <span class=" -Color -Color-Yellow">&#39;165&#39;</span> | <span class=" -Color -Color-Yellow">&#39;166&#39;</span> | <span class=" -Color -Color-Yellow">&#39;167&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;168&#39;</span> | <span class=" -Color -Color-Yellow">&#39;169&#39;</span> | <span class=" -Color -Color-Yellow">&#39;170&#39;</span> | <span class=" -Color -Color-Yellow">&#39;171&#39;</span> | <span class=" -Color -Color-Yellow">&#39;172&#39;</span> | <span class=" -Color -Color-Yellow">&#39;173&#39;</span> | <span class=" -Color -Color-Yellow">&#39;174&#39;</span> | <span class=" -Color -Color-Yellow">&#39;175&#39;</span> | <span class=" -Color -Color-Yellow">&#39;176&#39;</span> | <span class=" -Color -Color-Yellow">&#39;177&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;178&#39;</span> | <span class=" -Color -Color-Yellow">&#39;179&#39;</span> | <span class=" -Color -Color-Yellow">&#39;180&#39;</span> | <span class=" -Color -Color-Yellow">&#39;181&#39;</span> | <span class=" -Color -Color-Yellow">&#39;182&#39;</span> | <span class=" -Color -Color-Yellow">&#39;183&#39;</span> | <span class=" -Color -Color-Yellow">&#39;184&#39;</span> | <span class=" -Color -Color-Yellow">&#39;185&#39;</span> | <span class=" -Color -Color-Yellow">&#39;186&#39;</span> | <span class=" -Color -Color-Yellow">&#39;187&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;188&#39;</span> | <span class=" -Color -Color-Yellow">&#39;189&#39;</span> | <span class=" -Color -Color-Yellow">&#39;190&#39;</span> | <span class=" -Color -Color-Yellow">&#39;191&#39;</span> | <span class=" -Color -Color-Yellow">&#39;192&#39;</span> | <span class=" -Color -Color-Yellow">&#39;193&#39;</span> | <span class=" -Color -Color-Yellow">&#39;194&#39;</span> | <span class=" -Color -Color-Yellow">&#39;195&#39;</span> | <span class=" -Color -Color-Yellow">&#39;196&#39;</span> | <span class=" -Color -Color-Yellow">&#39;197&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;198&#39;</span> | <span class=" -Color -Color-Yellow">&#39;199&#39;</span> | <span class=" -Color -Color-Yellow">&#39;200&#39;</span> | <span class=" -Color -Color-Yellow">&#39;201&#39;</span> | <span class=" -Color -Color-Yellow">&#39;202&#39;</span> | <span class=" -Color -Color-Yellow">&#39;203&#39;</span> | <span class=" -Color -Color-Yellow">&#39;204&#39;</span> | <span class=" -Color -Color-Yellow">&#39;205&#39;</span> | <span class=" -Color -Color-Yellow">&#39;206&#39;</span> | <span class=" -Color -Color-Yellow">&#39;207&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;208&#39;</span> | <span class=" -Color -Color-Yellow">&#39;209&#39;</span> | <span class=" -Color -Color-Yellow">&#39;210&#39;</span> | <span class=" -Color -Color-Yellow">&#39;211&#39;</span> | <span class=" -Color -Color-Yellow">&#39;212&#39;</span> | <span class=" -Color -Color-Yellow">&#39;213&#39;</span> | <span class=" -Color -Color-Yellow">&#39;214&#39;</span> | <span class=" -Color -Color-Yellow">&#39;215&#39;</span> | <span class=" -Color -Color-Yellow">&#39;216&#39;</span> | <span class=" -Color -Color-Yellow">&#39;217&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;218&#39;</span> | <span class=" -Color -Color-Yellow">&#39;219&#39;</span> | <span class=" -Color -Color-Yellow">&#39;220&#39;</span> | <span class=" -Color -Color-Yellow">&#39;221&#39;</span> | <span class=" -Color -Color-Yellow">&#39;222&#39;</span> | <span class=" -Color -Color-Yellow">&#39;223&#39;</span> | <span class=" -Color -Color-Yellow">&#39;224&#39;</span> | <span class=" -Color -Color-Yellow">&#39;225&#39;</span> | <span class=" -Color -Color-Yellow">&#39;226&#39;</span> | <span class=" -Color -Color-Yellow">&#39;227&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;228&#39;</span> | <span class=" -Color -Color-Yellow">&#39;229&#39;</span> | <span class=" -Color -Color-Yellow">&#39;230&#39;</span> | <span class=" -Color -Color-Yellow">&#39;231&#39;</span> | <span class=" -Color -Color-Yellow">&#39;232&#39;</span> | <span class=" -Color -Color-Yellow">&#39;233&#39;</span> | <span class=" -Color -Color-Yellow">&#39;234&#39;</span> | <span class=" -Color -Color-Yellow">&#39;235&#39;</span> | <span class=" -Color -Color-Yellow">&#39;236&#39;</span> | <span class=" -Color -Color-Yellow">&#39;237&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;238&#39;</span> | <span class=" -Color -Color-Yellow">&#39;239&#39;</span> | <span class=" -Color -Color-Yellow">&#39;240&#39;</span> | <span class=" -Color -Color-Yellow">&#39;241&#39;</span> | <span class=" -Color -Color-Yellow">&#39;242&#39;</span> | <span class=" -Color -Color-Yellow">&#39;243&#39;</span> | <span class=" -Color -Color-Yellow">&#39;244&#39;</span> | <span class=" -Color -Color-Yellow">&#39;245&#39;</span> | <span class=" -Color -Color-Yellow">&#39;246&#39;</span> | <span class=" -Color -Color-Yellow">&#39;247&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;248&#39;</span> | <span class=" -Color -Color-Yellow">&#39;249&#39;</span> | <span class=" -Color -Color-Yellow">&#39;250&#39;</span> | <span class=" -Color -Color-Yellow">&#39;251&#39;</span> | <span class=" -Color -Color-Yellow">&#39;252&#39;</span> | <span class=" -Color -Color-Yellow">&#39;253&#39;</span> | <span class=" -Color -Color-Yellow">&#39;254&#39;</span> | <span class=" -Color -Color-Yellow">&#39;255&#39;</span> | <span class=" -Color -Color-Yellow">&#39;256&#39;</span> | <span class=" -Color -Color-Yellow">&#39;257&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;258&#39;</span> | <span class=" -Color -Color-Yellow">&#39;259&#39;</span> | <span class=" -Color -Color-Yellow">&#39;260&#39;</span> | <span class=" -Color -Color-Yellow">&#39;261&#39;</span> | <span class=" -Color -Color-Yellow">&#39;262&#39;</span> | <span class=" -Color -Color-Yellow">&#39;263&#39;</span> | <span class=" -Color -Color-Yellow">&#39;264&#39;</span> | <span class=" -Color -Color-Yellow">&#39;265&#39;</span> | <span class=" -Color -Color-Yellow">&#39;266&#39;</span> | <span class=" -Color -Color-Yellow">&#39;267&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;268&#39;</span> | <span class=" -Color -Color-Yellow">&#39;269&#39;</span> | <span class=" -Color -Color-Yellow">&#39;270&#39;</span> | <span class=" -Color -Color-Yellow">&#39;271&#39;</span> | <span class=" -Color -Color-Yellow">&#39;272&#39;</span> | <span class=" -Color -Color-Yellow">&#39;273&#39;</span> | <span class=" -Color -Color-Yellow">&#39;274&#39;</span> | <span class=" -Color -Color-Yellow">&#39;275&#39;</span> | <span class=" -Color -Color-Yellow">&#39;276&#39;</span> | <span class=" -Color -Color-Yellow">&#39;277&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;278&#39;</span> | <span class=" -Color -Color-Yellow">&#39;279&#39;</span> | <span class=" -Color -Color-Yellow">&#39;280&#39;</span> | <span class=" -Color -Color-Yellow">&#39;281&#39;</span> | <span class=" -Color -Color-Yellow">&#39;282&#39;</span> | <span class=" -Color -Color-Yellow">&#39;283&#39;</span> | <span class=" -Color -Color-Yellow">&#39;284&#39;</span> | <span class=" -Color -Color-Yellow">&#39;285&#39;</span> | <span class=" -Color -Color-Yellow">&#39;286&#39;</span> | <span class=" -Color -Color-Yellow">&#39;287&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;288&#39;</span> | <span class=" -Color -Color-Yellow">&#39;289&#39;</span> | <span class=" -Color -Color-Yellow">&#39;290&#39;</span> | <span class=" -Color -Color-Yellow">&#39;291&#39;</span> | <span class=" -Color -Color-Yellow">&#39;292&#39;</span> | <span class=" -Color -Color-Yellow">&#39;293&#39;</span> | <span class=" -Color -Color-Yellow">&#39;294&#39;</span> | <span class=" -Color -Color-Yellow">&#39;295&#39;</span> | <span class=" -Color -Color-Yellow">&#39;296&#39;</span> | <span class=" -Color -Color-Yellow">&#39;297&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;298&#39;</span> | <span class=" -Color -Color-Yellow">&#39;299&#39;</span> | <span class=" -Color -Color-Yellow">&#39;300&#39;</span> | <span class=" -Color -Color-Yellow">&#39;301&#39;</span> | <span class=" -Color -Color-Yellow">&#39;302&#39;</span> | <span class=" -Color -Color-Yellow">&#39;303&#39;</span> | <span class=" -Color -Color-Yellow">&#39;304&#39;</span> | <span class=" -Color -Color-Yellow">&#39;305&#39;</span> | <span class=" -Color -Color-Yellow">&#39;306&#39;</span> | <span class=" -Color -Color-Yellow">&#39;307&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;308&#39;</span> | <span class=" -Color -Color-Yellow">&#39;309&#39;</span> | <span class=" -Color -Color-Yellow">&#39;310&#39;</span> | <span class=" -Color -Color-Yellow">&#39;311&#39;</span> | <span class=" -Color -Color-Yellow">&#39;312&#39;</span> | <span class=" -Color -Color-Yellow">&#39;313&#39;</span> | <span class=" -Color -Color-Yellow">&#39;314&#39;</span> | <span class=" -Color -Color-Yellow">&#39;315&#39;</span> | <span class=" -Color -Color-Yellow">&#39;316&#39;</span> | <span class=" -Color -Color-Yellow">&#39;317&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;318&#39;</span> | <span class=" -Color -Color-Yellow">&#39;319&#39;</span> | <span class=" -Color -Color-Yellow">&#39;320&#39;</span> | <span class=" -Color -Color-Yellow">&#39;321&#39;</span> | <span class=" -Color -Color-Yellow">&#39;322&#39;</span> | <span class=" -Color -Color-Yellow">&#39;323&#39;</span> | <span class=" -Color -Color-Yellow">&#39;324&#39;</span> | <span class=" -Color -Color-Yellow">&#39;325&#39;</span> | <span class=" -Color -Color-Yellow">&#39;326&#39;</span> | <span class=" -Color -Color-Yellow">&#39;327&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;328&#39;</span> | <span class=" -Color -Color-Yellow">&#39;329&#39;</span> | <span class=" -Color -Color-Yellow">&#39;330&#39;</span> | <span class=" -Color -Color-Yellow">&#39;331&#39;</span> | <span class=" -Color -Color-Yellow">&#39;332&#39;</span> | <span class=" -Color -Color-Yellow">&#39;333&#39;</span> | <span class=" -Color -Color-Yellow">&#39;334&#39;</span> | <span class=" -Color -Color-Yellow">&#39;335&#39;</span> | <span class=" -Color -Color-Yellow">&#39;336&#39;</span> | <span class=" -Color -Color-Yellow">&#39;337&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;338&#39;</span> | <span class=" -Color -Color-Yellow">&#39;339&#39;</span> | <span class=" -Color -Color-Yellow">&#39;340&#39;</span> | <span class=" -Color -Color-Yellow">&#39;341&#39;</span> | <span class=" -Color -Color-Yellow">&#39;342&#39;</span> | <span class=" -Color -Color-Yellow">&#39;343&#39;</span> | <span class=" -Color -Color-Yellow">&#39;344&#39;</span> | <span class=" -Color -Color-Yellow">&#39;345&#39;</span> | <span class=" -Color -Color-Yellow">&#39;346&#39;</span> | <span class=" -Color -Color-Yellow">&#39;347&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;348&#39;</span> | <span class=" -Color -Color-Yellow">&#39;349&#39;</span> | <span class=" -Color -Color-Yellow">&#39;350&#39;</span> | <span class=" -Color -Color-Yellow">&#39;351&#39;</span> | <span class=" -Color -Color-Yellow">&#39;352&#39;</span> | <span class=" -Color -Color-Yellow">&#39;353&#39;</span> | <span class=" -Color -Color-Yellow">&#39;354&#39;</span> | <span class=" -Color -Color-Yellow">&#39;355&#39;</span> | <span class=" -Color -Color-Yellow">&#39;356&#39;</span> | <span class=" -Color -Color-Yellow">&#39;357&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;358&#39;</span> | <span class=" -Color -Color-Yellow">&#39;359&#39;</span> | <span class=" -Color -Color-Yellow">&#39;360&#39;</span> | <span class=" -Color -Color-Yellow">&#39;361&#39;</span> | <span class=" -Color -Color-Yellow">&#39;362&#39;</span> | <span class=" -Color -Color-Yellow">&#39;363&#39;</span> | <span class=" -Color -Color-Yellow">&#39;364&#39;</span> | <span class=" -Color -Color-Yellow">&#39;365&#39;</span> | <span class=" -Color -Color-Yellow">&#39;366&#39;</span>;
+
+&lt;iso8601time&gt; ::= <span class=" -Color -Color-Yellow">&#39;T&#39;</span>? &lt;iso8601hour&gt; (<span class=" -Color -Color-Yellow">&#39;:&#39;</span>? &lt;iso8601minute&gt; (<span class=" -Color -Color-Yellow">&#39;:&#39;</span>? 
+&lt;iso8601second&gt; ((<span class=" -Color -Color-Yellow">&#39;.&#39;</span> | <span class=" -Color -Color-Yellow">&#39;,&#39;</span>) &lt;iso8601fraction&gt;)? )? )? &lt;iso8601timezone&gt;?;
+
+# 24:00:00 is allowed to represent midnight at the end of a day
+&lt;iso8601hour&gt; ::= <span class=" -Color -Color-Yellow">&#39;00&#39;</span> | <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | <span class=" -Color -Color-Yellow">&#39;08&#39;</span> 
+| <span class=" -Color -Color-Yellow">&#39;09&#39;</span> | <span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span> | <span class=" -Color -Color-Yellow">&#39;13&#39;</span> | <span class=" -Color -Color-Yellow">&#39;14&#39;</span> | <span class=" -Color -Color-Yellow">&#39;15&#39;</span> | <span class=" -Color -Color-Yellow">&#39;16&#39;</span> | <span class=" -Color -Color-Yellow">&#39;17&#39;</span> | <span class=" -Color -Color-Yellow">&#39;18&#39;</span> | <span class=" -Color -Color-Yellow">&#39;19&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;20&#39;</span> | <span class=" -Color -Color-Yellow">&#39;21&#39;</span> | <span class=" -Color -Color-Yellow">&#39;22&#39;</span> | <span class=" -Color -Color-Yellow">&#39;23&#39;</span> | <span class=" -Color -Color-Yellow">&#39;24&#39;</span>;
+&lt;iso8601minute&gt; ::= <span class=" -Color -Color-Yellow">&#39;00&#39;</span> | <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;08&#39;</span> | <span class=" -Color -Color-Yellow">&#39;09&#39;</span> | <span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span> | <span class=" -Color -Color-Yellow">&#39;13&#39;</span> | <span class=" -Color -Color-Yellow">&#39;14&#39;</span> | <span class=" -Color -Color-Yellow">&#39;15&#39;</span> | <span class=" -Color -Color-Yellow">&#39;16&#39;</span> | <span class=" -Color -Color-Yellow">&#39;17&#39;</span> | <span class=" -Color -Color-Yellow">&#39;18&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;19&#39;</span> | <span class=" -Color -Color-Yellow">&#39;20&#39;</span> | <span class=" -Color -Color-Yellow">&#39;21&#39;</span> | <span class=" -Color -Color-Yellow">&#39;22&#39;</span> | <span class=" -Color -Color-Yellow">&#39;23&#39;</span> | <span class=" -Color -Color-Yellow">&#39;24&#39;</span> | <span class=" -Color -Color-Yellow">&#39;25&#39;</span> | <span class=" -Color -Color-Yellow">&#39;26&#39;</span> | <span class=" -Color -Color-Yellow">&#39;27&#39;</span> | <span class=" -Color -Color-Yellow">&#39;28&#39;</span> | <span class=" -Color -Color-Yellow">&#39;29&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;30&#39;</span> | <span class=" -Color -Color-Yellow">&#39;31&#39;</span> | <span class=" -Color -Color-Yellow">&#39;32&#39;</span> | <span class=" -Color -Color-Yellow">&#39;33&#39;</span> | <span class=" -Color -Color-Yellow">&#39;34&#39;</span> | <span class=" -Color -Color-Yellow">&#39;35&#39;</span> | <span class=" -Color -Color-Yellow">&#39;36&#39;</span> | <span class=" -Color -Color-Yellow">&#39;37&#39;</span> | <span class=" -Color -Color-Yellow">&#39;38&#39;</span> | <span class=" -Color -Color-Yellow">&#39;39&#39;</span> | <span class=" -Color -Color-Yellow">&#39;40&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;41&#39;</span> | <span class=" -Color -Color-Yellow">&#39;42&#39;</span> | <span class=" -Color -Color-Yellow">&#39;43&#39;</span> | <span class=" -Color -Color-Yellow">&#39;44&#39;</span> | <span class=" -Color -Color-Yellow">&#39;45&#39;</span> | <span class=" -Color -Color-Yellow">&#39;46&#39;</span> | <span class=" -Color -Color-Yellow">&#39;47&#39;</span> | <span class=" -Color -Color-Yellow">&#39;48&#39;</span> | <span class=" -Color -Color-Yellow">&#39;49&#39;</span> | <span class=" -Color -Color-Yellow">&#39;50&#39;</span> | <span class=" -Color -Color-Yellow">&#39;51&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;52&#39;</span> | <span class=" -Color -Color-Yellow">&#39;53&#39;</span> | <span class=" -Color -Color-Yellow">&#39;54&#39;</span> | <span class=" -Color -Color-Yellow">&#39;55&#39;</span> | <span class=" -Color -Color-Yellow">&#39;56&#39;</span> | <span class=" -Color -Color-Yellow">&#39;57&#39;</span> | <span class=" -Color -Color-Yellow">&#39;58&#39;</span> | <span class=" -Color -Color-Yellow">&#39;59&#39;</span>;
+
+# xx:yy:60 is allowed to represent leap seconds
+&lt;iso8601second&gt; ::= <span class=" -Color -Color-Yellow">&#39;00&#39;</span> | <span class=" -Color -Color-Yellow">&#39;01&#39;</span> | <span class=" -Color -Color-Yellow">&#39;02&#39;</span> | <span class=" -Color -Color-Yellow">&#39;03&#39;</span> | <span class=" -Color -Color-Yellow">&#39;04&#39;</span> | <span class=" -Color -Color-Yellow">&#39;05&#39;</span> | <span class=" -Color -Color-Yellow">&#39;06&#39;</span> | <span class=" -Color -Color-Yellow">&#39;07&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;08&#39;</span> | <span class=" -Color -Color-Yellow">&#39;09&#39;</span> | <span class=" -Color -Color-Yellow">&#39;10&#39;</span> | <span class=" -Color -Color-Yellow">&#39;11&#39;</span> | <span class=" -Color -Color-Yellow">&#39;12&#39;</span> | <span class=" -Color -Color-Yellow">&#39;13&#39;</span> | <span class=" -Color -Color-Yellow">&#39;14&#39;</span> | <span class=" -Color -Color-Yellow">&#39;15&#39;</span> | <span class=" -Color -Color-Yellow">&#39;16&#39;</span> | <span class=" -Color -Color-Yellow">&#39;17&#39;</span> | <span class=" -Color -Color-Yellow">&#39;18&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;19&#39;</span> | <span class=" -Color -Color-Yellow">&#39;20&#39;</span> | <span class=" -Color -Color-Yellow">&#39;21&#39;</span> | <span class=" -Color -Color-Yellow">&#39;22&#39;</span> | <span class=" -Color -Color-Yellow">&#39;23&#39;</span> | <span class=" -Color -Color-Yellow">&#39;24&#39;</span> | <span class=" -Color -Color-Yellow">&#39;25&#39;</span> | <span class=" -Color -Color-Yellow">&#39;26&#39;</span> | <span class=" -Color -Color-Yellow">&#39;27&#39;</span> | <span class=" -Color -Color-Yellow">&#39;28&#39;</span> | <span class=" -Color -Color-Yellow">&#39;29&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;30&#39;</span> | <span class=" -Color -Color-Yellow">&#39;31&#39;</span> | <span class=" -Color -Color-Yellow">&#39;32&#39;</span> | <span class=" -Color -Color-Yellow">&#39;33&#39;</span> | <span class=" -Color -Color-Yellow">&#39;34&#39;</span> | <span class=" -Color -Color-Yellow">&#39;35&#39;</span> | <span class=" -Color -Color-Yellow">&#39;36&#39;</span> | <span class=" -Color -Color-Yellow">&#39;37&#39;</span> | <span class=" -Color -Color-Yellow">&#39;38&#39;</span> | <span class=" -Color -Color-Yellow">&#39;39&#39;</span> | <span class=" -Color -Color-Yellow">&#39;40&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;41&#39;</span> | <span class=" -Color -Color-Yellow">&#39;42&#39;</span> | <span class=" -Color -Color-Yellow">&#39;43&#39;</span> | <span class=" -Color -Color-Yellow">&#39;44&#39;</span> | <span class=" -Color -Color-Yellow">&#39;45&#39;</span> | <span class=" -Color -Color-Yellow">&#39;46&#39;</span> | <span class=" -Color -Color-Yellow">&#39;47&#39;</span> | <span class=" -Color -Color-Yellow">&#39;48&#39;</span> | <span class=" -Color -Color-Yellow">&#39;49&#39;</span> | <span class=" -Color -Color-Yellow">&#39;50&#39;</span> | <span class=" -Color -Color-Yellow">&#39;51&#39;</span> | 
+<span class=" -Color -Color-Yellow">&#39;52&#39;</span> | <span class=" -Color -Color-Yellow">&#39;53&#39;</span> | <span class=" -Color -Color-Yellow">&#39;54&#39;</span> | <span class=" -Color -Color-Yellow">&#39;55&#39;</span> | <span class=" -Color -Color-Yellow">&#39;56&#39;</span> | <span class=" -Color -Color-Yellow">&#39;57&#39;</span> | <span class=" -Color -Color-Yellow">&#39;58&#39;</span> | <span class=" -Color -Color-Yellow">&#39;59&#39;</span> | <span class=" -Color -Color-Yellow">&#39;60&#39;</span>;
+&lt;iso8601fraction&gt; ::= &lt;digit&gt;+;
+
+&lt;iso8601timezone&gt; ::= <span class=" -Color -Color-Yellow">&#39;Z&#39;</span> | <span class=" -Color -Color-Yellow">&#39;+&#39;</span> &lt;iso8601hour&gt; (<span class=" -Color -Color-Yellow">&#39;:&#39;</span>? &lt;iso8601minute&gt;)? | <span class=" -Color -Color-Yellow">&#39;-&#39;</span> 
+&lt;iso8601hour&gt; (<span class=" -Color -Color-Yellow">&#39;:&#39;</span>? &lt;iso8601minute&gt;)?;
+
+<span class=" -Color -Color-Bold">def</span> is_valid_iso8601datetime(iso8601datetime: str) -&gt; bool:
+    38;2;186
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>;33;33;03m&quot;&quot;&quot;Return True iff `iso8601datetime` is valid.&quot;&quot;&quot;
+    <span class=" -Color -Color-Bold">try</span>:
+        dateutil.parser.isoparse(iso8601datetime)
+        <span class=" -Color -Color-Bold">return</span> <span class=" -Color -Color-Bold">True</span>
+    <span class=" -Color -Color-Bold">except</span> <span class=" -Color -Color-Bold">ValueError</span>:
+        <span class=" -Color -Color-Bold">return</span> <span class=" -Color -Color-Bold">False</span>
+
+is_valid_iso8601datetime(str(&lt;iso8601datetime&gt;));
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this, we can now create a bunch of random date/time elements:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>iso8601.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+2988201
+9658-07-13T01:37+01:28
+9709-06
+1455-312
+75270123T163410.70692Z
+7713
+90190613T17+00:00
+4268-09
+6700095T07:25:12
+5482
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can use additional constraints to further narrow down date intervals:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>ISO8601.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;int(&lt;iso8601year&gt;) &gt; 1950 and int(&lt;iso8601year&gt;) &lt; 2000&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 1/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 2/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 3/500 <span class=" -Color -Color-BGC106">                                                            </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 4/500 <span class=" -Color -Color-BGC106">                                                            </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 5/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 6/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 7/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC100">   </span><span class=" -Color -Color-BGC166">   </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 8/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 9/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 10/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 11/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 12/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 13/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 14/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 15/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 16/500 <span class=" -Color -Color-BGC106">                                                         </span><span class=" -Color -Color-BGC166">   </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 17/500 <span class=" -Color -Color-BGC106">                                                      </span><span class=" -Color -Color-BGC166">      </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>💃 <span class=" -Color -Color-C124">Fandango </span> 18/500 <span class=" -Color -Color-BGC46">   </span><span class=" -Color -Color-BGC106">                                                   </span><span class=" -Color -Color-BGC166">      </span>
+💃 <span class=" -Color -Color-C124">Fandango </span> 19/500 <span class=" -Color -Color-BGC46">   </span><span class=" -Color -Color-BGC106">                                                   </span><span class=" -Color -Color-BGC166">      </span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+1999-W26-2
+1999-W26-2
+1999-W26-2
+1999-W26-2T06
+1999-W26-2
+1999-W26-2
+1999-W26-2
+1999-W26-2T06
+1999-W26-2
+1999-W26-2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or produce individual elements, again with individual constraints:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>fandango<span class="w"> </span>fuzz<span class="w"> </span>-f<span class="w"> </span>ISO8601.fan<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>--start-symbol<span class="o">=</span><span class="s1">&#39;&lt;iso8601time&gt;&#39;</span><span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;&lt;iso8601hour&gt; == &quot;00&quot;&#39;</span>
+</pre></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                               
+T0029
+T00-00
+T00:1005,2
+00
+00
+T00:00+00
+00:5220
+T0038Z
+0056Z
+002720-00
+</pre></div>
+</div>
+</div>
+</div>
+<p>Try out more constraints for yourself!
+The generated <a class="reference internal" href="#ISO9601.fan"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ISO9601.fan</span></code></span></a> file is available for download.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Paths.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Accessing Input Elements</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Binary.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generating Binary Inputs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-grammars-programmatically">Creating Grammars Programmatically</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spec-header">Spec Header</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date">Date</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calendar-dates">Calendar Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#months">Months</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#days">Days</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-dates">Week Dates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal-dates">Ordinal Dates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hours">Hours</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minutes">Minutes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seconds">Seconds</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-zones">Time Zones</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensuring-validity">Ensuring Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#even-better-validity">Even Better Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fuzzing-dates-and-times">Fuzzing Dates and Times</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By José Antonio Zamudio Amaya, Marius Smytzek, and Andreas Zeller
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024 CISPA Helmholtz Center for Information Security (www.cispa.de). All Rights Reserved..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
