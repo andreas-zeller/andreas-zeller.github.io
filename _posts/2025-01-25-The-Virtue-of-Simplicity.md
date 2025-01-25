@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "The Virtue of Simplicity: Andreas Zeller's Commencement Speech at Passau University"
+title:  "The Virtue of Simplicity"
 author: Andreas Zeller
 tags: popular
 ---
 
-_On January 24, 2025, I was invited to give a commencement speech for the graduates of Passau University. My speech focuses on the "virtue of simplicity", reflecting on the role of simplicity in science, both personal and universal, and how it is important for the future career of graduates._
+_On January 24, 2025, I was invited to give a **commencement speech** for the graduates of Passau University. My speech focused on the "virtue of simplicity", reflecting on the role of simplicity in science, both personal and universal, and how it is important for the future career of graduates._
 
 Dear president, dear mayor, dear graduates, dear families and friends, dear colleagues, dear Gordon, and dear honored guests. What a privilege it is to stand before you on this day.
 
