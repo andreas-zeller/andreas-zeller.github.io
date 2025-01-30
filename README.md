@@ -7,7 +7,10 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 
 ## Quick Links
 
+<!--
 * <a href="https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227" target="_new">Open positions for PhD and PostDocs</a>
+-->
+* <a href="https://career.cispa.de">Open positions at CISPA</a>
 * <a href="https://cispa.de/en/career/faq">What's it like working at CISPA?</a>
 * <a href="https://andreas-zeller.info/Theses.html">Doing a BSc or MSc thesis with me</a>
 * <a href="https://publications.cispa.de/search?q=%3Aauthor%3A%20Zeller" target="_new">Recent papers</a>
@@ -72,7 +75,9 @@ Our **solutions** typically apply and combine several techniques including dynam
 * Since 2022, most of our projects focus on semantic fuzzing and debugging, centered around our all-new [ISLa specification language and input generator](https://rindphi.github.io/isla/).
 * Since 2021, my [Debugging Book](https://www.debuggingbook.org/) presents and implements techniques for automated debugging and repair, and [The Fuzzing Book](https://www.fuzzingbook.org/) introduces test generation ("fuzzing") techniques. Both books are interactive – you can execute and edit the code right in your browser.
 
+<!--
 I am hiring [PhDs and PostDocs who would like to work on these topics](https://jobs.cispa.saarland/de_DE/jobs/detail/postdoctoral-researchers-for-s3-semantics-of-software-systems-227). Apply now!
+-->
 
 
 ## Current Papers
@@ -107,9 +112,16 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
 
+**All the PhD positions in my group are currently filled**,
+but my colleagues at CISPA are constantly looking out for great students and Postdocs.
+Our positions are well paid and allow for highly productive research.
+If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/)
+
+<!--
 I am constantly looking out for great students and Postdocs.
 Our positions are well paid and allow for highly productive research.
 If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227) and state your specific interests.
+-->
 
 Here is a list of [former group members](Group.html).
 
