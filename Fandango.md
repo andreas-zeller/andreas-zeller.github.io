@@ -123,3 +123,8 @@ Zamudio et al. introduced Fandango.[^1]
 ## Task 9: A Paper Generator
 
 Put all the above together to create a _random scientific paper_ in Markdown (and then LaTeX, and then PDF). The best generated paper will get an award.
+
+
+## Task 10: Large Language Models (Bonus)
+
+For the abstract of the above paper, create a grammar that creates a random scientific-sounding title; then ask an LLM of your choice to create an abstract for it. Integrate the interaction into the `Markdown.fan` file.
