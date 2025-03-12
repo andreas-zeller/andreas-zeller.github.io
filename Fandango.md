@@ -12,7 +12,7 @@ Use the [Fandango Fuzzer](https://fandango-fuzzer.github.io) for this task.
 * We have released a _new Fandango version 0.1.7_ that fixes a number of errors, notably reporting of syntax error locations. To upgrade, enter
 
 ```shell
-pip install --upgrade fandango-fuzzer
+$ pip install --upgrade fandango-fuzzer
 ```
 
 * We found that under certain circumstances, the form `<digit>+` does not expand to a sufficient number of repetitions. As a workaround, use `<digit>{N,M}` instead to specify a number of repetitions between `N` and `M`.
