@@ -23,8 +23,8 @@ pip install --upgrade fandango-fuzzer
 1. Install Python. See the specific instructions for your operating system on how to do this.
 2. From the command line, run
 
-```
-pip install fandango-fuzzer
+```shell
+$ pip install fandango-fuzzer
 ```
 
 ## Installing Pandoc
