@@ -7,10 +7,25 @@ We start with simple Markdown syntax and end with a generator that creates full-
 Use the [Fandango Fuzzer](https://fandango-fuzzer.github.io) for this task.
 
 
+## News (March 12, 2025)
+
+* We have released a _new Fandango version 0.1.7_ that fixes a number of errors, notably reporting of syntax error locations. To upgrade, enter
+
+```shell
+pip install --upgrade fandango-fuzzer
+```
+
+* We found that under certain circumstances, the form `<digit>+` does not expand to a sufficient number of repetitions. As a workaround, use `<digit>{N,M}` instead to specify a number of repetitions between `N` and `M`.
+
+
 ## Installing Fandango
 
-1. Install Python.
-2. From the command line, run `pip install fandango-fuzzer`.
+1. Install Python. See the specific instructions for your operating system on how to do this.
+2. From the command line, run
+
+```
+pip install fandango-fuzzer
+```
 
 ## Installing Pandoc
 
@@ -29,20 +44,20 @@ Create a file `Markdown.fan` with these contents:
 
 Use Fandango to fuzz inputs:
 
-```
+```shell
 $ fandango fuzz -f Markdown.fan -n 10
 ```
 
 Send the input to a Markdown processing tool such as [Pandoc](https://pandoc.org); redirect its output to a file that you can open in a browser.
 
-```
+```shell
 $ fandango fuzz -f Markdown.fan -n 10 pandoc --to html > output.html
 $ open output.html
 ```
 
 Or create a LaTeX document from it:
 
-```
+```shell
 $ fandango fuzz -f Markdown.fan -n 10 pandoc --to latex > output.tex
 $ pdflatex output
 ```
@@ -59,7 +74,7 @@ Extend your Fandango spec `Markdown.fan` for Markdown that produces inputs with 
 
 Read the [Pandoc Manual](https://pandoc.org/MANUAL.html#pandocs-markdown) to understand which Markdown features are supported. To see the list of enabled extensions, use
 
-```
+```shell
 $ pandoc --list-extensions=markdown
 ```
 
