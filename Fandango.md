@@ -151,9 +151,11 @@ For the abstract of the above paper, create a grammar that creates a random scie
 
 ## Submitting your Work
 
-When you're done, submit the `Markdown.fan` file (as well as any generated PDFs) at
+When you're done, submit the `Markdown.fan` file (as well as any generated PDFs) at [https://forms.gle/vaGX976kqtKQEoo96](https://forms.gle/vaGX976kqtKQEoo96).
 
-[https://forms.gle/vaGX976kqtKQEoo96](https://forms.gle/vaGX976kqtKQEoo96)
+Please submit
 
-Do submit before Thursday, 16:30 to take part in the best paper award.
+* before **Wednesday, March 12, 16:30** to take part in the best paper award.
+* before **Monday, March 17, 23:59** to obtain a grade.
+
 Your grade will be a percentage 0-100%; see the percentages for the individual tasks.
