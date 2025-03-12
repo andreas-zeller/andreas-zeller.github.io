@@ -17,6 +17,8 @@ pip install --upgrade fandango-fuzzer
 
 * We found that under certain circumstances, the form `<digit>+` does not expand to a sufficient number of repetitions. As a workaround, use `<digit>{N,M}` instead to specify a number of repetitions between `N` and `M`.
 
+* Updates on submission and grading (see end of page).
+
 
 ## Installing Fandango
 
@@ -63,7 +65,7 @@ $ pdflatex output
 ```
 
 
-## Task 1: Basic Markdown
+## Task 1: Basic Markdown (10%)
 
 Extend your Fandango spec `Markdown.fan` for Markdown that produces inputs with the following features:
 
@@ -78,7 +80,7 @@ Read the [Pandoc Manual](https://pandoc.org/MANUAL.html#pandocs-markdown) to und
 $ pandoc --list-extensions=markdown
 ```
 
-## Task 2: Fakers
+## Task 2: Fakers (10%)
 
 Enhance your Fandango spec to make use of [_generators_](https://fandango-fuzzer.github.io/Generators.html). Use the [Python faker module](https://faker.readthedocs.io/en/master/) to produce
 
@@ -86,24 +88,24 @@ Enhance your Fandango spec to make use of [_generators_](https://fandango-fuzzer
 * "Lorem Ipsum" Text blocks
 
 
-## Task 3: Some Natural Text
+## Task 3: Some Natural Text (10%)
 
 Create a sub-grammar that creates _random English sentences_. Have rules and plenty of alternatives for subjects, verbs, objects, conjunctions, etc.
 Combine this with the `faker` module to obtain names, places, ...
 
 
-## Task 4: Tables
+## Task 4: Tables (10%)
 
 Enhance your Fandango spec to produce Markdown [tables](https://pandoc.org/MANUAL.html#tables). Create tables with a configurable, but fixed number of rows and columns; use `<row>{N}` to repeat a row N times.
 Fill the tables with numbers.
 
 
-## Task 5: Constraints
+## Task 5: Constraints (10%)
 
 Use [constraints](https://fandango-fuzzer.github.io/Constraints.html) to ensure all numbers in tables are between 10 and 1000.
 
 
-## Task 6: Cross-References
+## Task 6: Cross-References (10%)
 
 Create _references_ to headers. A Header `### My Awesome Section` can be referenced by taking the title, converting all letters to lowercase, and replacing all non-letters with spaces: `Read [my awesome section](my-awesome-section)`.
 
@@ -113,14 +115,14 @@ For this,
 2. create a second generator for references that takes a reference from the table.
 
 
-## Task 7: Math
+## Task 7: Math (10%)
 
 Because it's fun: Create a sub-grammar that produces LaTeX math formulas (`$...$`). Use `pandoc --to latex` to create output that you can run through LaTeX.
 
 Be sure to create the most complex formulas ever seen.
 
 
-## Task 8: Citations
+## Task 8: Citations (10%)
 
 Have your text include citations, rendered as footnotes:
 
@@ -135,11 +137,23 @@ Zamudio et al. introduced Fandango.[^1]
 * Use constraints to produce citation years (say, 1950-2025).
 
 
-## Task 9: A Paper Generator
+## Task 9: A Paper Generator (20%)
 
-Put all the above together to create a _random scientific paper_ in Markdown (and then LaTeX, and then PDF). The best generated paper will get an award.
+Put all the above together to create a _random scientific paper_ in Markdown (and then LaTeX, and then PDF).
+
+Papers will be graded on _creativity_ as well as _syntactic_ and _semantic similarity_ with real papers. The best generated paper submitted by Thursday, 16:30 (end of course) will get an award.
 
 
 ## Task 10: Large Language Models (Bonus)
 
 For the abstract of the above paper, create a grammar that creates a random scientific-sounding title; then ask an LLM of your choice to create an abstract for it. Integrate the interaction into the `Markdown.fan` file.
+
+
+## Submitting your Work
+
+When you're done, submit the `Markdown.fan` file (as well as any generated PDFs) at
+
+[https://forms.gle/vaGX976kqtKQEoo96](https://forms.gle/vaGX976kqtKQEoo96)
+
+Do submit before Thursday, 16:30 to take part in the best paper award.
+Your grade will be a percentage 0-100%; see the percentages for the individual tasks.
