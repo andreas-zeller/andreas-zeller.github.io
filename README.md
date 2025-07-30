@@ -71,7 +71,7 @@ Our **research projects** involve generating software tests, automated debugging
 
 Our **solutions** typically apply and combine several techniques including dynamic analysis, static analysis, specification mining, test generation, natural language processing, machine learning, constraint solving, and formal languages:
 
-* Since 2024, most of our projects focus on language-based fuzzing and debugging, centered around our all-new **[Fandango](https://fandango-fuzzer.github.io/)** fuzzer.
+* Since 2024, most of our projects focus on **[language-based software testing](https://cacm.acm.org/research/language-based-software-testing/)** and debugging, centered around our all-new **[Fandango](https://fandango-fuzzer.github.io/)** test generator.
 * Fandango is a result of my 2023 ERC Advanced Grant of 2.5 million EUR for the project **["Semantics of Software Systems" (S3)](https://www.cispa.de/s3)** on massive generation of tests and oracles for software.
 * Since 2021, my **[Fuzzing Book](https://www.fuzzingbook.org/)** introduces test generation ("fuzzing") techniques, and the **[Debugging Book](https://www.debuggingbook.org/)** presents and implements techniques for automated debugging and repair. Both books are interactive – you can execute and edit the code right in your browser.
 
@@ -101,19 +101,23 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 * [Dr.&nbsp;Rafael Dutra](https://cispa.de/de/people/c01radu) (Post-Doc)
 * [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
+<!-- * Dr.&nbsp;Hengcheng Zhu (Post-Doc) -->
+<!-- * Norman Becker -->
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
 * [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
+* Valentin Huber (Ph.D. student)
 * Alexander Liggesmeyer (Ph.D. student)
 * Haoyang Liu (Ph.D. student)
 * [Kuangxiangzi Liu](https://www.linkedin.com/in/kuangxiangzi-liu-2638ab297/) (Ph.D. student @ Volkswagen)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
 * [Laura Plein](https://laura-plein.com) (Ph.D. student)
+<!-- * Tim Scheckenbach -->
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
 
-**All the PhD positions in my group are currently filled**,
-but my colleagues at CISPA are constantly looking out for great students and Postdocs.
+**All Post-Doc and PhD positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
+However, my colleagues at CISPA are constantly looking out for great students and Postdocs.
 Our positions are well paid and allow for highly productive research.
 If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/)
 
