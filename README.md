@@ -7,9 +7,6 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 
 ## Quick Links
 
-<!--
-* <a href="https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227" target="_new">Open positions for PhD and PostDocs</a>
--->
 * <a href="https://career.cispa.de">Open positions at CISPA</a>
 * <a href="https://cispa.de/en/career/faq">What's it like working at CISPA?</a>
 * <a href="https://andreas-zeller.info/Theses.html">Doing a BSc or MSc thesis with me</a>
@@ -75,10 +72,6 @@ Our **solutions** typically apply and combine several techniques including dynam
 * Fandango is a result of my 2023 ERC Advanced Grant of 2.5 million EUR for the project **["Semantics of Software Systems" (S3)](https://www.cispa.de/s3)** on massive generation of tests and oracles for software.
 * Since 2021, my **[Fuzzing Book](https://www.fuzzingbook.org/)** introduces test generation ("fuzzing") techniques, and the **[Debugging Book](https://www.debuggingbook.org/)** presents and implements techniques for automated debugging and repair. Both books are interactive – you can execute and edit the code right in your browser.
 
-<!--
-I am hiring [PhDs and PostDocs who would like to work on these topics](https://jobs.cispa.saarland/de_DE/jobs/detail/postdoctoral-researchers-for-s3-semantics-of-software-systems-227). Apply now!
--->
-
 
 ## Current Papers
 
@@ -120,12 +113,6 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 However, my colleagues at CISPA are constantly looking out for great students and Postdocs.
 Our positions are well paid and allow for highly productive research.
 If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/)
-
-<!--
-I am constantly looking out for great students and Postdocs.
-Our positions are well paid and allow for highly productive research.
-If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://jobs.cispa.saarland/jobs/detail/phd-students-and-postdoctoral-researchers-for-s3-semantics-of-software-systems-group-zeller-227) and state your specific interests.
--->
 
 Here is a list of [former group members](Group.html).
 
