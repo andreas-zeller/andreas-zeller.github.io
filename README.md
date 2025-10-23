@@ -96,7 +96,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
 <!-- * Dr.&nbsp;Hengcheng Zhu (Post-Doc) -->
 * Masudul Bhuiyan (Ph.D. student)
-<!-- * Norman Becker -->
+* Norman Becker
 * [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
 * [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
 * Valentin Huber (Ph.D. student)
@@ -106,7 +106,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Kuangxiangzi Liu](https://www.linkedin.com/in/kuangxiangzi-liu-2638ab297/) (Ph.D. student @ Volkswagen)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
 * [Laura Plein](https://laura-plein.com) (Ph.D. student)
-<!-- * Tim Scheckenbach -->
+* Tim Scheckenbach
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
