@@ -115,7 +115,7 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 **All Post-Doc and PhD positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
 However, my colleagues at CISPA are constantly looking out for great students and Postdocs.
 Our positions are well paid and allow for highly productive research.
-If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/)
+If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/).
 
 Here is a list of [former group members](Group.html).
 
