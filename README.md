@@ -1,6 +1,6 @@
 # About Me
 
-I do software research.  My students and I create tools and techniques that **help developers build better software**&mdash;by automatically testing, analyzing, and debugging its code and its development process.
+I do software research.  My students and I create tools and techniques that **help build better software**&mdash;by automatically testing, analyzing, and debugging code and its development process.
 
 Our approaches have proven quite influential in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
@@ -59,8 +59,9 @@ href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller
 
 
 ## Current Projects
+<a id="projects">
 
-Our **research projects** involve generating software tests, automated debugging and repair, analyzing mobile systems, analyzing user interfaces, and more. Essentially, our research focuses on the following questions:
+Our **research projects** involve generating software tests, automated debugging and repair, analyzing critical systems, analyzing user interfaces, and more. Essentially, our research focuses on the following questions:
 
 * How can we systematically test complex software systems?
 * How can we accurately determine and characterize input formats?
