@@ -58,8 +58,8 @@ href="https://twitter.com/AndreasZeller" data-dnt="true">Tweets by AndreasZeller
 -->
 
 
+<a id="projects"></a>
 ## Current Projects
-<a id="projects">
 
 Our **research projects** involve generating software tests, automated debugging and repair, analyzing critical systems, analyzing user interfaces, and more. Essentially, our research focuses on the following questions:
 
