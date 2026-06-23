@@ -1,12 +1,13 @@
 ## Former Group Members
 
+* [Dr.&nbsp;Rafael Dutra](https://cispa.de/de/people/c01radu) (Post-Doc)
 * [Dr.&nbsp;Jordan Samhi](https://www.jordansamhi.com) (Post-Doc)
 * [Dr.&nbsp;Dominic Steinhöfel](https://www.dominic-steinhoefel.de) (Post-Doc)
+* [Dr.&nbsp;Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student @ Google)
 * [Max Eisele](https://www.linkedin.com/in/max-eisele/) (Ph.D. student @ Bosch)
 * [Johannes Lampel](https://cispa.de/de/people/johannes.lampel) (Ph.D. student @ Microsoft)
 * [Martin Eberlein](https://cispa.de/de/people/c01maeb) (visiting Ph.D. student from HU Berlin)
 * [Michaël Mera](https://cispa.de/people/michael.mera/) (Ph.D. student)
-* [Dr.&nbsp;Rafael Dutra](https://cispa.de/people/c01radu/) (Post-Doc)
 * [Dr.&nbsp;Rahul Gopinath](https://rahul.gopinath.org/) (Post-Doc)
 * [Konstantin Kuznetsov](https://cispa.de/people/kuznetsov/)
 * [Alexander Kampmann](https://cispa.de/people/kampmann/)

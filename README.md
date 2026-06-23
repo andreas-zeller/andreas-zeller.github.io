@@ -95,15 +95,13 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 
 <!-- * Dr.&nbsp;Hengcheng Zhu (Post-Doc) -->
 
-* [Dr.&nbsp;Rafael Dutra](https://cispa.de/de/people/c01radu) (Post-Doc)
+* [Dr.&nbsp;Abdullah Alhamdan](https://cispa.de/en/people/c01abal) (Post-Doc)
+* [Dr.&nbsp;Masudul Bhuiyan](https://cispa.de/en/people/c01mabh) (Post-Doc)
 * [Dr.&nbsp;Alexi Turcotte](https://reallytg.github.io) (Post-Doc)
-* [Masudul Bhuiyan](https://cispa.de/en/people/c01mabh) (Ph.D. student)
 * [Norman Becker](https://cispa.de/en/people/c01nobe) (Ph.D. student)
-* [Leon Bettscheider](https://cispa.de/de/people/leon.bettscheider) (Ph.D. student)
 * [Bernd Gruner](https://de.linkedin.com/in/bernd-gruner-2259761a2) (Ph.D. student @ DLR)
 * [Valentin Huber](https://cispa.de/en/people/c01vahu) (Ph.D. student)
 * [Alexander Liggesmeyer](https://cispa.de/en/people/c01alli) (Ph.D. student)
-* [Abdullah Alhamdan](https://cispa.de/en/people/c01abal) (Ph.D. student)
 * [Haoyang Liu](https://cispa.de/en/people/c01hali) (Ph.D. student)
 * [Kuangxiangzi Liu](https://www.linkedin.com/in/kuangxiangzi-liu-2638ab297/) (Ph.D. student @ Volkswagen)
 * [Tural Mammadov](https://cispa.de/en/people/c01tuma) (Ph.D. student)
