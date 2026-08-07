@@ -5,12 +5,19 @@ I do software research.  My students and I create tools and techniques that **he
 Our approaches have proven quite influential in academia and industry.  My [Curriculum Vitae](assets/ZellerCV.pdf) lists the most important achievements.
 
 
+## (No) Positions Available
+
+**All Post-Doc and PhD positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
+However, my colleagues at CISPA are constantly looking out for great students and Postdocs on well-funded positions.
+If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/).
+
+
 ## Quick Links
 
-* <a href="https://career.cispa.de">Open positions at CISPA</a>
-* <a href="https://cispa.de/en/career/faq">What's it like working at CISPA?</a>
 * <a href="https://andreas-zeller.info/Theses.html">Doing a BSc or MSc thesis with me</a>
-* <a href="https://publications.cispa.de/search?q=%3Aauthor%3A%20Zeller" target="_new">Recent papers</a>
+* <a href="#projects">Our projects</a>
+* <a href="#group">My group</a>
+* <a href="https://scholar.google.com/citations?user=-Qytr_YAAAAJ&hl=en&oi=ao" target="_new">Recent papers</a>
 * <a href="assets/ZellerCV.pdf">My CV</a>
 
 
@@ -89,6 +96,7 @@ Every semester, we also offer [seminars and proseminars around automated testing
 Check out all our courses [here](https://cms.cispa.saarland/).
 
 
+<a id="group"></a>
 ## My Group
 
 At CISPA and Saarland University, I work with great students and Post-Docs from across the world on cutting-edge research:
@@ -110,11 +118,6 @@ At CISPA and Saarland University, I work with great students and Post-Docs from 
 * [Marius Smytzek](https://cispa.de/de/people/marius.smytzek) (Ph.D. student)
 * [José Antonio Zamudio Amaya](https://cispa.de/de/people/c01joza) (Ph.D. student)
 * [Fengmin "Paul" Zhu](https://cispa.de/en/people/c01fezh) (Ph.D. student)
-
-**All Post-Doc and PhD positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
-However, my colleagues at CISPA are constantly looking out for great students and Postdocs.
-Our positions are well paid and allow for highly productive research.
-If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/).
 
 Here is a list of [former group members](Group.html).
 
