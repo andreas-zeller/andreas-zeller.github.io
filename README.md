@@ -7,9 +7,14 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 
 ## (No) Positions Available
 
-**All Post-Doc and PhD positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
+**All Post-Doc and Ph.D. positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
+Any mail regarding positions will be treated as spam.
+
 However, my colleagues at CISPA are constantly looking out for great students and Postdocs on well-funded positions.
-If you are interested in a Ph.D. or Postdoc position, please [apply at CISPA](https://career.cispa.de/).
+If you are interested in a Ph.D. or Postdoc position, please [apply via the CISPA portal](https://career.cispa.de/).
+
+
+
 
 
 ## Quick Links
