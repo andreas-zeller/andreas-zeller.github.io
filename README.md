@@ -93,12 +93,15 @@ My papers can be found on [Google Scholar](https://scholar.google.com/citations?
 
 ## My Courses
 
+<!--
 * In Winter 2025/26, we offer our advanced course on security testing, based on [The Fuzzing Book](https://www.fuzzingbook.org/).
 * In Winter 2026/27, we plan to offer our advanced course on automated debugging, based on [The Debugging Book](https://www.debuggingbook.org/).
+-->
 
-Every semester, we also offer [seminars and proseminars around automated testing and debugging](https://cms.cispa.saarland/).
+Every semester, we offer [seminars around automated testing and debugging](https://cms.cispa.saarland/), often relying on our [Fandango](https://fandango-fuzzer.github.io/) test generator.
+[The Fuzzing Book](https://www.fuzzingbook.org/) and [The Debugging Book](https://www.debuggingbook.org/) are great resources for self-studying.
 
-Check out all our courses [here](https://cms.cispa.saarland/).
+Check out all our offers [here](https://cms.cispa.saarland/).
 
 
 <a id="group"></a>
