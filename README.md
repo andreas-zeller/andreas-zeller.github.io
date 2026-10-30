@@ -14,7 +14,7 @@ For open positions, check out
 * [the CISPA portal](https://career.cispa.de/) for Post-Doc PhD positions across CISPA; and
 * [the CISPA Summer Research (CSR) program](https://career.cispa.de/internship) for paid internships.
 
-**Do not send me mail regarding positions;** your mail regarding positions will be deleted without notice. Use the portals above.
+**Do not send me mail regarding positions;** any mail regarding positions will be deleted without notice. Use the portals above.
 
 
 
