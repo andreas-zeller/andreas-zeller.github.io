@@ -7,9 +7,14 @@ Our approaches have proven quite influential in academia and industry.  My [Curr
 
 ## No Positions Available
 
-**All Post-Doc and Ph.D. positions in my group are currently filled. New positions will become available in 2028 at the earliest.**
+**All Post-Doc and Ph.D. positions in my group are currently filled. New positions will become available in 2028 at the earliest.** Internships may be available via the CISPA program; see below.
 
-For open positions, check out [the CISPA portal](https://career.cispa.de/) only. All mail regarding positions will be ignored.
+For open positions, check out
+
+* [the CISPA portal](https://career.cispa.de/) for Post-Doc PhD positions across CISPA; and
+* [the CISPA Summer Research (CSR) program](https://career.cispa.de/internship) for paid internships.
+
+**Do not send me mail regarding positions;** your mail regarding positions will be deleted without notice. Use the portals above.
 
 
 
